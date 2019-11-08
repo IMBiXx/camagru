@@ -7,7 +7,8 @@ function debug_to_console($data) {
 	echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
   }
 try{
-      $bdd = new PDO('mysql:host=localhost; dbname=db_camagru', 'wafa', 'root');
+   include("db_manager.php");
+      $bdd = new PDO($servername.";dbname=".$dbname, $username, $password);
 } catch(PDOException $e){
    die('Erreur:'.$e->getMessage());
 }  
@@ -26,10 +27,10 @@ if(isset($_POST['formconnexion']))
       if($userexist != 0 )
       {
         $userinfo =$requser->fetch( ) ;
-        $_SESSION['id'] = $userinfo['id'];
-        $_SESSION['pseudo'] = $userinfo['pseudo'];
-        $_SESSION['mail'] = $userinfo['mail'];
-		header("location: profil.php?id=".$_SESSION['id']);
+        $_SESSION['id'] = $userinfo['user_id'];
+        $_SESSION['pseudo'] = $userinfo['user_pseudo'];
+        $_SESSION['mail'] = $userinfo['user_email'];
+		header("location: profil.php?id=".$_SESSION['user_id']);
       }
       else
       {

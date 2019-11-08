@@ -21,9 +21,9 @@ CREATE TABLE `camagru`.`user_action` (
   `user_action_ID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `user_ID` int UNSIGNED NOT NULL,
   `img_ID` int UNSIGNED NOT NULL,
-  `user_action_like` tinyint(1) NOT NULL,
-  `user_action_date` date NOT NULL,
-  `user_action_comment` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+  `user_action_like` tinyint(1) DEFAULT '0',
+  `user_action_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_action_comment` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 -- --------------------------------------------------------
 --
@@ -46,7 +46,9 @@ CREATE TABLE `camagru`.`user` (
   `user_email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_pseudo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_password` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_description` varchar(255) DEFAULT 'je suis super cool',
+  `user_validated` tinyint(1) DEFAULT '0',
   `user_registered` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `user_preferences` tinyint(1) NOT NULL
+  `user_preferences` tinyint(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 COMMIT;
