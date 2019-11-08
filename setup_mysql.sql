@@ -15,15 +15,23 @@ SET time_zone = "+00:00";
 -- Database: `camagru`
 -- --------------------------------------------------------
 --
--- Table structure for table `user_action`
+-- Table structure for table `comment`
 --
-CREATE TABLE `camagru`.`user_action` (
-  `user_action_ID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE `camagru`.`comment` (
+  `comment_ID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `user_ID` int UNSIGNED NOT NULL,
   `img_ID` int UNSIGNED NOT NULL,
-  `user_action_like` tinyint(1) DEFAULT '0',
-  `user_action_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `user_action_comment` varchar(255) DEFAULT NULL
+  `comment_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `comment_comment` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+-- --------------------------------------------------------
+--
+-- Table structure for table `liked`
+--
+CREATE TABLE `camagru`.`liked` (
+  `liked_ID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `user_ID` int UNSIGNED NOT NULL,
+  `img_ID` int UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 -- --------------------------------------------------------
 --
@@ -31,11 +39,10 @@ CREATE TABLE `camagru`.`user_action` (
 --
 CREATE TABLE `camagru`.`img` (
   `img_ID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `user_ID` int UNSIGNED NOT NULL,
   `img_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `img_upload_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `img_path` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `img_nbr_comments` int NOT NULL,
-  `img_nbr_likes` int NOT NULL
+  `img_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 -- --------------------------------------------------------
 --
@@ -45,8 +52,8 @@ CREATE TABLE `camagru`.`user` (
   `user_ID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `user_email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_pseudo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_password` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_description` varchar(255) DEFAULT 'je suis super cool',
+  `user_password` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_description` varchar(1000) DEFAULT 'je suis super cool',
   `user_validated` tinyint(1) DEFAULT '0',
   `user_registered` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_preferences` tinyint(1) DEFAULT '0'
