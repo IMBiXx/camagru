@@ -32,7 +32,6 @@ CREATE TABLE `camagru`.`user_action` (
 CREATE TABLE `camagru`.`img` (
   `img_ID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `img_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `img_description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `img_upload_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `img_path` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `img_nbr_comments` int NOT NULL,
