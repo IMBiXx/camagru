@@ -10,8 +10,8 @@
 <div class="main">
     <div class="container">
 <?php
-include("home-user-profil.php");
-include("home-feed.php");
+    include("home-user-profil.php");
+    include("home-feed.php");
 ?>
 </div>
 </div>
