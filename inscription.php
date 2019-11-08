@@ -32,7 +32,7 @@ if(isset($_POST['inscrip']))
                             {
                               $insertmbr = $bdd->prepare("INSERT INTO user(user_pseudo, user_email, user_password, user_preferences) VALUES(?,?,?,?)");
                               $insertmbr->execute(array($pseudo, $mail, $mdp,0));           
-                              $erreur = "Votre compte a bien été créé!";  
+                              $erreur = "Votre compte a bien été créé!";
                             }
                             else
                             {
@@ -72,6 +72,7 @@ if(isset($_POST['inscrip']))
   {
     $erreur = "Votre mot de passe doit comporter un minimum de 8 caractères";
   }
+  header("location: .".$_SESSION['user_id']);
 }
 ?>
 <html>

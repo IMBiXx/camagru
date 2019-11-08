@@ -8,8 +8,8 @@
     <a class="py-2 d-none d-md-inline-block" href="#">Accueil</a>
     <?php 
     if (!$_SESSION['user'])
-        echo '<a class="py-2 d-none d-md-inline-block" href="#">Connexion</a>
-        <a class="py-2 d-none d-md-inline-block" href="#">Inscription</a>
+        echo '<a class="py-2 d-none d-md-inline-block" href="login.php">Connexion</a>
+        <a class="py-2 d-none d-md-inline-block" href="register.php">Inscription</a>
         <span></span>';
     else
             echo '<a class="py-2 d-none d-md-inline-block" href="#">Profil</a>

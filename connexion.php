@@ -30,7 +30,7 @@ if(isset($_POST['formconnexion']))
         $_SESSION['id'] = $userinfo['user_id'];
         $_SESSION['pseudo'] = $userinfo['user_pseudo'];
         $_SESSION['mail'] = $userinfo['user_email'];
-		header("location: profil.php?id=".$_SESSION['user_id']);
+		header("location: .".$_SESSION['user_id']);
       }
       else
       {
