@@ -7,8 +7,7 @@
 </head>
 <body>
 <?php include("topmenu.php"); ?>
-</body>
-</html>
-
 
 <h1>bjr les amis</h1>
+</body>
+</html>
