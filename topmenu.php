@@ -1,27 +1,20 @@
 <?php session_start();?>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Instapouet</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<nav class="site-header sticky-top py-1">
+  <div class="container d-flex flex-column flex-md-row justify-content-between">
+    <a class="py-2" href="#">
+    <i class="fab fa-instagram" style="font-size:30px;"></i>
+        </a>
+        <span></span>
+    <a class="py-2 d-none d-md-inline-block" href="#">Accueil</a>
+    <?php 
+    if (!$_SESSION['user'])
+        echo '<a class="py-2 d-none d-md-inline-block" href="#">Connexion</a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Inscription</a>
+        <span></span>';
+    else
+            echo '<a class="py-2 d-none d-md-inline-block" href="#">Profil</a>
+            <a class="py-2 d-none d-md-inline-block" href="#">Déconnexion</a>';
+    ?>
 
-<div class="collapse navbar-collapse" id="navbarColor03">
-    <ul class="navbar-nav mr-auto">
-    <li class="nav-item active">
-        <a class="nav-link" href="#">Accueil<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-        <?php 
-        if (!$_SESSION['user'])
-            echo '<a class="nav-link" href="#">Connexion</a>
-            </li>';
-        else
-            echo '<a class="nav-link" href="#">Profil</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Déconnexion</a>
-          </li>';
-        ?>
-    </ul>
   </div>
 </nav>

@@ -7,7 +7,13 @@
 </head>
 <body>
 <?php include("topmenu.php"); ?>
-
-<h1>bjr les amis</h1>
+<div class="main">
+    <div class="container">
+<?php
+include("home-user-profil.php");
+include("home-feed.php");
+?>
+</div>
+</div>
 </body>
 </html>
