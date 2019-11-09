@@ -334,8 +334,6 @@ ol, ul {
 	-o-box-shadow: 0 0 10px rgba(0,0,0,0.28);
 	box-shadow: 0 0 10px rgba(0,0,0,0.28);
 	padding: 20px;
-	opacity: 0;
-	visibility: hidden;
 	z-index: 0;
 }
 .ed-options.active {

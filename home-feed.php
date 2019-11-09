@@ -23,8 +23,8 @@
                         </div>
                     </div>
                     <div class="ed-opts">
-                        <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-                        <ul class="ed-options">
+                        <a href="#" title="" class="ed-opts-open" onclick="showOptions()"><i class="la la-ellipsis-v"></i></a>
+                        <ul id="delete" class="ed-options hidden">
                             <li><a href="#" title="">Supprimer</a></li>
                         </ul>
                     </div>
