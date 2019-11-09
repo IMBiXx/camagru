@@ -31,14 +31,14 @@
                 </div>
                 
                 <div class="post_content">                    
-                    <img class="post_img" src="https://picsum.photos/600" alt="sample image" \>
+                    <a class="center" href="./image.php"><img class="post_img" src="https://picsum.photos/600" alt="sample image" \></a>
                 </div>
                 <div class="post-status-bar">
                     <ul class="like-com">
                         <li>
                             <a href="#"><i class="fas fa-heart"></i> Like ' . mt_rand(1,250) . '</a>
                         </li> 
-                        <li><a href="#" class="com"><i class="fas fa-comment-alt"></i> Comment ' . mt_rand(1,75) . '</a></li>
+                        <li><a href="./image.php#comments" class="com"><i class="fas fa-comment-alt"></i> Comment ' . mt_rand(1,75) . '</a></li>
                     </ul>
                 </div>
             </div><!--post-bar end-->

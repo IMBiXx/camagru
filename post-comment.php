@@ -1,4 +1,4 @@
 <?php
 // ajoute un commentaire a la db
-header("location: .");
+header("location: ./image.php");
 ?>

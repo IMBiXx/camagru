@@ -26,7 +26,7 @@
                         <li>
                             <a href="#"><i class="fas fa-heart"></i> Like <?php echo(mt_rand(1,250));?></a>
                         </li> 
-                        <li><a href="#" class="com"><i class="fas fa-comment-alt"></i> Commentaires <?php echo(mt_rand(1,75));?></a></li>
+                        <li><a href="#comments" class="com"><i class="fas fa-comment-alt"></i> Commentaires <?php echo(mt_rand(1,75));?></a></li>
                     </ul>
                 </div>
             </div>
