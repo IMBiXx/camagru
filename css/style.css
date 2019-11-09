@@ -26,6 +26,15 @@ a:hover {
 .center {
     margin:auto;
 }
+section {
+    float: left;
+    width: 100%;
+    position: relative;
+}
+.row {
+    margin: 0;
+}
+
 /* global end */
 
 /* menu start */
@@ -607,3 +616,48 @@ textarea {
 }
 
 /* comment form end */
+
+/* profil start */
+
+.cover-sec img {
+    width: 100%!important;
+}
+.add-pic-box {
+    display: inline-block;
+    color: #4582EC;
+    font-size: 16px;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    font-weight: 600;
+    margin-right: 0;
+    width: 100%;
+}
+.add-pic-box [type="file"] {
+    height: 0;
+    overflow: hidden;
+    width: 0;
+    float: left;
+}
+.add-pic-box [type="file"] + label {
+    background: #fff;
+    border: 2px solid #4582EC;
+    border-radius: 3px;
+    color: #4582EC;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 600;
+    outline: none;
+    padding: 12px 20px;
+    position: relative;
+    transition: all 0.3s;
+    vertical-align: middle;
+    margin: 0;
+    float: right;
+    text-transform: uppercase;
+}
+.add-pic-box .container {
+    display:block;
+}
+/* profil end */
