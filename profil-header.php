@@ -5,7 +5,7 @@
             <div class="row no-gutters">
                 <div class="col-lg-12 col-sm-12">					
                     <input type="file" id="file">
-                    <label for="file">Change Image</label>				
+                    <label for="file">Modifier l'image</label>				
                 </div>
             </div>
         </div>

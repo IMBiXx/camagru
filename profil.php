@@ -10,9 +10,10 @@
     <?php
         include("profil-header.php");
     ?>
-<div class="main">
 <div class="container">
-</div>
+<?php
+  include("profil-user.php");
+?>
 </div>
 </body>
 </html>
