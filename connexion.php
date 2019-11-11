@@ -27,7 +27,7 @@ if(isset($_POST['formconnexion']))
       if($userexist != 0 )
       {
         $userinfo =$requser->fetch( ) ;
-        $_SESSION['id'] = $userinfo['user_id'];
+        $_SESSION['id'] = $userinfo['user_ID'];
         $_SESSION['pseudo'] = $userinfo['user_pseudo'];
         $_SESSION['mail'] = $userinfo['user_email'];
 		header("location: .".$_SESSION['user_id']);
