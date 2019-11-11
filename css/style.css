@@ -1,5 +1,7 @@
 /* global start */
-
+.btn {
+    border-radius: 3px!important;
+}
 .main {
     float: left;
     width: 100%;
@@ -58,6 +60,9 @@ section {
 }
 .relative {
     position:relative;
+}
+input {
+    outline: none;
 }
 /* global end */
 
@@ -800,7 +805,9 @@ textarea {
 /* profil menu end */
 
 /* profil settings start */
-
+.acc-setting .col-lg-3 {
+    padding-bottom:20px;
+}
 .acc-setting {
     float: left;
     width: 100%;
@@ -926,3 +933,27 @@ textarea {
     font-size: 16px;
 }
 /* profil settings end */
+
+/* stickers start */
+
+.stickers {
+    display: inline-flex;
+}
+
+/* stickers end */
+
+/* like start */
+
+.liked li a .fa-heart {
+    color:#e44b4b;
+}
+li a .fa-heart:hover {
+    color:#e44b4b;
+}
+/* a#like-text:hover ~ i#heart {
+    color: #e44b4b
+} */
+ .fa-comment-alt:hover {
+    color:#4582EC;
+}
+/* like end */

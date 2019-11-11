@@ -5,11 +5,15 @@
                 <div class="notbar">
                     <div class="row">
                     
-                        <?php $j = mt_rand(0, 20);
-                        for ($i = 0; $i < $j; $i++)
-                            echo('<div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                                <img src="https://picsum.photos/200" \>
-                            </div>');
+                        <?php
+                            if (isset($_GET['id']))
+                                $images = get_image_by_user_ID($_GET['id']);
+                            else
+                                $images = get_image_by_user_ID($_SESSION['id']);
+                            foreach ($images as $image)
+                                echo('<div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                                    <a href="./image.php?id=' . $image['img_ID'] .'"><img src="' . $image['img_path'] . '" \></a>
+                                </div>');
                         ?>
                     </div>
                 </div>

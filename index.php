@@ -6,6 +6,9 @@
 	<?php include('css-handler.php');?>
 </head>
 <body>
+<?php 
+include("get_image.php");
+?>
 <?php include("topmenu.php"); ?>
 <div class="main">
     <div class="container">

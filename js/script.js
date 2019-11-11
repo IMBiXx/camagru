@@ -28,4 +28,24 @@ function showOptions() {
     else
         elem.classList.remove("hidden");
     n++;
+
+function like(img) {
+    var elem = document.getElementById('like-com');
+    var likes = document.getElementById('likes');
+    if (!elem.classList.contains("liked")) {
+        elem.classList.add("liked");
+        likes.innerHTML++;
+    }
+    else {
+        elem.classList.remove("liked");
+        likes.innerHTML--;
+    }
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", 'like.php', true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+    xhr.send('image_ID='+img);
+}
+
+function chcl(color, id) {
+    document.getElementById(id).style.color = color;
 }

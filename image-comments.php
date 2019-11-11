@@ -5,7 +5,7 @@
 <h3>Poster un commentaire</h3>
 <div class="user-poster">
     <div class="usr-post-img">
-        <img src="images/resources/bg-img2.png" alt="">
+        <img src="images/user/warharra.jpg" alt="">
     </div>
     <div class="post_comment_sec">
         <form action="post-comment.php" method="post">
