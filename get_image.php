@@ -20,10 +20,10 @@ function get_image_by_ID($img_ID) {
     $req->execute(array($img_ID));
     
     while ($donnees = $req->fetch()){
-        $rep[] = $donnees;
+        $rep = $donnees;
     }
     $req->closeCursor();
-    return array_reverse($rep);
+    return ($rep);
 }
 function get_image_by_user_ID($user_ID) {
     $bdd = db_connect();
@@ -31,10 +31,10 @@ function get_image_by_user_ID($user_ID) {
     $req->execute(array($user_ID));
     
     while ($donnees = $req->fetch()){
-        $rep[] = $donnees;
+        $rep = $donnees;
     }
     $req->closeCursor();
-    return array_reverse($rep);
+    return ($rep);
 }
 function get_images() {
     $bdd = db_connect();
