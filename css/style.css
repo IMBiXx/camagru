@@ -1,5 +1,7 @@
 /* global start */
-
+.btn {
+    border-radius: 3px!important;
+}
 .main {
     float: left;
     width: 100%;
@@ -941,3 +943,19 @@ textarea {
 }
 
 /* stickers end */
+
+/* like start */
+
+.liked li a .fa-heart {
+    color:#e44b4b;
+}
+li a .fa-heart:hover {
+    color:#e44b4b;
+}
+/* a#like-text:hover ~ i#heart {
+    color: #e44b4b
+} */
+ .fa-comment-alt:hover {
+    color:#4582EC;
+}
+/* like end */

@@ -1,3 +1,6 @@
+<?php
+$image = get_image_by_ID($_GET['id']);
+?>
 <div class="col-lg-9 col-md-8">
     <div class="main-ws-sec">
         <div class="posts-section">
@@ -18,15 +21,15 @@
                     </div>
                 </div>
                 
-                <div class="post_content">                    
-                    <img class="post_img" src="https://picsum.photos/600" alt="sample image" \>
+                <div class="post_content">
+                    <img class="post_img" src="<?php echo($image['img_path']); ?>" alt="sample image" \>
                 </div>
                 <div class="post-status-bar">
-                    <ul class="like-com">
+                    <ul id="like-com" class="like-com">
                         <li>
-                            <a href="#"><i class="fas fa-heart"></i> Like <?php echo(mt_rand(1,250));?></a>
+                            <a href="#" onclick="like(1)" onmouseover="chcl('#e44b4b', 'heart')" onmouseout="chcl('#b2b2b2', 'heart')"><i id="heart" class="fas fa-heart"></i> Like <span id="likes"><?php echo(mt_rand(1,250));?></span></a>
                         </li> 
-                        <li><a href="#comments" class="com"><i class="fas fa-comment-alt"></i> Commentaires <?php echo(mt_rand(1,75));?></a></li>
+                        <li><a href="#comments" class="com" onmouseover="chcl('#4582EC', 'com')" onmouseout="chcl('#b2b2b2', 'com')"><i id="com" class="fas fa-comment"></i> Commentaires <?php echo(mt_rand(1,75));?></a></li>
                     </ul>
                 </div>
             </div>
