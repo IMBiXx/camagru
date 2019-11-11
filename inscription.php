@@ -1,14 +1,18 @@
 <?php
-   include("db_manager.php");
-   $bdd = new PDO($servername.";dbname=".$dbname, $username, $password);
+   try{
+    $bdd = new PDO('mysql:host=localhost; dbname=camagru', 'wafa', 'root');
+} catch(PDOException $e){
+ die('Erreur:'.$e->getMessage());
+}  
+   
 if(isset($_POST['inscrip']))
 {
   $mdp = ($_POST['mdp']);
   $len_mdp = strlen($mdp);
     if($len_mdp > 9)
     {
-      if (preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W)#', $mdp))
-      {
+        if(!ctype_alnum($mdp) || !ctype_lower($mdp) || !type_punct($mdp) || !ctype_upper($mdp))
+        {
               $pseudo = htmlspecialchars($_POST['pseudo']);
               $mail = htmlspecialchars($_POST['mail']);
               $mail2 = htmlspecialchars($_POST['mail2']);
@@ -31,8 +35,56 @@ if(isset($_POST['inscrip']))
                             if($mdp == $mdp2)
                             {
                               $insertmbr = $bdd->prepare("INSERT INTO user(user_pseudo, user_email, user_password, user_preferences) VALUES(?,?,?,?)");
-                              $insertmbr->execute(array($pseudo, $mail, $mdp,0));           
-                              $erreur = "Votre compte a bien été créé!";
+                              $insertmbr->execute(array($pseudo, $mail, $mdp, 0));           
+                               
+                              $reqid = $bdd->prepare('SELECT id FROM user WHERE user_pseudo = ? and user_email = ?');
+                               $reqid->execute(array($pseudo , $mail)) && $row = $reqid->fetch();
+                               $cle = $row['id'];
+                              $destinataire = $mail;
+                              $sujet = "Activer votre compte" ;
+                              $headers .= 'MIME-Version: 1.0'."\r\n";
+                              $headers .= 'Content-type: text/html; charset=iso-8859-1'."\r\n";
+                              $headers .= 'From: "Camagru"<warharra@student.42.fr>'."\n";
+                              $message = 
+
+
+
+                                      '<html>
+                                      <head>
+                                        <title>Bienvenue sur VotreSite,</title>
+                                        <meta charset="utf-8" />
+                                      </head>
+                                      <body>
+                                        <font color="#303030";>
+                                          <div align="center">
+                                            <table width="600px">
+                                              <tr>
+                                                <td>
+                                                  
+                                                  <div align="center">Bonjour <b>'.$pseudo.'</b>,</div>
+                                                  Pour activer votre compte, veuillez cliquer sur le lien ci dessous
+                                                  ou copier/coller dans votre navigateur internet.
+                                                  A bientôt sur <a href=" http://localhost:8080/camagru/activation.php?log='.urlencode($pseudo).'&cle='.urlencode($cle).'">camagru.com.</a> ! 
+                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td align="center">
+                                                  <font size="2">
+                                                    Ceci est un email automatique, merci de ne pas y répondre
+                                                  </font>
+                                                </td>
+                                              </tr>
+                                            </table>
+                                          </div>
+                                        </font>
+                                      </body>
+                                      </html>
+         ';
+                                    
+                                    
+                              mail($destinataire, $sujet, $message, $headers) ; 
+                              $erreur = "Votre compte a bien été créé!"; 
+
                             }
                             else
                             {
@@ -72,7 +124,6 @@ if(isset($_POST['inscrip']))
   {
     $erreur = "Votre mot de passe doit comporter un minimum de 8 caractères";
   }
-  header("location: .".$_SESSION['user_id']);
 }
 ?>
 <html>
@@ -115,4 +166,3 @@ if(isset($_POST['inscrip']))
     </div>
 </body>
 </html>
-
