@@ -18,13 +18,13 @@
                     </div>
                 </div>
                 
-                <div class="post_content">                    
-                    <img class="post_img" src="https://picsum.photos/600" alt="sample image" \>
+                <div class="post_content">
+                    <img class="post_img" src="images/user_images/post_large.jpg" alt="sample image" \>
                 </div>
                 <div class="post-status-bar">
-                    <ul class="like-com">
+                    <ul id="like-com" class="like-com">
                         <li>
-                            <a href="#"><i class="fas fa-heart"></i> Like <?php echo(mt_rand(1,250));?></a>
+                            <a href="#" onclick="like(1)"><i class="fas fa-heart"></i> Like <span id="likes"><?php echo(mt_rand(1,250));?></span></a>
                         </li> 
                         <li><a href="#comments" class="com"><i class="fas fa-comment-alt"></i> Commentaires <?php echo(mt_rand(1,75));?></a></li>
                     </ul>
