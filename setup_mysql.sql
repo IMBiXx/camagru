@@ -53,6 +53,8 @@ CREATE TABLE `camagru`.`user` (
   `user_email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_pseudo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_password` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_photo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'images/user/default_image.jpg',
+  `user_cover` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'images/user_cover/default_cover.jpg',
   `user_description` varchar(1000) DEFAULT 'je suis super cool',
   `user_validated` tinyint(1) DEFAULT '0',
   `user_registered` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
