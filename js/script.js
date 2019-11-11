@@ -37,3 +37,7 @@ function like(img) {
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
     xhr.send('image_ID='+img);
 }
+
+function chcl(color, id) {
+    document.getElementById(id).style.color = color;
+}
