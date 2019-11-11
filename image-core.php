@@ -1,3 +1,6 @@
+<?php
+$image = get_image_by_ID($_GET['id']);
+?>
 <div class="col-lg-9 col-md-8">
     <div class="main-ws-sec">
         <div class="posts-section">
@@ -19,7 +22,7 @@
                 </div>
                 
                 <div class="post_content">
-                    <img class="post_img" src="images/user_images/post_large.jpg" alt="sample image" \>
+                    <img class="post_img" src="<?php echo($image['img_path']); ?>" alt="sample image" \>
                 </div>
                 <div class="post-status-bar">
                     <ul id="like-com" class="like-com">
