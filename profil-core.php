@@ -5,10 +5,10 @@
                 <div class="notbar">
                     <div class="row">
                     
-                        <?php $j = mt_rand(0, 20);
+                        <?php $j = mt_rand(7, 20);
                         for ($i = 0; $i < $j; $i++)
                             echo('<div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                                <img src="https://picsum.photos/200" \>
+                                <img src="images/user_images/post.jpg" \>
                             </div>');
                         ?>
                     </div>

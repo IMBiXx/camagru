@@ -59,6 +59,9 @@ section {
 .relative {
     position:relative;
 }
+input {
+    outline: none;
+}
 /* global end */
 
 /* menu start */
@@ -802,7 +805,9 @@ textarea {
 /* profil menu end */
 
 /* profil settings start */
-
+.acc-setting .col-lg-3 {
+    padding-bottom:20px;
+}
 .acc-setting {
     float: left;
     width: 100%;
@@ -928,3 +933,11 @@ textarea {
     font-size: 16px;
 }
 /* profil settings end */
+
+/* stickers start */
+
+.stickers {
+    display: inline-flex;
+}
+
+/* stickers end */

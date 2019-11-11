@@ -1,7 +1,7 @@
 <?php session_start();?>
 <nav class="site-header sticky-top py-1">
   <div class="container d-flex flex-column flex-md-row justify-content-between">
-    <a class="py-2" href="#">
+    <a class="py-2" href=".">
     <i class="fab fa-instagram" style="font-size:30px;"></i>
         </a>
         <span></span>

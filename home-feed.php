@@ -6,7 +6,7 @@
             </div>
             <div class="post-st">
                 <ul>
-                    <li><a class="post-jb active" href="#" title="">Poster une photo</a></li>
+                    <li><a class="post-jb active" href="post.php" title="Poster une photo">Poster une photo</a></li>
                 </ul>
             </div><!--post-st end-->
         </div><!--post-topbar end-->

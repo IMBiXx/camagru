@@ -1,5 +1,5 @@
 <section class="cover-sec">
-    <img src="https://picsum.photos/1920/400" alt="">
+    <img src="images/user_cover/banner.jpg" alt="">
     <div class="add-pic-box">
         <div class="container">
             <div class="row no-gutters">
