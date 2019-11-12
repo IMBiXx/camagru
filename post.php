@@ -6,7 +6,10 @@
 	<?php include('css-handler.php');?>
 </head>
 <body>
-    <?php include("topmenu.php"); ?>
+<?php
+    include("topmenu.php");
+    redirectTo($loginpage);
+?>
     <div class="main">
         <div class="container">
         <?php

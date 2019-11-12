@@ -8,12 +8,17 @@
 <body>
 <?php 
 include("get_image.php");
+$images = get_images();
+$imguserpp = './images/user/';
+$imgusercover = './image/user_cover/';
+$imguserimg = './images/user_images/';
 ?>
 <?php include("topmenu.php"); ?>
 <div class="main">
     <div class="container">
 <?php
-    include("home-user-profil.php");
+    if (isset($_SESSION['id']))
+      include("home-user-profil.php");
     include("home-feed.php");
 ?>
 </div>

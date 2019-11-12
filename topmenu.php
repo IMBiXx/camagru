@@ -1,4 +1,12 @@
 <?php session_start();?>
+<?php
+$loginpage = 'login.php';
+$registerpage = 'register.php';
+function redirectTo( $url ) {
+    if (!isset($_SESSION['id']))
+        header('Location: '.$url);
+}
+?>
 <nav class="site-header sticky-top py-1">
   <div class="container d-flex flex-column flex-md-row justify-content-between">
     <a class="py-2" href=".">
