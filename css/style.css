@@ -957,3 +957,19 @@ li a .fa-heart:hover {
     color:#4582EC;
 }
 /* like end */
+
+/* post image start */
+
+.custom-file-input.post_image {
+    display:none;
+}
+
+.custom-file li {
+    padding-right:15px;
+    height:100%;
+}
+.custom-file a:hover {
+    cursor: pointer;
+}
+
+/* post image end */
