@@ -1,7 +1,8 @@
 <?php
 session_start();
+include("db_manager.php");
 try{
-    $bdd = new PDO('mysql:host=localhost; dbname=camagru', 'wafa', 'root');
+  $bdd = new PDO($servername.";dbname=".$dbname, $username, $password);
 } catch(PDOException $e){
  die('Erreur:'.$e->getMessage());
 }  

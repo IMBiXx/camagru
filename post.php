@@ -6,12 +6,17 @@
 	<?php include('css-handler.php');?>
 </head>
 <body>
-    <?php include("topmenu.php"); ?>
+<?php
+    include("topmenu.php");
+    redirectTo($loginpage);
+?>
     <div class="main">
         <div class="container">
         <?php
+            include("get_image.php");
+            $images = get_images();
             include("post-image.php");
-            include("post-stickers.php");
+            include("home-user-profil.php");
         ?>
         </div>
     </div>

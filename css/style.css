@@ -339,8 +339,6 @@ ol, ul {
 	-o-box-shadow: 0 0 10px rgba(0,0,0,0.28);
 	box-shadow: 0 0 10px rgba(0,0,0,0.28);
 	padding: 20px;
-	opacity: 0;
-	visibility: hidden;
 	z-index: 0;
 }
 .ed-options.active {
@@ -959,3 +957,19 @@ li a .fa-heart:hover {
     color:#4582EC;
 }
 /* like end */
+
+/* post image start */
+
+.custom-file-input.post_image {
+    display:none;
+}
+
+.custom-file li {
+    padding-right:15px;
+    height:100%;
+}
+.custom-file a:hover {
+    cursor: pointer;
+}
+
+/* post image end */

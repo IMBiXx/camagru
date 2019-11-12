@@ -20,7 +20,15 @@ function showMenu(id){
     addClass(elem);
     menu.classList.add("hidden");
 }
-
+var n = 0;
+function showOptions() {
+    var elem = document.getElementById('delete');
+    if (n % 2)
+        elem.classList.add("hidden");
+    else
+        elem.classList.remove("hidden");
+    n++;
+}
 function like(img) {
     var elem = document.getElementById('like-com');
     var likes = document.getElementById('likes');

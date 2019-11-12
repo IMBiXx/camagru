@@ -1,16 +1,9 @@
 <?php
-include("db_manager.php");
-try{
-    $bdd = new PDO($servername.";dbname=".$dbname, $username, $password);
-}
-catch(Exception $e){
-	die('Erreur : '.$e->getMessage());
-}
-$img_ID = $_POST['img_ID'];
-$user_ID = $_POST['user_ID'];
+include ("db_connect.php");
 
 
-if (isset($img_ID)){
+function get_content_by_ID($img_ID) {
+    $bdd = db_connect();
     $req = $bdd->prepare('SELECT * FROM `comment`WHERE `img_ID`= ?');
     $req->execute(array($img_ID));
     $rep= array();
@@ -18,14 +11,16 @@ if (isset($img_ID)){
         $rep[]=$donnees;
     }
     $req->closeCursor();
+    return ($rep);
 }
-else if (isset($user_ID)){
+function get_content_by_user_ID($user_ID) {
+    $bdd = db_connect();
     $req = $bdd->prepare('SELECT * FROM `comment`WHERE `user_ID`= ?');
     $req->execute(array($user_ID));
-    
+    $rep= array();
     while ($donnees = $req->fetch()){
-        echo $donnees['comment_comment']."\n";
+        $rep[]=$donnees;
     }
     $req->closeCursor();
-   
+    return ($rep);
 }

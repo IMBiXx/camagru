@@ -1,3 +1,6 @@
+<?php
+$user_images = get_image_by_user_ID($_SESSION['id']);
+?>
 <div class="col-lg-3 col-md-4 wav-left-none">
     <div class="main-left-sidebar no-margin">
         <div class="user-data full-width">
@@ -15,7 +18,7 @@
             <ul class="user-fw-status">
                 <li>
                     <h4>Images</h4>
-                    <span>34</span>
+                    <span><?php echo (count($user_images));?></span>
                 </li>
                 <li>
                     <h4>Commentaires</h4>

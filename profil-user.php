@@ -1,6 +1,8 @@
 <div class="row">
     <div class="col-lg-3">
-        <div class="user-data full-width">
+    <?php
+        if (!isset($_GET['id']) || $_GET['id'] == $_SESSION['id']) {
+            echo '<div class="user-data full-width">
             <div class="acc-leftbar">
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <div class="user-profile">
@@ -13,9 +15,11 @@
                         </div>
                     </div>
                 </div>
-                <a class="nav-item nav-link active" id="images-tab" data-toggle="tab" href="#" role="tab" aria-controls="images" aria-selected="true" onclick="showMenu('images')">Mes images</a>
-                <a class="nav-item nav-link" id="nav-status-tab" data-toggle="tab" href="#" role="tab" aria-controls="parametres" aria-selected="false" onclick="showMenu('parametres')"></i>Parametres</a>
+                <a class="nav-item nav-link active" id="images-tab" data-toggle="tab" href="#" role="tab" aria-controls="images" aria-selected="true" onclick="showMenu(\'images\')">Mes images</a>
+                <a class="nav-item nav-link" id="nav-status-tab" data-toggle="tab" href="#" role="tab" aria-controls="parametres" aria-selected="false" onclick="showMenu(\'parametres\')"></i>Parametres</a>
             </div>
-        </div>
+        </div>';
+        }
+        ?>
     </div>
 <?php include("profil-core.php"); ?>
