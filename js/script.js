@@ -28,7 +28,7 @@ function showOptions() {
     else
         elem.classList.remove("hidden");
     n++;
-
+}
 function like(img) {
     var elem = document.getElementById('like-com');
     var likes = document.getElementById('likes');
