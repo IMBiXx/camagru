@@ -18,21 +18,21 @@ if (isset($_POST['register'])) {
     $reqmail->execute(array($mail));
     $mailexist = $reqmail->rowCount();
     if (strlen($mdp) < 8)
-        $error = "votre mot de passe doit comporter un minimum de 8 caractères.";
+        $error = "votre mot de passe doit comporter au minimum 8 caractères.";
     else if(!$isvalid)
-        $error ="votre mot de passe doit se composer de chiffres et de lettres et comprendre des majuscules/minuscules ou des caractères spéciaux.";
+        $error ="votre mot de passe doit comporter au moins un chiffre, une majuscule et un caractère spécial.";
     else if(empty($_POST['pseudo']) || empty($_POST['mail'] ) || empty($_POST['mail2']) || empty($_POST['mdp']) || empty($_POST['mdp2']))
-        $error = "tous les champ doivent etre complétés.";
+        $error = "tous les champs doivent être remplis.";
     else if (strlen($pseudo) > 255)
-        $error = "votre pseudo ne doit pas depasse 255 caracteres.";
+        $error = "votre pseudo est trop long.";
     else if($mail != $mail2)
-        $error = "vos adresse mail ne correspondent pas.";
+        $error = "les adresses email ne correspondent pas.";
     else if(!filter_var($mail, FILTER_VALIDATE_EMAIL))
-        $error = "votre adresse mail n est pas valide.";
+        $error = "votre adresse email n'est pas valide.";
     else if($mailexist != 0)
-        $error = "adresse mail déja utilisée.";
+        $error = "l'adresse email existe déjà.";
     else if($mdp != $mdp2)
-        $error = "vos mot de passe ne correspondent pas.";
+        $error = "les mots de passe ne correspondent pas.";
     else {
         $insertmbr = $bdd->prepare("INSERT INTO user(user_pseudo, user_email, user_password, user_preferences) VALUES(?,?,?,?)");
         $insertmbr->execute(array($pseudo, $mail, $mdp, 0));           
