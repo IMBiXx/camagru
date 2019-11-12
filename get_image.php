@@ -1,14 +1,5 @@
 <?php
-function db_connect(){
-    include("db_manager.php");
-    try {
-        $bdd = new PDO($servername.";dbname=".$dbname, $username, $password);
-    }
-    catch(Exception $e){
-        die('Erreur : '.$e->getMessage());
-    }
-    return $bdd;
-}
+include ("db_connect.php");
 // $img_ID = $_POST['img_ID'];
 // $user_ID = $_POST['user_ID'];
 //   $user_ID = 1;

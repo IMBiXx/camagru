@@ -1,14 +1,6 @@
 <?php
-function db_connect(){
-    include("db_manager.php");
-    try {
-        $bdd = new PDO($servername.";dbname=".$dbname, $username, $password);
-    }
-    catch(Exception $e){
-        die('Erreur : '.$e->getMessage());
-    }
-    return $bdd;
-}
+include ("db_connect.php");
+
 
 function get_content_by_ID($img_ID) {
     $bdd = db_connect();
@@ -32,8 +24,3 @@ function get_content_by_user_ID($user_ID) {
     $req->closeCursor();
     return ($rep);
 }
-
-
-print_r(get_content_by_user_ID('1'));
-echo "ok";
-print_r(get_content_by_ID(1));

@@ -1,12 +1,5 @@
 <?php
-include("db_manager.php");
-session_start();
-try{
-    $bdd = new PDO($servername.";dbname=".$dbname, $username, $password);
-}
-catch(Exception $e){
-	die('Erreur : '.$e->getMessage());
-}
+include ("db_connect.php");
     if (!isset($_SESSION['id'])){
 	    header('Location: login.php');
 	    exit();
