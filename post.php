@@ -1,3 +1,16 @@
+<?php
+    if (!isset($_POST['image']))
+        $iurl = 'https://picsum.photos/id/171/600/600';
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $uploaddir = './images/user_images/';
+        $uploadfile = $uploaddir . basename($_FILES['image']['name']);
+        if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile)) {
+            $iurl = $uploadfile;
+        } else {
+            echo "Erreur lors de l'upload\n";
+        }
+}
+?>
 <!doctype html>
 <html lang="fr">
 <head>
@@ -16,15 +29,10 @@
             include("get_image.php");
             $images = get_images();
             include("post-image.php");
-            include("home-user-profil.php");
-        ?>
-        </div>
-    </div>
-    <div class="main">
-        <div class="container">
-        <?php
-            include("post-image2.php");
-            include("post-stickers2.php");
+            if (!$uploadfile)
+                include("home-user-profil.php");
+            else
+                include("post-stickers.php");
         ?>
         </div>
     </div>

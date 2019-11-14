@@ -1,22 +1,3 @@
-<?php
-    if (!isset($_POST['image']))
-        $iurl = 'https://picsum.photos/id/171/600/600';
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $uploaddir = './images/user_images/';
-        $uploadfile = $uploaddir . basename($_FILES['image']['name']);
-        if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile)) {
-            echo "Le fichier est valide, et a été téléchargé
-                    avec succès. Voici plus d'informations :\n";
-        } else {
-            echo "Attaque potentielle par téléchargement de fichiers.
-                    Voici plus d'informations :\n";
-        }
-        echo 'Voici quelques informations de débogage :';
-        print_r($_FILES);
-        print($uploadfile);
-        // upload fonctionne avec tout sauf une image...
-}
-?>
 
 <div class="col-lg-9 col-md-8 no-pd">
     <div class="main-ws-sec">
@@ -32,7 +13,7 @@
                 </div>
                 
                 <div class="post_content">                    
-                    <img class="post_img" src="<?php echo $iurl; ?>" alt="sample image" \>
+                    <img class="post_img" src="<?php echo $iurl; ?>" alt="<?php if ($uploadfile) echo $_FILES['image']['name']; else echo 'sample image'; ?>" \>
                 </div>
                 <div class="post-st">
                     <ul>
@@ -40,14 +21,22 @@
                             <div class="form-group">
                                 <div class="input-group mb-3">
                                     <div class="custom-file">
-                                        <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
-                                        <input type="file" class="custom-file-input post_image" id="select-img" name="image">
-                                        <li><a href="#"><label class="" for="select-img">Selectionner une image</label></a></li>
+                                        <ul>
+                                            <?php
+                                            if (!$uploadfile)
+                                                echo'<input type="file" class="custom-file-input post_image" id="select-img" name="image">
+                                                <li><a href="#"><label class="" for="select-img">Selectionner une image</label></a></li>
+                                        
+                                                <input type="file" class="custom-file-input post_image" id="open-webcam" name="webcam" accept="image/*" capture="camera" />
+                                                <li><a href="#" class="active"><label class="" for="open-webcam">Prendre une photo</label></a></li>
+                                                <input type="submit" class="btn btn-primary" name="Envoyer" value="Envoyer">';
+                                            else
+                                                echo '<li><a class="post_project" href="post.php" title="">Annuler</a></li>
+                                                <li><a class="post-jb active" href="#" title="">Poster l\'image</a></li>';
+                                            ?>
+                                        </ul>
                                     </div>
-                                        <input type="file" class="custom-file-input post_image" id="open-webcam" name="webcam" accept="image/*" capture="camera" />
-                                        <li><a href="#" class="active"><label class="" for="open-webcam">Prendre une photo</label></a></li>
                                 </div>
-                                <input type="submit" class="btn btn-primary">
                             </div>
                         </form>
                     </ul>

@@ -12,15 +12,15 @@
                     <span>Ma description</span>
                 </div>
             </div><!--user-profile end-->
-            <ul class="user-fw-status">
-                <li>
-                    <h4>Images</h4>
-                    <span>34</span>
-                </li>
-                <li>
-                    <h4>Commentaires</h4>
-                    <span>155</span>
-                </li>
+            <ul class="user-fw-status"><h4>Stickers</h4>
+                    <li>
+                        <?php
+                        $j = mt_rand(5, 8);
+                        for ($i = 0; $i < $j; $i++)
+                            echo '<div class="col-lg-5 col-md-5 col-sm-6 col-6 stickers">
+                                <img src="images/stickers/sticker1.png" \>
+                            </div>';
+                        ?>
                 <li>
                     <a href="profil.php" title="">Mon profil</a>
                 </li>
