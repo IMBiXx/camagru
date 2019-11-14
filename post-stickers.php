@@ -4,12 +4,12 @@
             <div class="user-profile">
                 <div class="username-dt">
                     <div class="usr-pic">
-                        <img src="images/user/warharra.jpg" alt="">
+                        <img src="<?php echo $me['user_photo'];?>" alt="<?php echo $me['user_pseudo'];?>">
                     </div>
                 </div><!--username-dt end-->
                 <div class="user-specs">
-                    <h3>Wafae</h3>
-                    <span>Ma description</span>
+                    <h3><?php echo $me['user_pseudo'];?></h3>
+                    <span><?php echo $me['user_description'];?></span>
                 </div>
             </div><!--user-profile end-->
             <ul class="user-fw-status"><h4>Stickers</h4>

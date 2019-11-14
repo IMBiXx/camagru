@@ -1,5 +1,5 @@
 <?php
-include ("db_connect.php");
+
 // $img_ID = $_POST['img_ID'];
 // $user_ID = $_POST['user_ID'];
 //   $user_ID = 1;

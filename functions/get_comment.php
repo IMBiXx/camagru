@@ -1,5 +1,5 @@
 <?php
-include ("db_connect.php");
+
 
 
 function get_content_by_ID($img_ID) {

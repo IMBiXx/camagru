@@ -5,9 +5,9 @@
             <div class="post-bar">
                 <div class="post_topbar">
                     <div class="usy-dt">
-                        <img src="images/user/ppichier.jpg" alt="">
+                        <img src="<?php echo $me['user_photo'];?>" alt="<?php echo $me['user_pseudo'];?>">
                         <div class="usy-name">
-                            <h3 style="text-transform:inherit;">Poster une nouvelle photo</h3>
+                            <h3>Poster une nouvelle photo</h3>
                         </div>
                     </div>
                 </div>

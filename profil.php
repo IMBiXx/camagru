@@ -11,7 +11,6 @@
 <?php
   if (!isset($_SESSION['id']) && !isset($_GET['id']))
     header("location: ./login.php");
-  include("functions/get_image.php");
   include("profil-header.php");
 ?>
 <div class="container">

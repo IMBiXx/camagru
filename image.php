@@ -8,14 +8,19 @@
 <body>
 <?php include("topmenu.php"); ?>
 <?php
-include("functions/get_image.php");
+$image = get_image_by_ID($_GET['id']);
+$author = get_user_by_ID($image['user_ID']);
+$postdate = new DateTime($image['img_upload_date']);
+$comments = get_content_by_user_ID($me['user_ID']);
+if (!$_GET['id'])
+  header("Location: post.php");
 ?>
 <div class="main">
     <div class="container">
-    <?php
-        include("home-user-profil.php");
-        include("image-core.php");
-    ?>
+      <?php
+      include("home-user-profil.php");
+      include("image-core.php");
+      ?>
     </div>
 </div>
 </body>

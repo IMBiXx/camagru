@@ -1,4 +1,5 @@
 <?php
+$comments = get_content_by_user_ID($_SESSION['id']);
 $user_images = get_image_by_user_ID($_SESSION['id']);
 ?>
 <div class="col-lg-3 col-md-4 wav-left-none">
@@ -7,12 +8,12 @@ $user_images = get_image_by_user_ID($_SESSION['id']);
             <div class="user-profile">
                 <div class="username-dt">
                     <div class="usr-pic">
-                        <img src="images/user/warharra.jpg" alt="">
+                        <img src="<?php echo $me['user_photo'];?>" alt="">
                     </div>
                 </div><!--username-dt end-->
                 <div class="user-specs">
-                    <h3>Wafae</h3>
-                    <span>Ma description</span>
+                    <h3><?php echo $me['user_pseudo'];?></h3>
+                    <span><?php echo $me['user_description'];?></span>
                 </div>
             </div><!--user-profile end-->
             <ul class="user-fw-status">
@@ -22,7 +23,7 @@ $user_images = get_image_by_user_ID($_SESSION['id']);
                 </li>
                 <li>
                     <h4>Commentaires</h4>
-                    <span>155</span>
+                    <span><?php echo (count($comments)); ?></span>
                 </li>
                 <li>
                     <a href="profil.php" title="">Mon profil</a>

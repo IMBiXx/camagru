@@ -7,7 +7,7 @@
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <div class="user-profile">
                         <div class="user-pro-img">
-                            <img src="images/user/warharra.jpg" alt="">
+                            <img src="' . $me['user_photo'] .'" alt="">
                             <div class="add-dp" id="OpenImgUpload">
                                 <input type="file" id="file">
                                 <label for="file"><i class="fas fa-camera"></i></label>												

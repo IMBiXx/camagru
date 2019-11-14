@@ -301,7 +301,6 @@ ol, ul {
 .usy-name h3 {
     color: #000000;
     font-size: 18px;
-    text-transform: capitalize;
     font-weight: 600;
     margin-bottom: 5px;
     margin-top: 2px;
@@ -827,7 +826,6 @@ textarea {
     color: #000000;
     font-weight: 600;
     font-size: 18px;
-    text-transform: capitalize;
     border-bottom: 1px solid #e5e5e5;
     padding: 17px 20px;
 }

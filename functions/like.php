@@ -1,5 +1,5 @@
 <?php
-include ("db_connect.php");
+
     if (!isset($_SESSION['id'])){
 	    header('Location: login.php');
 	    exit();

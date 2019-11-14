@@ -1,5 +1,5 @@
 <?php
-include ("db_connect.php");
+
 
 function get_user_by_ID($user_ID) {
     $bdd = db_connect();

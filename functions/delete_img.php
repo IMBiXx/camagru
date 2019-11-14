@@ -1,5 +1,5 @@
 <?php
-include ("db_connect.php");
+
 if ($_POST['submit'] && $_POST['submit'] == "OK")
 {
     if (!isset($_SESSION['id'])){
