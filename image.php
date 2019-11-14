@@ -8,7 +8,7 @@
 <body>
 <?php include("topmenu.php"); ?>
 <?php
-include("get_image.php");
+include("functions/get_image.php");
 ?>
 <div class="main">
     <div class="container">

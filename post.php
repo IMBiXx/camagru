@@ -26,7 +26,7 @@
     <div class="main">
         <div class="container">
         <?php
-            include("get_image.php");
+            include("functions/get_image.php");
             $images = get_images();
             include("post-image.php");
             if (!$uploadfile)

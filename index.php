@@ -7,7 +7,7 @@
 </head>
 <body>
 <?php 
-include("get_image.php");
+include("functions/get_image.php");
 $images = get_images();
 $imguserpp = './images/user/';
 $imgusercover = './image/user_cover/';

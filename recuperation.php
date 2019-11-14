@@ -27,7 +27,7 @@ if(isset($_POST['verif_submit'])) {
          $up_req = $bdd->prepare('UPDATE `recuperation` SET confirme = 1 WHERE user_email = ?');
          $up_req->bindParam(array($verif_email));
          $up_req->execute(array($verif_email));
-         header('Location:http://localhost:8080/camagru/recuperation.php?section=changemdp');
+         header('Location: ./recuperation.php?section=changemdp');
 
       } else {
          $erreur = "Code invalide";
