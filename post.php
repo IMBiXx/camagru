@@ -1,6 +1,6 @@
 <?php
     if (!isset($_POST['image']))
-        $iurl = 'https://picsum.photos/id/171/600/600';
+        $iurl = 'images/user_images/default_image.png';
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $uploaddir = './images/user_images/';
         $uploadfile = $uploaddir . basename($_FILES['image']['name']);

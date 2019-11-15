@@ -432,6 +432,7 @@ ol, ul {
 }
 .post_img {
     margin:auto;
+    width:80%;
 }
 .post-status-bar {
     border-top: 1px solid #e5e5e5;
