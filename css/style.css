@@ -649,6 +649,7 @@ textarea {
 
 .cover-sec img {
     width: 100%!important;
+    max-height:320px;
 }
 .add-pic-box {
     display: inline-block;
