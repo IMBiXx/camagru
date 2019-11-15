@@ -35,6 +35,7 @@ section {
 }
 .row {
     margin: 0;
+    width:100%;
 }
 .paddingtop {
     padding: 70px 0;

@@ -10,7 +10,7 @@
     else
         $title = 'Images de '.$user['user_pseudo'];
 ?>
-    <div class="col-lg-9 paddingtop">
+    <div class="col-lg-9 paddingtop center">
         <div class="fade active show" id="images" aria-labelledby="images-tab">
             <div class="acc-setting">
                 <h3><?php echo $title;?></h3>
@@ -18,10 +18,13 @@
                     <div class="row">
                     
                         <?php
-                            foreach ($images as $image)
-                                echo('<div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                                    <a href="./image.php?id=' . $image['img_ID'] .'"><img src="' . $image['img_path'] . '" \></a>
-                                </div>');
+                            if ( !$images )
+                                echo '<div class="center">'.$user['user_pseudo'].' n\'a pas encore posté d\'images :(</div>';
+                            else
+                                foreach ($images as $image)
+                                    echo('<div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                                        <a href="./image.php?id=' . $image['img_ID'] .'"><img src="' . $image['img_path'] . '" \></a>
+                                    </div>');
                         ?>
                     </div>
                 </div>
@@ -33,7 +36,7 @@
                 <form>
                     <div class="notbar">
                         <h4>Notifications par email</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pretium nulla quis erat dapibus, varius hendrerit neque suscipit. Integer in ex euismod, posuere lectus id</p>
+                        <p>Activer les notifications par email lorsque quelqu'un commente une de vos images.</p>
                         <div class="toggle-btn">
                             <div class="custom-control custom-switch">
                                 <input type="checkbox" class="custom-control-input" id="customSwitch1" checked="">
