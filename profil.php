@@ -5,7 +5,7 @@
   <title>Instapouet - Connexion</title>
 	<?php include('css-handler.php');?>
 </head>
-<body>
+<body onload="uploadProfilImage()">
 <?php
   include("topmenu.php"); ?>
   <?php
@@ -18,14 +18,13 @@
     if (isset($_POST['chcover'])) {
       $uploaddir = './images/user_cover/';
       $type = '_cover.';
-      
     }
     else if (isset($_POST['chpp'])) {
       $uploaddir = './images/user/';
       $type = '.';
     }
     else
-      return ;
+      header("Location: post.php");
     // $ext = pathinfo($_FILES['image']['name']);
     $uploadfile = $uploaddir . $user['user_pseudo'] . $type . 'jpg';
     changePhoto( $uploadfile, $_FILES );

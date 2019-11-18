@@ -18,7 +18,7 @@
   <title>Instapouet - Poster une photo</title>
 	<?php include('css-handler.php');?>
 </head>
-<body>
+<body onload="uploadImage()">
 <?php
     include("topmenu.php");
     redirectTo($loginpage);

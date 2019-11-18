@@ -49,3 +49,41 @@ function like(img) {
 function chcl(color, id) {
     document.getElementById(id).style.color = color;
 }
+
+function uploadImage() {
+    var form = document.getElementById('upload');
+    var input = document.getElementById('select-img');
+    var change_running = false;
+    if (input) {
+        input.addEventListener('change', function() {
+            if(!change_running){
+                setTimeout(function(){
+                    change_running = true;
+                    form.submit();
+                    change_running = false;     
+                }, 300);
+            }
+        });
+    }
+}
+
+function uploadProfilImage() {
+    // var formCover = document.getElementById('cover');
+    // var formPp = document.getElementById('add_pp');
+    // if (formCover)
+    //     var inputCover = document.getElementById('file');
+    // if (formPp)
+    //     var inputPp = document.getElementById('pp');
+    // var change_running = false;
+    // if (formPp) {
+    //     inputPp.addEventListener('change', function() {
+    //         if(!change_running){
+    //             setTimeout(function(){
+    //                 change_running = true;
+    //                 formPp.submit();
+    //                 change_running = false;     
+    //             }, 300);
+    //         }
+    //     });
+    // }
+}

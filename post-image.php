@@ -17,7 +17,7 @@
                 </div>
                 <div class="post-st">
                     <ul>
-                        <form enctype="multipart/form-data" action="post.php" method="post">
+                        <form enctype="multipart/form-data" id="upload" action="post.php" method="post">
                             <div class="form-group">
                                 <div class="input-group mb-3">
                                     <div class="custom-file">
@@ -28,8 +28,7 @@
                                                 <li><a href="#"><label class="" for="select-img">Selectionner une image</label></a></li>
                                         
                                                 <input type="file" class="custom-file-input post_image" id="open-webcam" name="webcam" accept="image/*" capture="camera" />
-                                                <li><a href="#" class="active"><label class="" for="open-webcam">Prendre une photo</label></a></li>
-                                                <input type="submit" class="btn btn-primary" name="Envoyer" value="Envoyer">';
+                                                <li><a href="#" class="active"><label class="" for="open-webcam">Prendre une photo</label></a></li>';
                                             else
                                                 echo '<li><a class="post_project" href="post.php" title="">Annuler</a></li>
                                                 <li><a class="post-jb active" href="#" title="">Poster l\'image</a></li>';

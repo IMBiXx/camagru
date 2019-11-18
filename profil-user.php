@@ -8,7 +8,7 @@
                                 <img src="<?php echo $user['user_photo']; ?>" alt="">
                                 <?php
                                 if (itsMe($user['user_ID']))
-                                    echo '<form enctype="multipart/form-data" action="profil.php" method="post">
+                                    echo '<form id="add_pp" enctype="multipart/form-data" action="profil.php" method="post">
                                     <div class="add-dp" id="OpenImgUpload">
                                         <input type="file" id="pp" name="image">
                                         <label for="pp"><i class="fas fa-camera"></i></label>
