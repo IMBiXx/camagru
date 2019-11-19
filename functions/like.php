@@ -1,7 +1,11 @@
 <?php
-
+    header('Access-Control-Allow-Origin: http://localhost:8080/');
+    header('Access-Control-Allow-Credentials: true');
+    session_start();
+    // print_r($_SESSION);
+    // print_r($_GET);
     if (!isset($_SESSION['id'])){
-	    header('Location: login.php');
+	    header('Location: ../login.php');
 	    exit();
     }
     $user_ID = $_SESSION['id'];

@@ -945,11 +945,8 @@ textarea {
 
 /* like start */
 
-.liked li a .fa-heart {
-    color:#e44b4b;
-}
-li a .fa-heart:hover {
-    color:#e44b4b;
+li a .fa-heart:hover, .liked {
+    color:#e44b4b!important;
 }
 /* a#like-text:hover ~ i#heart {
     color: #e44b4b

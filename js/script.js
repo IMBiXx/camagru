@@ -30,7 +30,7 @@ function showOptions() {
     n++;
 }
 function like(img) {
-    var elem = document.getElementById('like-com');
+    var elem = document.getElementById('heart');
     var likes = document.getElementById('likes');
     if (!elem.classList.contains("liked")) {
         elem.classList.add("liked");
@@ -41,8 +41,9 @@ function like(img) {
         likes.innerHTML--;
     }
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", 'like.php', true);
+    xhr.open("POST", 'functions/like.php', true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+    xhr.withCredentials = true;
     xhr.send('image_ID='+img);
 }
 

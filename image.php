@@ -14,6 +14,7 @@ $postdate = new DateTime($image['img_upload_date']);
 $comments = get_content_by_user_ID($me['user_ID']);
 if (!$_GET['id'])
   header("Location: post.php");
+include("functions/add_comment.php");
 ?>
 <div class="main">
     <div class="container">

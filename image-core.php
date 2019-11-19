@@ -39,7 +39,7 @@
                 <div class="post-status-bar">
                     <ul id="like-com" class="like-com">
                         <li>
-                            <a href="#" onclick="like(1)" onmouseover="chcl('#e44b4b', 'heart')" onmouseout="chcl('#b2b2b2', 'heart')"><i id="heart" class="fas fa-heart"></i> Like <span id="likes"><?php echo(mt_rand(1,250));?></span></a>
+                            <a href="#" onclick="like(<?php echo $_GET['id'];?>)" onmouseover="chcl('#e44b4b', 'heart')" onmouseout="chcl('#b2b2b2', 'heart')"><i id="heart" class="fas fa-heart"></i> Like <span id="likes"><?php echo(mt_rand(1,250));?></span></a>
                         </li> 
                         <li><a href="#comments" class="com" onmouseover="chcl('#4582EC', 'com')" onmouseout="chcl('#b2b2b2', 'com')"><i id="com" class="fas fa-comment"></i> Commentaire<?php echo plural($nbComments).' '.count($comments);?></a></li>
                     </ul>
