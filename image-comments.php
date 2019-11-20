@@ -14,7 +14,7 @@
 </div><!--user-poster end-->
 </div>
 <div class="comment-section">
-    <h3><?php echo($nbComments); ?> Commentaire<?php if ($nbComments > 1) echo('s') ?></h3>
+    <h3><?php echo(count($imgComments)); ?> Commentaire<?php if (count($imgComments) > 1) echo('s') ?></h3>
     <div class="comment-sec">
         <ul>
             <?php
