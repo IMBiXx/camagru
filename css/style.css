@@ -363,7 +363,7 @@ ol, ul {
 	color: #4582EC;
 }
 
-.ask-question, nav, .notification-box.active, nav ul li a, .user-account-settingss.active, .user-info a, .suggestion-usd > span i, .view-more > a, .tags-sec ul li a, .post-st ul li a, .ed-opts > a, .bk-links li a, .like-com li a, .user-profy > a, .slick-previous:before, .slick-nexti:before, .comment > a, .sign_link > a, .post-popup, .post-project > a, .post-project-fields form ul li button, .post-project-fields form ul li a, .sign-control li a, .cover-sec > a, .star-descp > a, .message-btn a, .pf-gallery ul li, .gallery_pt:before, .gallery_pt > a, .overview-box, .skl-name, .conv-list, .save-stngs ul li button, .forum-links.active, .react-links li a, .next-prev > a, nav ul li:hover > ul, .user-pro-img > a i {
+.ask-question, nav, .notification-box.active, nav ul li a, .user-account-settingss.active, .user-info a, .suggestion-usd > span i, .view-more > a, .tags-sec ul li a, .post-st ul li a, .ed-opts > a, .bk-links li a, .like-com li span, .user-profy > a, .slick-previous:before, .slick-nexti:before, .comment > a, .sign_link > a, .post-popup, .post-project > a, .post-project-fields form ul li button, .post-project-fields form ul li a, .sign-control li a, .cover-sec > a, .star-descp > a, .message-btn a, .pf-gallery ul li, .gallery_pt:before, .gallery_pt > a, .overview-box, .skl-name, .conv-list, .save-stngs ul li button, .forum-links.active, .react-links li a, .next-prev > a, nav ul li:hover > ul, .user-pro-img > a i {
     -webkit-transition: all 0.4s ease-in;
     -moz-transition: all 0.4s ease-in;
     -ms-transition: all 0.4s ease-in;
@@ -449,15 +449,15 @@ ol, ul {
     display: inline-block;
     margin-right: 15px;
 }
-.like-com li a {
+.like-com li span, .like-com li a {
     color: #b2b2b2;
     font-size: 14px;
     font-weight: 500;
-    float: left;
     margin-top: 6px;
     margin-right: 5px;
+    cursor: pointer;
 }
-.like-com li a i {
+.like-com li span i, .like-com li a i {
     margin-right: 2px;
     font-size: 14px;
     position: relative;

@@ -19,7 +19,8 @@ include("functions/add_comment.php");
 <div class="main">
     <div class="container">
       <?php
-      include("home-user-profil.php");
+      if (isset($_SESSION['id']))
+        include("home-user-profil.php");
       include("image-core.php");
       ?>
     </div>

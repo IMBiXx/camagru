@@ -13,7 +13,7 @@
     include("functions/img_liked_by_user.php");
     include("functions/like.php");
 ?>
-<div class="col-lg-9 col-md-8">
+<div class="col-lg-9 col-md-8 center">
     <div class="main-ws-sec">
         <div class="posts-section">
             <div class="post-bar">
@@ -41,7 +41,7 @@
                 <div class="post-status-bar">
                     <ul id="like-com" class="like-com">
                         <li>
-                            <a href="#" onclick="like(<?php echo $_GET['id'];?>)" onmouseover="chcl('#e44b4b', 'heart')" onmouseout="chcl('#b2b2b2', 'heart')"><i id="heart" class="fas fa-heart <?php if (img_liked_by_user($me['user_ID'], $_GET['id']) == 1) { echo 'liked';}?>"></i> Like <span id="likes"><?php echo(get_nb_likes($_GET['id']));?></span></a>
+                            <span onclick="like(<?php echo $_GET['id'];?>)" onmouseover="chcl('#e44b4b', 'heart')" onmouseout="chcl('#b2b2b2', 'heart')"><i id="heart" class="fas fa-heart <?php if (img_liked_by_user($me['user_ID'], $_GET['id']) == 1) { echo 'liked';}?>"></i> Like <span id="likes"><?php echo(get_nb_likes($_GET['id']));?></span></span>
                         </li> 
                         <li><a href="#comments" class="com" onmouseover="chcl('#4582EC', 'com')" onmouseout="chcl('#b2b2b2', 'com')"><i id="com" class="fas fa-comment"></i> Commentaire<?php echo plural($nbComments).' '.count($comments);?></a></li>
                     </ul>
