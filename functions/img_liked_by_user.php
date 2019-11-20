@@ -7,8 +7,8 @@ function img_liked_by_user($user_ID,$img_ID) {
     $img_liked = $req_img->rowCount();
     if($img_liked == 0)
         return(0);
-        else
-    return(1);
+    else
+        return(1);
 }
 
 ?>
