@@ -40,9 +40,9 @@
                 <div class="post-status-bar">
                     <ul id="like-com" class="like-com">
                         <li>
-                            <span onclick="like(<?php echo $_GET['id'];?>)" onmouseover="chcl('#e44b4b', 'heart')" onmouseout="chcl('#b2b2b2', 'heart')"><i id="heart" class="fas fa-heart <?php if (img_liked_by_user($me['user_ID'], $_GET['id']) == 1) { echo 'liked';}?>"></i> Like <span id="likes"><?php echo(get_nb_likes($_GET['id']));?></span></span>
+                            <span onclick="like(<?php echo $_GET['id'];?>)" onmouseover="chcl('#e44b4b', 'heart')" onmouseout="chcl('#b2b2b2', 'heart-<?php echo $_GET['id'];?>')"><i id="heart-<?php echo $_GET['id'];?>" class="fas fa-heart <?php if (img_liked_by_user($me['user_ID'], $_GET['id']) == 1) { echo 'liked';}?>"></i> Like <span id="likes-<?php echo $_GET['id'];?>"><?php echo(get_nb_likes($_GET['id']));?></span></span>
                         </li> 
-                        <li><a href="#comments" class="com" onmouseover="chcl('#4582EC', 'com')" onmouseout="chcl('#b2b2b2', 'com')"><i id="com" class="fas fa-comment"></i> Commentaire<?php echo plural($nbComments).' '.$nbComments;?></a></li>
+                        <li><a href="#comments" class="com" onmouseover="chcl('#4582EC', 'com')" onmouseout="chcl('#b2b2b2', 'com-<?php echo $_GET['id'];?>')"><i id="com-<?php echo $_GET['id'];?>" class="fas fa-comment"></i> Commentaire<?php echo plural($nbComments).' '.$nbComments;?></a></li>
                     </ul>
                 </div>
             </div>
