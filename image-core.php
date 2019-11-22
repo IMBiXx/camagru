@@ -27,8 +27,8 @@
                     <?php
                     if (itsMe($author['user_ID']))
                         echo '<div class="ed-opts">
-                        <a href="#" title="" class="ed-opts-open" onclick="showOptions()"><i class="la la-ellipsis-v"></i></a>
-                        <ul id="delete" class="ed-options hidden">
+                        <a href="#" title="" class="ed-opts-open" onclick="showOptions(' . $_GET['id'] .')"><i class="la la-ellipsis-v"></i></a>
+                        <ul id="delete-' . $image['img_ID'] .'" class="ed-options hidden">
                             <li><a href="#" title="">Supprimer</a></li>
                         </ul>
                     </div>

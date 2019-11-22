@@ -37,7 +37,7 @@ include("functions/like.php");
                     </div>';
                     if (itsMe($user['user_ID']))
                         echo '<div class="ed-opts">
-                        <a href="#" title="" class="ed-opts-open" onclick="showOptions()"><i class="la la-ellipsis-v"></i></a>
+                        <a href="#" title="" class="ed-opts-open" onclick="showOptions(' . $image['img_ID'] .')"><i class="la la-ellipsis-v"></i></a>
                         <ul id="delete-'.$image['img_ID'].'" class="ed-options hidden">
                             <li><a href="#" title="">Supprimer</a></li>
                         </ul>

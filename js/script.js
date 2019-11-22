@@ -21,8 +21,8 @@ function showMenu(id){
     menu.classList.add("hidden");
 }
 var n = 0;
-function showOptions() {
-    var elem = document.getElementById('delete');
+function showOptions( id ) {
+    var elem = document.getElementById('delete-'+id);
     if (n % 2)
         elem.classList.add("hidden");
     else
