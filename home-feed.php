@@ -52,7 +52,7 @@ include("functions/like.php");
                         <li>
                             <span onclick="like(' . $image['img_ID'] .')" onmouseover="chcl(\'#e44b4b\', \'heart-'.$image['img_ID'].'\')" onmouseout="chcl(\'#b2b2b2\', \'heart-'.$image['img_ID'].'\')"><i id="heart-'.$image['img_ID'].'" class="fas fa-heart' . $liked . '"></i> Like <span id="likes-'.$image['img_ID'].'">' . $nbLikes . '</span></span>
                         </li> 
-                            <li><a href="./image.php#comments" class="com" onmouseover="chcl(\'#4582EC\', \'com-'.$image['img_ID'].'\')" onmouseout="chcl(\'#b2b2b2\', \'com-'.$image['img_ID'].'\')"><i id="com-'.$image['img_ID'].'" class="fas fa-comment"></i> Commentaire' . plural($nbComments) . ' ' . $nbComments . '</a></li>
+                            <li><a href="./image.php?id=' . $image['img_ID'] .'#comments" class="com" onmouseover="chcl(\'#4582EC\', \'com-'.$image['img_ID'].'\')" onmouseout="chcl(\'#b2b2b2\', \'com-'.$image['img_ID'].'\')"><i id="com-'.$image['img_ID'].'" class="fas fa-comment"></i> Commentaire' . plural($nbComments) . ' ' . $nbComments . '</a></li>
                     </ul>
                 </div>
             </div><!--post-bar end-->
