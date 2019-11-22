@@ -21,8 +21,8 @@
 }
     function get_nb_likes($img_ID) {
         $bdd = db_connect();
-        $req_img = $bdd->prepare("SELECT * FROM `liked`");
-        $req_img->execute();
+        $req_img = $bdd->prepare("SELECT * FROM `liked` WHERE `img_ID`= ?");
+        $req_img->execute(array($img_ID));
         $nb_likes = $req_img->rowCount();
         return $nb_likes;
     }

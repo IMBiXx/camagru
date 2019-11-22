@@ -30,8 +30,8 @@ function showOptions() {
     n++;
 }
 function like(img) {
-    var elem = document.getElementById('heart');
-    var likes = document.getElementById('likes');
+    var elem = document.getElementById('heart-'+img);
+    var likes = document.getElementById('likes-'+img);
     if (!elem.classList.contains("liked")) {
         elem.classList.add("liked");
         likes.innerHTML++;

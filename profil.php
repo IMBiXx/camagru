@@ -3,19 +3,16 @@
 <head>
   <meta charset="utf-8">
   <title>Instapouet - Connexion</title>
-	<?php include('css-handler.php');
-        include("db_manager.php");
-        try{
-             $bdd = new PDO($servername.";dbname=".$dbname, $username, $password);
-            } catch(PDOException $e){
-        die('Erreur:'.$e->getMessage());
-        }
-?>
+  <?php
+    include('css-handler.php');
+    $bdd = db_connect();
+  ?>
 ​
 </head>
 <body onload="uploadProfilImage()">
 <?php
-  include("topmenu.php"); ?>
+  include("topmenu.php");
+  ?>
   <?php
   if (!$_GET['id'] || itsMe($_GET['id']))
     $user = $me;
@@ -34,11 +31,11 @@
       $updatephoto = $bdd->prepare('UPDATE `user` SET `user_photo` = ? WHERE user_pseudo = ?');
       // $ext = pathinfo($_FILES['image']['name']);
     }
-    else
-      {header("Location: post.php");}
-    $uploadfile = $uploaddir . $user['user_pseudo']. $type . 'jpg';
-    $updatephoto->execute(array($uploadfile, $user['user_pseudo']));   
-    changePhoto( $uploadfile, $_FILES );
+    else {
+      header("Location: post.php");}
+      $uploadfile = $uploaddir . $user['user_pseudo']. $type . 'jpg';
+      $updatephoto->execute(array($uploadfile, $user['user_pseudo']));   
+      changePhoto( $uploadfile, $_FILES );
   }
 ?>
 <?php

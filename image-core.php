@@ -1,7 +1,6 @@
 <?php
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         add_comment($me['user_ID'], $_POST['img_ID'], $_POST['comment']);
-        // echo $_SESSION['id'].' '.$_POST['img_ID'].' '.$_POST['comment'];
         $redirect = 'image.php?id='.$_POST['img_ID'];
         header("Location: ".$redirect);
     }
@@ -43,7 +42,7 @@
                         <li>
                             <span onclick="like(<?php echo $_GET['id'];?>)" onmouseover="chcl('#e44b4b', 'heart')" onmouseout="chcl('#b2b2b2', 'heart')"><i id="heart" class="fas fa-heart <?php if (img_liked_by_user($me['user_ID'], $_GET['id']) == 1) { echo 'liked';}?>"></i> Like <span id="likes"><?php echo(get_nb_likes($_GET['id']));?></span></span>
                         </li> 
-                        <li><a href="#comments" class="com" onmouseover="chcl('#4582EC', 'com')" onmouseout="chcl('#b2b2b2', 'com')"><i id="com" class="fas fa-comment"></i> Commentaire<?php echo plural($nbComments).' '.count($comments);?></a></li>
+                        <li><a href="#comments" class="com" onmouseover="chcl('#4582EC', 'com')" onmouseout="chcl('#b2b2b2', 'com')"><i id="com" class="fas fa-comment"></i> Commentaire<?php echo plural($nbComments).' '.$nbComments;?></a></li>
                     </ul>
                 </div>
             </div>

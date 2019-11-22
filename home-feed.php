@@ -1,5 +1,6 @@
 <?php
 include("functions/img_liked_by_user.php");
+include("functions/like.php");
 
 ?>
 <div class="col-lg-9 col-md-8 center">
@@ -21,6 +22,7 @@ include("functions/img_liked_by_user.php");
                 $liked = ' liked';
             else
                 $liked = '';
+            $nbLikes = get_nb_likes($image['img_ID']);
             $nbComments = count(get_content_by_ID($image['img_ID']));
             $date = new DateTime($image['img_upload_date']);
             echo '<div class="posts-section">
@@ -36,7 +38,7 @@ include("functions/img_liked_by_user.php");
                     if (itsMe($user['user_ID']))
                         echo '<div class="ed-opts">
                         <a href="#" title="" class="ed-opts-open" onclick="showOptions()"><i class="la la-ellipsis-v"></i></a>
-                        <ul id="delete" class="ed-options hidden">
+                        <ul id="delete-'.$image['img_ID'].'" class="ed-options hidden">
                             <li><a href="#" title="">Supprimer</a></li>
                         </ul>
                     </div>';
@@ -46,11 +48,11 @@ include("functions/img_liked_by_user.php");
                     <a class="center" href="./image.php?id=' . $image['img_ID'] .'"><img class="post_img" src="' . $image['img_path'] . '" alt="sample image" \></a>
                 </div>
                 <div class="post-status-bar">
-                    <ul class="like-com">
+                    <ul id="like-com-'.$image['img_ID'].'" class="like-com">
                         <li>
-                            <a href="#" onclick="like(' . $image['img_ID'] .')" onmouseover="chcl(\'#e44b4b\', \'heart\')" onmouseout="chcl(\'#b2b2b2\', \'heart\')"><i id="heart" class="fas fa-heart' . $liked . '"></i> Like ' . mt_rand(1,250) . '</a>
+                            <span onclick="like(' . $image['img_ID'] .')" onmouseover="chcl(\'#e44b4b\', \'heart-'.$image['img_ID'].'\')" onmouseout="chcl(\'#b2b2b2\', \'heart-'.$image['img_ID'].'\')"><i id="heart-'.$image['img_ID'].'" class="fas fa-heart' . $liked . '"></i> Like <span id="likes-'.$image['img_ID'].'">' . $nbLikes . '</span></span>
                         </li> 
-                        <li><a href="./image.php#comments" class="com" onmouseover="chcl(\'#4582EC\', \'com\')" onmouseout="chcl(\'#b2b2b2\', \'com\')"><i id="com" class="fas fa-comment"></i> Commentaire' . plural($nbComments) . ' ' . $nbcomments . '</a></li>
+                            <li><a href="./image.php#comments" class="com" onmouseover="chcl(\'#4582EC\', \'com-'.$image['img_ID'].'\')" onmouseout="chcl(\'#b2b2b2\', \'com-'.$image['img_ID'].'\')"><i id="com-'.$image['img_ID'].'" class="fas fa-comment"></i> Commentaire' . plural($nbComments) . ' ' . $nbComments . '</a></li>
                     </ul>
                 </div>
             </div><!--post-bar end-->
