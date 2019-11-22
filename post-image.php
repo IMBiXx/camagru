@@ -31,7 +31,7 @@
                                                 <li><a href="#" class="active"><label class="" for="open-webcam">Prendre une photo</label></a></li>';
                                             else
                                                 echo '<li><a class="post_project" href="post.php" title="">Annuler</a></li>
-                                                <li><a class="post-jb active" href="#" title="">Poster l\'image</a></li>';
+                                                <li><input type="submit" class="post-jb active" name="poster_img"  value= "Poster l\'image"title=""></li>';
                                             ?>
                                         </ul>
                                     </div>

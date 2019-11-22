@@ -3,7 +3,15 @@
 <head>
   <meta charset="utf-8">
   <title>Instapouet - Connexion</title>
-	<?php include('css-handler.php');?>
+	<?php include('css-handler.php');
+        include("db_manager.php");
+        try{
+             $bdd = new PDO($servername.";dbname=".$dbname, $username, $password);
+            } catch(PDOException $e){
+        die('Erreur:'.$e->getMessage());
+        }
+?>
+​
 </head>
 <body onload="uploadProfilImage()">
 <?php
@@ -18,15 +26,18 @@
     if (isset($_POST['chcover'])) {
       $uploaddir = './images/user_cover/';
       $type = '_cover.';
+      $updatephoto = $bdd->prepare('UPDATE `user` SET `user_cover` = ? WHERE user_pseudo = ?');
     }
     else if (isset($_POST['chpp'])) {
       $uploaddir = './images/user/';
       $type = '.';
+      $updatephoto = $bdd->prepare('UPDATE `user` SET `user_photo` = ? WHERE user_pseudo = ?');
+      // $ext = pathinfo($_FILES['image']['name']);
     }
     else
-      header("Location: post.php");
-    // $ext = pathinfo($_FILES['image']['name']);
-    $uploadfile = $uploaddir . $user['user_pseudo'] . $type . 'jpg';
+      {header("Location: post.php");}
+    $uploadfile = $uploaddir . $user['user_pseudo']. $type . 'jpg';
+    $updatephoto->execute(array($uploadfile, $user['user_pseudo']));   
     changePhoto( $uploadfile, $_FILES );
   }
 ?>
