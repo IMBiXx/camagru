@@ -33,7 +33,7 @@ function plural( $n ) {
         <span></span>
     <a class="py-2 d-none d-md-inline-block" href=".">Accueil</a>
     <?php 
-    if (!$_SESSION['pseudo'])
+    if (!$me)
         echo '<a class="py-2 d-none d-md-inline-block" href="./login.php">Connexion</a>
         <a class="py-2 d-none d-md-inline-block" href="./register.php">Inscription</a>';
     else

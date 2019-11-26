@@ -7,7 +7,6 @@
     include('css-handler.php');
     $bdd = db_connect();
   ?>
-​
 </head>
 <body onload="uploadProfilImage()">
 <?php
