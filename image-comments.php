@@ -1,17 +1,22 @@
 <div id="comments" class="post-comment-box">
-    <h3>Poster un commentaire</h3>
-    <div class="user-poster">
-        <div class="usr-post-img">
-            <img src="<?php echo $me['user_photo'] ?>" alt="<?php echo $me['user_pseudo']; ?>">
-        </div>
-        <div class="post_comment_sec">
-            <form action="image.php" method="post">
-                <input type="hidden" value="<?php echo $_GET['id']; ?>" name="img_ID" />
-                <textarea placeholder="Votre message" name="comment"></textarea>
-                <button type="submit">Envoyer</button>
-            </form>
-        </div><!--post_comment_sec end-->
-    </div><!--user-poster end-->
+    <?php
+    if ($_SESSION['id'])
+    echo '<div id="post-comment">
+        <h3>Poster un commentaire</h3>
+        <div class="user-poster">
+            <div class="usr-post-img">
+                <img src="' . $me['user_photo'] . '" alt="' . $me['user_pseudo'] . '">
+            </div>
+            <div class="post_comment_sec">
+                <form action="image.php" method="post">
+                    <input type="hidden" value="' . $_GET['id'] . '" name="img_ID" />
+                    <textarea placeholder="Votre message" name="comment"></textarea>
+                    <button type="submit">Envoyer</button>
+                </form>
+            </div><!--post_comment_sec end-->
+        </div><!--user-poster end-->
+    </div>';
+?>
 </div>
 <div class="comment-section">
     <h3><?php echo(count($imgComments)); ?> Commentaire<?php if (count($imgComments) > 1) echo('s') ?></h3>

@@ -25,6 +25,10 @@ include("functions/like.php");
             $nbLikes = get_nb_likes($image['img_ID']);
             $nbComments = count(get_content_by_ID($image['img_ID']));
             $date = new DateTime($image['img_upload_date']);
+            if ($_SESSION['id'])
+                $likeid = $image['img_ID'];
+             else
+                $likeid = -1;
             echo '<div class="posts-section">
             <div class="post-bar">
                 <div class="post_topbar">
@@ -50,7 +54,7 @@ include("functions/like.php");
                 <div class="post-status-bar">
                     <ul id="like-com-'.$image['img_ID'].'" class="like-com">
                         <li>
-                            <span onclick="like(' . $image['img_ID'] .')" onmouseover="chcl(\'#e44b4b\', \'heart-'.$image['img_ID'].'\')" onmouseout="chcl(\'#b2b2b2\', \'heart-'.$image['img_ID'].'\')"><i id="heart-'.$image['img_ID'].'" class="fas fa-heart' . $liked . '"></i> Like <span id="likes-'.$image['img_ID'].'">' . $nbLikes . '</span></span>
+                            <span onclick="like(' . $likeid .')" onmouseover="chcl(\'#e44b4b\', \'heart-'.$image['img_ID'].'\')" onmouseout="chcl(\'#b2b2b2\', \'heart-'.$image['img_ID'].'\')"><i id="heart-'.$image['img_ID'].'" class="fas fa-heart' . $liked . '"></i> Like <span id="likes-'.$image['img_ID'].'">' . $nbLikes . '</span></span>
                         </li> 
                             <li><a href="./image.php?id=' . $image['img_ID'] .'#comments" class="com" onmouseover="chcl(\'#4582EC\', \'com-'.$image['img_ID'].'\')" onmouseout="chcl(\'#b2b2b2\', \'com-'.$image['img_ID'].'\')"><i id="com-'.$image['img_ID'].'" class="fas fa-comment"></i> Commentaire' . plural($nbComments) . ' ' . $nbComments . '</a></li>
                     </ul>

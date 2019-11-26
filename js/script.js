@@ -30,6 +30,8 @@ function showOptions( id ) {
     n++;
 }
 function like(img) {
+    if (img < 0)
+        window.location = "login.php";
     var elem = document.getElementById('heart-'+img);
     var likes = document.getElementById('likes-'+img);
     if (!elem.classList.contains("liked")) {

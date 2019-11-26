@@ -582,7 +582,7 @@ ol, ul {
 .post-comment-box {
     float: left;
     width: 100%;
-    padding: 20px;
+    padding: 0 20px;
     background-color: #fff;
 }
 .post-comment-box h3 {

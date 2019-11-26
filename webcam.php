@@ -8,7 +8,7 @@
 </div>
 
 <script>
- var video = document.querySelector("#videoElement");
+var video = document.querySelector("#videoElement");
 var canvas= document.getElementById('canvas');
 var context = canvas.getContext('2d');
 
