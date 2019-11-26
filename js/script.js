@@ -70,6 +70,42 @@ function uploadImage() {
     }
 }
 
+function openWebcam() {
+    var video = document.querySelector("#videoElement");
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    
+    if (navigator.mediaDevices.getUserMedia) {       
+        navigator.mediaDevices.getUserMedia({video: true})
+    .then(function(stream) {
+        video.srcObject = stream;
+    })
+    .catch(function(error) {
+        console.log("Something went wrong!");
+    });
+
+    document.getElementById('capture').addEventListener('click', function() {
+        context.drawImage(video,0,0);
+        var dataURL = canvas.toDataURL(video);
+        console.log(dataURL);
+        var change_running = false;
+        if(!change_running){
+            setTimeout(function(){
+                change_running = true;
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", 'post.php', true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+                xhr.withCredentials = true;
+                xhr.send('webcamuploaded='+dataURL);
+                document.getElementById('upload').submit();
+                change_running = false;     
+            }, 300);
+        }
+
+    });
+    }
+}
+
 function uploadProfilImage() {
     // var formCover = document.getElementById('cover');
     // var formPp = document.getElementById('add_pp');

@@ -2,7 +2,7 @@
 <html>
  <body>
 <div id="container">
-    <video autoplay="true" id="videoElement">  </video>
+    <video autoplay="true" id="videoElement"></video>
     <a href = '#' id= "capture" > prendre une photo</a>
     <canvas id="canvas"></canvas>
 </div>

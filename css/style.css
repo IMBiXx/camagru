@@ -259,7 +259,7 @@ ol, ul {
 .post-st ul li:last-child {
     margin-right: 0;
 }
-.post-st ul li a:hover, .post-st ul li a.active {
+.post-st ul li a:hover, .post-st ul li .active {
     background-color: #4582EC;
     color: #fff;
 }
@@ -339,7 +339,12 @@ ol, ul {
 	-o-box-shadow: 0 0 10px rgba(0,0,0,0.28);
 	box-shadow: 0 0 10px rgba(0,0,0,0.28);
 	padding: 20px;
-	z-index: 0;
+    z-index: 0;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -ms-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
 }
 .ed-options.active {
 	opacity: 1;

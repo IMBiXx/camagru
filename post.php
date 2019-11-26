@@ -8,15 +8,25 @@ include("db_manager.php");
             die('Erreur:'.$e->getMessage());
         }
     $id = $_SESSION['id'];
-    if (!isset($_POST['image']) && !isset($_POST['poster_img']))
+    if (isset($_POST['webcam']))
+        $onload = "openWebcam()";
+    else
+        $onload = "uploadImage()";
+    if (isset($_POST['webcamupload'])) {
+        echo $_POST['webcamuploaded'];
+        $uploadfile = file_put_contents('img.png', base64_decode($_POST['webcamuploaded']));
+        $iurl = $uploadfile;
+        $_SESSION['iurl'] = $uploadfile;
+    }
+    if (!isset($_POST['image']) && !isset($_POST['poster_img']) && !isset($_POST['webcam']))
         $iurl = 'images/user_images/default_image.png';
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-        echo $_POST['poster_img'];
+        // echo $_POST['poster_img'];
         $uploaddir = './images/user_images/';
         $uploadfile = $uploaddir . basename($_FILES['image']['name']);
         if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile)) {
             $iurl = $uploadfile;
-            $_SESSION['iurl'] = $uploadfile;  
+            $_SESSION['iurl'] = $uploadfile;
         }
         if (isset($_POST['poster_img']))
         {
@@ -29,7 +39,7 @@ include("db_manager.php");
             $req->execute(array($iurl)) && $img_id = $req->fetch();
             $id = $img_id['img_ID'];
             $_SESSION['iurl'] = 0;
-            header("Location: ./image.php?id=".$id); // mettre l'id en cours
+            header("Location: ./image.php?id=".$id);
         }
 }
 ?>
@@ -40,7 +50,7 @@ include("db_manager.php");
   <title>Instapouet - Poster une photo</title>
 	<?php include('css-handler.php');?>
 </head>
-<body onload="uploadImage()">
+<body onload="<?php echo $onload; ?>">
 <?php
     include("topmenu.php");
     redirectTo($loginpage);

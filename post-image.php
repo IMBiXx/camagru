@@ -12,8 +12,18 @@
                     </div>
                 </div>
                 
-                <div class="post_content">                    
-                    <img class="post_img" src="<?php echo $iurl; ?>" alt="<?php if ($uploadfile) echo $_FILES['image']['name']; else echo 'sample image'; ?>" \>
+                <div class="post_content">
+                    <?php
+                    if ($uploadfile)
+                        $alt = $_FILES['image']['name'];
+                    else
+                        $alt = 'sample image';
+                    if ($iurl)
+                        echo '<img class="post_img" src="' . $iurl . '" alt="' . $alt .'" \>';
+                    else
+                        echo '<video class="center" autoplay="true" id="videoElement"></video>
+                        <canvas id="canvas"  width="600" height="600" style="display:none";></canvas>';
+                    ?>
                 </div>
                 <div class="post-st">
                     <ul>
@@ -27,11 +37,14 @@
                                                 echo'<input type="file" class="custom-file-input post_image" id="select-img" name="image">
                                                 <li><a href="#"><label class="" for="select-img">Selectionner une image</label></a></li>
                                         
-                                                <input type="file" class="custom-file-input post_image" id="open-webcam" name="webcam" accept="image/*" capture="camera" />
-                                                <li><a href="#" class="active"><label class="" for="open-webcam">Prendre une photo</label></a></li>';
+                                                <input type="submit" class="custom-file-input post_image" id="webcam" name="webcam" />
+                                                <li><a href="#" class="active"><label class="" for="webcam">Prendre une photo</label></a></li>';
+                                            else if ($_POST['webcam'])
+                                                echo '<li><a class="post_image" href="post.php" title="">Annuler</a></li>
+                                                <li><a id="capture" type="submit" class="post-img active" name="webcamupload" value= "Prendre la photo" title="Prendre la photo">Prendre la photo</a></li>';
                                             else
-                                                echo '<li><a class="post_project" href="post.php" title="">Annuler</a></li>
-                                                <li><input type="submit" class="post-jb active" name="poster_img"  value= "Poster l\'image"title=""></li>';
+                                                echo '<li><a class="post_image" href="post.php" title="">Annuler</a></li>
+                                                <li><input type="submit" class="post-img active" name="poster_img" value= "Poster l\'image" title="Poster l\'image"></li>';
                                             ?>
                                         </ul>
                                     </div>
