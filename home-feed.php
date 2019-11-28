@@ -1,10 +1,16 @@
 <?php
 include("functions/img_liked_by_user.php");
 include("functions/like.php");
-
+if (isset($_GET['page']))
+    $page = $_GET['page'];
+else
+    $page = 1;
+$nbPosts = count($images);
+$nbPages = round($nbPosts / 5);
+$nbPostsPerPage = 5;
 ?>
 <div class="col-lg-9 col-md-8 center">
-    <div class="main-ws-sec">
+    <div class="main-feed">
         <div class="post-topbar">
             <div class="user-picy usy-dt">
                 <img src="<?php echo $me['user_photo']; ?>" alt="">
@@ -16,52 +22,55 @@ include("functions/like.php");
             </div><!--post-st end-->
         </div><!--post-topbar end-->
         <?php
-        foreach ($images as $image) {
-            $user = get_user_by_ID($image['user_ID']);
-            if (img_liked_by_user($user['user_ID'], $image['img_ID']))
+        for ($post = 0; $post < $nbPostsPerPage; $post++) {
+            $c = (($page * $nbPostsPerPage) - $nbPostsPerPage) + $post;
+            if (!$images[$c])
+                break ;
+            $user = get_user_by_ID($images[$c]['user_ID']);
+            if (img_liked_by_user($user['user_ID'], $images[$c]['img_ID']))
                 $liked = ' liked';
             else
                 $liked = '';
-            $nbLikes = get_nb_likes($image['img_ID']);
-            $nbComments = count(get_content_by_ID($image['img_ID']));
-            $date = new DateTime($image['img_upload_date']);
-            if ($_SESSION['id'])
-                $likeid = $image['img_ID'];
-             else
-                $likeid = -1;
-            echo '<div class="posts-section">
-            <div class="post-bar">
-                <div class="post_topbar">
-                    <div class="usy-dt">
-                        <img src="'. $user['user_photo'].'" alt="">
-                        <div class="usy-name">
-                            <h3><a href="profil.php?id='. $image['user_ID'] .'">' . $user['user_pseudo'] . '</a></h3>
-                            <span><i class="far fa-clock"></i> le '. $date->format('d/m/Y') .' à '. $date->format('H:i') .'</span>
-                        </div>
-                    </div>';
-                    if (itsMe($user['user_ID']))
-                        echo '<div class="ed-opts">
-                        <a href="#" title="" class="ed-opts-open" onclick="showOptions(' . $image['img_ID'] .')"><i class="la la-ellipsis-v"></i></a>
-                        <ul id="delete-'.$image['img_ID'].'" class="ed-options hidden">
-                            <li><a href="#" title="">Supprimer</a></li>
-                        </ul>
-                    </div>';
+                $nbLikes = get_nb_likes($images[$c]['img_ID']);
+                $nbComments = count(get_content_by_ID($images[$c]['img_ID']));
+                $date = new DateTime($images[$c]['img_upload_date']);
+                if ($_SESSION['id'])
+                    $likeid = $images[$c]['img_ID'];
+                else
+                    $likeid = -1;
+                echo '<div class="posts-section">
+                <div class="post-bar">
+                    <div class="post_topbar">
+                        <div class="usy-dt">
+                            <img src="'. $user['user_photo'].'" alt="">
+                            <div class="usy-name">
+                                <h3><a href="profil.php?id='. $images[$c]['user_ID'] .'">' . $user['user_pseudo'] . '</a></h3>
+                                <span><i class="far fa-clock"></i> le '. $date->format('d/m/Y') .' à '. $date->format('H:i') .'</span>
+                            </div>
+                        </div>';
+                if (itsMe($user['user_ID']))
+                echo '<div class="ed-opts">
+                <a href="#" title="" class="ed-opts-open" onclick="showOptions(' . $images[$c]['img_ID'] .')"><i class="la la-ellipsis-v"></i></a>
+                <ul id="delete-'.$images[$c]['img_ID'].'" class="ed-options hidden">
+                    <li><a href="#" title="">Supprimer</a></li>
+                </ul>
+                </div>';
                 echo '</div>
-                
                 <div class="post_content">                    
-                    <a class="center" href="./image.php?id=' . $image['img_ID'] .'"><img class="post_img" src="' . $image['img_path'] . '" alt="sample image" \></a>
+                    <a class="center" href="./image.php?id=' . $images[$c]['img_ID'] .'"><img class="post_img" src="' . $images[$c]['img_path'] . '" alt="sample image" \></a>
                 </div>
                 <div class="post-status-bar">
-                    <ul id="like-com-'.$image['img_ID'].'" class="like-com">
+                    <ul id="like-com-'.$images[$c]['img_ID'].'" class="like-com">
                         <li>
-                            <span onclick="like(' . $likeid .')" onmouseover="chcl(\'#e44b4b\', \'heart-'.$image['img_ID'].'\')" onmouseout="chcl(\'#b2b2b2\', \'heart-'.$image['img_ID'].'\')"><i id="heart-'.$image['img_ID'].'" class="fas fa-heart' . $liked . '"></i> Like <span id="likes-'.$image['img_ID'].'">' . $nbLikes . '</span></span>
+                            <span onclick="like(' . $likeid .')" onmouseover="chcl(\'#e44b4b\', \'heart-'.$images[$c]['img_ID'].'\')" onmouseout="chcl(\'#b2b2b2\', \'heart-'.$images[$c]['img_ID'].'\')"><i id="heart-'.$images[$c]['img_ID'].'" class="fas fa-heart' . $liked . '"></i> Like <span id="likes-'.$images[$c]['img_ID'].'">' . $nbLikes . '</span></span>
                         </li> 
-                            <li><a href="./image.php?id=' . $image['img_ID'] .'#comments" class="com" onmouseover="chcl(\'#4582EC\', \'com-'.$image['img_ID'].'\')" onmouseout="chcl(\'#b2b2b2\', \'com-'.$image['img_ID'].'\')"><i id="com-'.$image['img_ID'].'" class="fas fa-comment"></i> Commentaire' . plural($nbComments) . ' ' . $nbComments . '</a></li>
+                            <li><a href="./image.php?id=' . $images[$c]['img_ID'] .'#comments" class="com" onmouseover="chcl(\'#4582EC\', \'com-'.$images[$c]['img_ID'].'\')" onmouseout="chcl(\'#b2b2b2\', \'com-'.$images[$c]['img_ID'].'\')"><i id="com-'.$images[$c]['img_ID'].'" class="fas fa-comment"></i> Commentaire' . plural($nbComments) . ' ' . $nbComments . '</a></li>
                     </ul>
                 </div>
             </div><!--post-bar end-->
         </div>';
-    }
+        }
         ?>
-    </div><!--main-ws-sec end-->
+    </div><!--main-feed end-->
+<?php include("pagination.php"); ?>
 </div>

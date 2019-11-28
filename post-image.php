@@ -1,6 +1,6 @@
 
 <div class="col-lg-9 col-md-8 no-pd">
-    <div class="main-ws-sec">
+    <div class="main-feed">
         <div class="posts-section">
             <div class="post-bar">
                 <div class="post_topbar">
@@ -55,5 +55,5 @@
                 </div>
             </div><!--post-bar end-->
         </div>
-    </div><!--main-ws-sec end-->
+    </div><!--main-feed end-->
 </div>

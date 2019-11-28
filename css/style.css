@@ -210,7 +210,7 @@ ol, ul {
 
 /* home feed start */
 
-.main-ws-sec {
+.main-feed {
     float: left;
     width: 100%;
 }
@@ -267,6 +267,11 @@ ol, ul {
     float: left;
     width: 100%;
     border-top: 1px solid #e4e4e4;
+}
+.main-pagination {
+    display: flex;
+    float:left;
+    width:100%;
 }
 .post-bar {
     float: left;

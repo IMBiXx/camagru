@@ -13,7 +13,7 @@
     include("functions/like.php");
 ?>
 <div class="col-lg-9 col-md-8 center">
-    <div class="main-ws-sec">
+    <div class="main-feed">
         <div class="posts-section">
             <div class="post-bar">
                 <div class="post_topbar">
