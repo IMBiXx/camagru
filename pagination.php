@@ -1,5 +1,5 @@
 <?php
-    if (!isset($_GET['page']) || $page == 1)
+    if ($page == 1)
         $firstStatus = " disabled";
     else
         $firstStatus = "";
