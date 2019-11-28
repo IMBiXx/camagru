@@ -707,7 +707,7 @@ textarea {
     margin-top: -95px;
     position: relative;
 }
-.user-pro-img img {
+.user-pro-img .img-pp {
     -webkit-border-radius: 100px;
     -moz-border-radius: 100px;
     -ms-border-radius: 100px;
@@ -716,7 +716,12 @@ textarea {
     float: none;
     border: 5px solid #fff;
     border-radius: 50%;
-    width:80%;
+    width:200px;
+    height:200px;
+    background-image:url('../images/user/default_image.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 .user-pro-img .add-dp {
     position: absolute;
@@ -749,6 +754,13 @@ textarea {
 }
 .list-group-item {
     border:0!important;
+}
+section.cover-sec {
+    background-image: url('../images/user_cover/default_cover.jpg');
+    height: 320px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 /* profil end */

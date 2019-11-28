@@ -5,7 +5,9 @@
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         <div class="user-profile">
                             <div class="user-pro-img">
-                                <img src="<?php echo $user['user_photo']; ?>" alt="">
+                                <div class="img-pp center" style="background-image:url('<?php echo $user['user_photo']; ?>')">
+                                    <img class="none" src="<?php echo $user['user_photo']; ?>" alt="">
+                                </div>
                                 <?php
                                 if (itsMe($user['user_ID']))
                                     echo '<form id="add_pp" enctype="multipart/form-data" action="profil.php" method="post">
