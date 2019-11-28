@@ -7,8 +7,8 @@
         $lastStatus = " disabled";
 ?>
 <div class="main-pagination">
-        <ul class="pagination pagination-lg center">
-            <li class="page-item<?php echo $firstStatus; ?>">
+    <ul class="pagination pagination-lg center">
+        <li class="page-item<?php echo $firstStatus; ?>">
             <a class="page-link" href="?page=<?php echo $page-1;?>">&laquo;</a>
             </li>
             <?php
@@ -24,7 +24,6 @@
             ?>
             <li class="page-item<?php echo $lastStatus; ?>">
             <a class="page-link" href="?page=<?php echo $page+1;?>">&raquo;</a>
-            </li>
-
-        </ul>
-    </div>
+        </li>
+    </ul>
+</div>
