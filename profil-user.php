@@ -20,8 +20,9 @@
                 </div>';
 
         if (!isset($_GET['id']) || $_GET['id'] == $_SESSION['id']) {
-            echo '<a class="nav-item nav-link active" id="images-tab" data-toggle="tab" href="#" role="tab" aria-controls="images" aria-selected="true" onclick="showMenu(\'images\')">Mes images</a>
-                <a class="nav-item nav-link" id="nav-status-tab" data-toggle="tab" href="#" role="tab" aria-controls="parametres" aria-selected="false" onclick="showMenu(\'parametres\')"></i>Parametres</a>';
+            echo '<div class="list-group"><a class="list-group-item list-group-item-action nav-item nav-link active" id="images-tab" data-toggle="tab" href="#" role="tab" aria-controls="images" aria-selected="true" onclick="showMenu(\'images\')">Mes images</a>
+                <a class="list-group-item list-group-item-action nav-item nav-link" id="param-tab" data-toggle="tab" href="#" role="tab" aria-controls="parametres" aria-selected="false" onclick="showMenu(\'parametres\')"></i>Parametres</a>
+                </div>';
         }
             ?>
             </div>

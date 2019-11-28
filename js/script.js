@@ -12,10 +12,18 @@ function delClass(elem) {
 function showMenu(id){
     var menus = ['images', 'parametres'];
     var elem = document.getElementById(id);
-    if (id == menus[0])
+    var imageActive = document.getElementById("images-tab");
+    var paramActive = document.getElementById("param-tab");
+    if (id == menus[0]) {
         var menu = document.getElementById(menus[1]);
-    else
+        imageActive.classList.add("active");
+        paramActive.classList.remove("active");
+    }
+    else {
         var menu = document.getElementById(menus[0]);
+        imageActive.classList.remove("active");
+        paramActive.classList.add("active");
+    }
     delClass(menu);
     addClass(elem);
     menu.classList.add("hidden");
