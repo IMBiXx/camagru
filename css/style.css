@@ -38,7 +38,7 @@ section {
     width:100%;
 }
 .paddingtop {
-    padding: 70px 0;
+    padding: 40px 0;
 }
 .hidden {
     opacity:0;
@@ -657,6 +657,18 @@ textarea {
 
 /* profil start */
 
+.wave {
+    transform: rotate(180deg);
+    bottom: -1px;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    direction: ltr;
+    fill: #fff;
+}
+
 .cover-sec img {
     width: 100%!important;
     max-height:320px;
@@ -757,7 +769,7 @@ textarea {
 }
 section.cover-sec {
     background-image: url('../images/user_cover/default_cover.jpg');
-    height: 320px;
+    height: 450px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
