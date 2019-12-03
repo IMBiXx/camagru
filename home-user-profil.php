@@ -6,9 +6,9 @@ $user_images = get_image_by_user_ID($_SESSION['id']);
     <div class="main-left-sidebar no-margin">
         <div class="user-data full-width">
             <div class="user-profile">
-                <div class="username-dt">
-                    <div class="usr-pic">
-                        <img src="<?php echo $me['user_photo'];?>" alt="">
+                <div class="username-dt" style="background-image:url('<?php echo $me['user_cover']; ?>')">
+                    <div class="usr-pic" style="background-image:url('<?php echo $me['user_photo']; ?>')">
+                        <img class="none" src="<?php echo $me['user_photo'];?>" alt="">
                     </div>
                 </div><!--username-dt end-->
                 <div class="user-specs">
