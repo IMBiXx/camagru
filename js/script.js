@@ -1,7 +1,7 @@
 
 var video = document.querySelector("#videoElement");
 var canvas = document.getElementById('canvas');
-var context = canvas.getContext('2d');
+
 
 function addClass(elem) { 
     elem.classList.remove("hidden");
@@ -84,6 +84,8 @@ function uploadImage() {
 }
 function test() {
     // event.preventDefault();
+var context = canvas.getContext('2d');
+    
     context.drawImage(video,0,0);
     var dataURL = canvas.toDataURL(video);
     var xhr = new XMLHttpRequest();
@@ -100,7 +102,6 @@ function test() {
      
 };
 function openWebcam() {
-    
     
     if (navigator.mediaDevices.getUserMedia) {       
         navigator.mediaDevices.getUserMedia({video: true})

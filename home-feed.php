@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("functions/img_liked_by_user.php");
 include("functions/like.php");
 if (isset($_GET['page']))
@@ -8,6 +9,7 @@ else
 $nbPosts = count($images);
 $nbPages = round($nbPosts / 5);
 $nbPostsPerPage = 5;
+echo $_SESSION['img_id2'] = $images[$c]['img_ID'];
 ?>
 <div class="col-lg-9 col-md-8 center">
     <div class="main-feed">
@@ -49,12 +51,15 @@ $nbPostsPerPage = 5;
                             </div>
                         </div>';
                 if (itsMe($user['user_ID']))
-                echo '<div class="ed-opts">
+                $_SESSION['img_id'] = $images[$c]['img_ID'];
+                echo '<form method="post" action="delete_img.php">
+                <div class="ed-opts">
                 <a href="#" title="" class="ed-opts-open" onclick="showOptions(' . $images[$c]['img_ID'] .')"><i class="la la-ellipsis-v"></i></a>
-                <ul id="delete-'.$images[$c]['img_ID'].'" class="ed-options hidden">
-                    <li><a href="#" title="">Supprimer</a></li>
+                <ul id="delete-'. $_SESSION['img_id'].'" class="ed-options hidden">
+                <button onclick="" name="delete_img">Supprimer</button>
                 </ul>
-                </div>';
+                </div>
+                </form>';
                 echo '</div>
                 <div class="post_content">                    
                     <a class="center" href="./image.php?id=' . $images[$c]['img_ID'] .'"><img class="post_img" src="' . $images[$c]['img_path'] . '" alt="sample image" \></a>

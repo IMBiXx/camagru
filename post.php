@@ -43,17 +43,16 @@ include("db_manager.php");
         echo "<script type='text/javascript'>openWebcam();</script>";
     else
         $onload = "uploadImage()";
+    if (isset($_POST['capture']))
+     echo "<script type='text/javascript'>
+            context.drawImage(video,0,0,100,130);</script>";
     
         if($_SERVER["REQUEST_METHOD"] == "POST")
         {
-            echo "je rentre";
             if (isset($_POST['webcamuploaded'])) {
                 $data = $_POST['webcamuploaded'];
-                // echo $data;
                 list($type, $data) = explode(';', $data);
                 list(, $data)      = explode(',', $data);
-                echo ("\n");
-                echo ($data);
                 $data = base64_decode($data);
                 if (!isset($_SESSION['id1']))
                     $i = 0;
@@ -84,10 +83,7 @@ include("db_manager.php");
     
     
     
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
-        // echo $_POST['poster_img'];
-        echo "je rentre aussi";
-        
+    if($_SERVER["REQUEST_METHOD"] == "POST"){ 
         $uploaddir = './images/user_images/';
         $uploadfile = $uploaddir . basename($_FILES['image']['name']);
         if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile)) {
@@ -97,7 +93,6 @@ include("db_manager.php");
         if (isset($_POST['image'])) {
         if (isset($_POST['poster_img']))
         {
-            echo "je rentre aussi";
             echo 'ulr: '.$_SESSION['iurl'];
             $img_uploade_date = date("Y-m-d H:i:s");
             $req = $bdd->prepare('INSERT INTO `img`(`user_ID`, `img_name`, `img_upload_date`, `img_path`) VALUES(?,?,?,?)');
