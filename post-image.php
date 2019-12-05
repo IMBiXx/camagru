@@ -26,6 +26,10 @@
                     ?>
                 </div>
                 <div class="post-st">
+
+
+
+
                     <ul>
                         <form enctype="multipart/form-data" id="upload" action="post.php" method="post">
                             <div class="form-group">
@@ -34,16 +38,15 @@
                                         <ul>
                                             <?php
                                             if (!$uploadfile)
-                                                echo'<input type="file" class="custom-file-input post_image" id="select-img" name="image">
+                                               echo'<input type="file" class="custom-file-input post_image" id="select-img" name="image">
                                                 <li><a href="#"><label class="" for="select-img">Selectionner une image</label></a></li>
                                         
                                                 <input type="submit" class="custom-file-input post_image" id="webcam" name="webcam" />
-                                                <li><a href="#" class="active"><label class="" for="webcam">Prendre une photo</label></a></li>';
-                                            else if ($_POST['webcam'])
-                                                echo '<li><a class="post_image" href="post.php" title="">Annuler</a></li>
-                                                <li><a id="capture" type="submit" class="post-img active" name="webcamupload" value= "Prendre la photo" title="Prendre la photo">Prendre la photo</a></li>';
-                                            else
-                                                echo '<li><a class="post_image" href="post.php" title="">Annuler</a></li>
+                                                <li><a href="#" class="active"><label class="" for="webcam">Activer la Webcam</label></a></li>
+                                           
+                                                <button id="capture" type="submit" class="post-img active" name="webcamuploaded" onclick="test()" title="Prendre la photo">Prendre la photo</button>
+                                           
+                                               <li><a class="post_image" href="post.php" title="">Annuler</a></li>
                                                 <li><input type="submit" class="post-img active" name="poster_img" value= "Poster l\'image" title="Poster l\'image"></li>';
                                             ?>
                                         </ul>

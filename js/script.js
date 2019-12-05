@@ -1,3 +1,8 @@
+
+var video = document.querySelector("#videoElement");
+var canvas = document.getElementById('canvas');
+var context = canvas.getContext('2d');
+
 function addClass(elem) { 
     elem.classList.remove("hidden");
     elem.classList.add("active");
@@ -77,11 +82,25 @@ function uploadImage() {
         });
     }
 }
-
+function test() {
+    // event.preventDefault();
+    context.drawImage(video,0,0);
+    var dataURL = canvas.toDataURL(video);
+    var xhr = new XMLHttpRequest();
+    var path = "post.php";
+    // var data = JSON.stringify({image: dataURL});
+    console.log(dataURL);
+    document.getElementById("capture").value= dataURL;
+      
+       /*  xhr.open("POST", path, true);
+        xhr.setRequestHeader("Content-Type", "text/html; charset=UTF-8");
+        xhr.send('webcamuploaded=' + data); */
+        
+       
+     
+};
 function openWebcam() {
-    var video = document.querySelector("#videoElement");
-    var canvas = document.getElementById('canvas');
-    var context = canvas.getContext('2d');
+    
     
     if (navigator.mediaDevices.getUserMedia) {       
         navigator.mediaDevices.getUserMedia({video: true})
@@ -92,25 +111,6 @@ function openWebcam() {
         console.log("Something went wrong!");
     });
 
-    document.getElementById('capture').addEventListener('click', function() {
-        context.drawImage(video,0,0);
-        var dataURL = canvas.toDataURL(video);
-        console.log(dataURL);
-        var change_running = false;
-        if(!change_running){
-            setTimeout(function(){
-                change_running = true;
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", 'post.php', true);
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-                xhr.withCredentials = true;
-                xhr.send('webcamuploaded='+dataURL);
-                document.getElementById('upload').submit();
-                change_running = false;     
-            }, 300);
-        }
-
-    });
     }
 }
 
