@@ -47,15 +47,14 @@ if (isset($_POST['webcam']))
             
             if (isset($_POST['webcamuploaded'])) {
                 echo "je rentre";
-                
                 $data = $_POST['webcamuploaded'];
                 list($type, $data) = explode(';', $data);
                 list(, $data)      = explode(',', $data);
                 $data = base64_decode($data);
-                if (!isset($_SESSION['id1']))
+                if (!isset($_SESSION['id_img']))
                     $i = 0;
                 else
-                    $i = $_SESSION['id1'] + 1;
+                    $i = $_SESSION['id_img'] + 1;
                 $uploadfile = file_put_contents('./images/user_images/'. $i, $data);
                 $uploaddir = './images/user_images/'. $i;
                 $iurl = $uploaddir;
@@ -75,15 +74,16 @@ if (isset($_POST['webcam']))
     }
 if (isset($_POST['poster_img']))
 {
+   
     $img_uploade_date = date("Y-m-d H:i:s");
     $req = $bdd->prepare('INSERT INTO `img`(`user_ID`, `img_name`, `img_upload_date`, `img_path`) VALUES(?,?,?,?)');
     $req->execute(array($id, "default", $img_uploade_date, $_SESSION['iurl']));
     $iurl = $_SESSION['iurl'];
     $req = $bdd->prepare('SELECT `img_ID` FROM `img` WHERE `img_path`= ?');
-    $req->execute(array($iurl)) && $img_id = $req->fetch();
-    $id1 = $img_id['img_ID'];
+    $req->execute(array($iurl)) && $img = $req->fetch();
+    $id_img = $img['img_ID'];
     $_SESSION['iurl'] = 0;
-    $_SESSION['id'] = $id;
-    header("Location: http://localhost:8080/cama/image.php?id=".$id);
+    $_SESSION['id_img'] = $id_img;
+    header("Location: http://localhost:8080/cama/image.php?id=".$id_img);
 }
 ?>
