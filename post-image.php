@@ -23,16 +23,27 @@
                         if (isset ($_POST['webcamuploaded']))
                         {
                             $ourl= $_POST['webcamuploaded'];
+                            
                             $alt = "photo_perso";
-                            echo '<img class="post_img" src="' . $ourl . '" alt="' . $alt .'" \>';
+                            echo '
+                            <img class="post_img" src="' . $ourl . '" alt="' . $alt .'" \> 
+                            ';
+                           
                         }
                         else
                         echo '<img class="post_img" src="' . $iurl . '" alt="' . $alt .'" \>';
                     }
                     else
                     {   
-                        echo '<video class="center" autoplay="true" id="videoElement"></video>
-                        <canvas id="canvas"  width="600" height="600" style="display:none";></canvas>';
+                        echo '
+                        <div>
+                        <div id="filter-webcam"></div>
+                        <video class="center" autoplay="true" id="videoElement"></video>
+                        </div>
+                        <div>
+                        <div id="filter-overview" > </div>
+                        <canvas id="canvas"  width="600" height="600"></canvas>
+                        </div>';
                     }
                     ?>
                 </div>
@@ -44,6 +55,10 @@
                                     <div class="custom-file">
                                         <ul>
                                             <?php
+
+                                                // if ($_POST['webcam'])
+                                                // {$_SESSION['webcam']= $_POST['webcam'];}
+                                               
                                             if (!$uploadfile)
                                                 echo'<input type="file" class="custom-file-input post_image" id="select-img" name="image">
                                                 <li><a href="#"><label class="" for="select-img">Selectionner une image</label></a></li>
@@ -51,9 +66,14 @@
                                                 <input type="submit" class="custom-file-input post_image" id="webcam" name="webcam" />
                                                 <li><a href="post.php" class="active"><label class="" for="webcam">Activer la webcam</label></a></li>';
                                             else if ($_POST['webcam'])
-                                                echo '<li><a class="post_image" href="post.php" title="">Annuler</a></li>
-                                                <li><button id="capture"   onclick=test() name="webcamuploaded" value="" >Prendre une photo</button></li>
-                                                <canvas id="canvas"></canvas>';
+                                                {
+                                                        echo '<li><a class="post_image" href="post.php" title="">Annuler</a></li>
+                                                        <li><button id="capture"   onclick=test()  name="webcamuploaded" value="" >Prendre une photo</button></li>
+                                                        <li><a href= "#"  id="sticker_on" name="sticker1" onclick="cadre1()"  value="">Cadre 1</a></li>
+                                                        <li><a href= "#"  id="sticker_on" name="sticker1" onclick="cadre3()"  value="">Cadre 3</a></li>
+                                                        <canvas id="canvas"></canvas>';
+
+                                                }
                                             else
                                                 echo '<li><a class="post_image" href="post.php" title="">Annuler</a></li>
                                                 <li><input type="submit" class="post-img active" name="poster_img" value= "Poster l\'image" title="Poster l\'image"></li>';
