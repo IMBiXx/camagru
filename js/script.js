@@ -1,8 +1,3 @@
-
-var video = document.querySelector("#videoElement");
-var canvas = document.getElementById('canvas');
-
-
 function addClass(elem) { 
     elem.classList.remove("hidden");
     elem.classList.add("active");
@@ -82,56 +77,43 @@ function uploadImage() {
         });
     }
 }
-function test() {
-    // event.preventDefault();
-var context = canvas.getContext('2d');
-    
-    context.drawImage(video,0,0);
-    var dataURL = canvas.toDataURL(video);
-    var xhr = new XMLHttpRequest();
-    var path = "post.php";
-    // var data = JSON.stringify({image: dataURL});
-    console.log(dataURL);
-    document.getElementById("capture").value= dataURL;
-      
-       /*  xhr.open("POST", path, true);
-        xhr.setRequestHeader("Content-Type", "text/html; charset=UTF-8");
-        xhr.send('webcamuploaded=' + data); */
-        
-       
-     
-};
-function openWebcam() {
-    
-    if (navigator.mediaDevices.getUserMedia) {       
-        navigator.mediaDevices.getUserMedia({video: true})
-    .then(function(stream) {
-        video.srcObject = stream;
-    })
-    .catch(function(error) {
-        console.log("Something went wrong!");
-    });
 
+function openWebcam() {
+
+ var video = document.querySelector("#videoElement");
+ var canvas = document.getElementById('canvas');
+ var context = canvas.getContext('2d');
+ 
+  
+ if (navigator.mediaDevices.getUserMedia) {       
+     navigator.mediaDevices.getUserMedia({video: true})
+   .then(function(stream) {
+     video.srcObject = stream;
+   })
+   .catch(function(error) {
+     console.log("Something went wrong!");
+   });
+}
+}
+
+function test() {
+    var video = document.querySelector("#videoElement");
+var canvas = document.getElementById('canvas');
+var context = canvas.getContext('2d');
+
+ 
+if (navigator.mediaDevices.getUserMedia) {       
+    navigator.mediaDevices.getUserMedia({video: true})
+  .then(function(stream) {
+    video.srcObject = stream;
+  })
+  .catch(function(error) {
+    console.log("Something went wrong!");
+  });
+context.drawImage(video,0,0);
+var dataURL = canvas.toDataURL(video);
+console.log("Something!");
+document.getElementById("capture").value = dataURL;
     }
 }
 
-function uploadProfilImage() {
-    // var formCover = document.getElementById('cover');
-    // var formPp = document.getElementById('add_pp');
-    // if (formCover)
-    //     var inputCover = document.getElementById('file');
-    // if (formPp)
-    //     var inputPp = document.getElementById('pp');
-    // var change_running = false;
-    // if (formPp) {
-    //     inputPp.addEventListener('change', function() {
-    //         if(!change_running){
-    //             setTimeout(function(){
-    //                 change_running = true;
-    //                 formPp.submit();
-    //                 change_running = false;     
-    //             }, 300);
-    //         }
-    //     });
-    // }
-}
