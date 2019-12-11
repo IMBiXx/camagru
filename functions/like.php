@@ -5,7 +5,7 @@
     if (isset($_SESSION['id'])){
         $user_ID = $_SESSION['id'];
         $img_ID = $_POST['image_ID'];
-        include("../db_connect.php");
+        // include("../db_connect.php");
         $bdd = db_connect();
         $req_img = $bdd->prepare("SELECT * FROM `liked` WHERE `user_ID`= ? AND `img_ID`= ?");
         $req_img->execute(array($user_ID, $img_ID)); 

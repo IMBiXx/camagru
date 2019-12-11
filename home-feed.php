@@ -6,9 +6,15 @@ if (isset($_GET['page']))
     $page = $_GET['page'];
 else
     $page = 1;
-$nbPosts = count($images);
-$nbPages = round($nbPosts / 5);
 $nbPostsPerPage = 5;
+if ($images) {
+    $nbPosts = count($images);
+    $nbPages = round($nbPosts / $nbPostsPerPage);
+}
+else {
+    $nbPosts = 0;
+    $nbPages = 1;
+}
 echo $_SESSION['img_id2'] = $images[$c]['img_ID'];
 ?>
 <div class="col-lg-9 col-md-8 center">

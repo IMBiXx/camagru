@@ -18,8 +18,20 @@ $user_images = get_image_by_user_ID($_SESSION['id']);
             </div><!--user-profile end-->
             <ul class="user-fw-status">
                 <li>
-                    <h4>Image<?php echo(plural(count($user_images))); ?></h4>
-                    <span><?php echo (count($user_images));?></span>
+                    <h4>Image
+                    <?php 
+                    if ($user_images)
+                        echo(plural(count($user_images)));
+                    ?>
+                    </h4>
+                    <span>
+                        <?php
+                        if ($user_images)
+                            echo (count($user_images));
+                        else
+                            echo "0";
+                        ?>
+                    </span>
                 </li>
                 <li>
                     <h4>Commentaire<?php echo(plural(count($comments))); ?></h4>

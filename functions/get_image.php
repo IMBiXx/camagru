@@ -25,7 +25,8 @@ function get_image_by_user_ID($user_ID) {
         $rep[] = $donnees;
     }
     $req->closeCursor();
-    return array_reverse($rep);
+    if ($rep)
+        return array_reverse($rep);
 }
 function get_images() {
     $bdd = db_connect();
@@ -36,5 +37,6 @@ function get_images() {
         $rep[] = $donnees;
     }
     $req->closeCursor();
+    if ($rep)
     return array_reverse($rep);
 }
