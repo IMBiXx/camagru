@@ -38,5 +38,5 @@ function get_images() {
     }
     $req->closeCursor();
     if ($rep)
-    return array_reverse($rep);
+        return array_reverse($rep);
 }
