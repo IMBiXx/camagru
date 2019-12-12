@@ -20,15 +20,14 @@ include("db_manager.php");
     if (isset($_POST['webcamuploaded'])) {
         $data = $_POST['webcamuploaded'];
         list($data, $src) = explode('http', $data);
-        //substr($data, 22, $len);
         list($type, $data) = explode(';', $data);
         list(, $data)      = explode(',', $data);
-        //list($data ,) = explode('==', $data);
-        //echo $data;
         $_SESSION['data'] = $data;
-        $_SESSION['img_src'] = "http" . $src;
+        if($src != "")
+            $_SESSION['img_src'] = "http" . $src;
+        else
+        $_SESSION['img_src'] = "";
         
-        //echo $src;
         $data = base64_decode($data);
         if (!isset($_SESSION['id_img']))
         {
@@ -44,7 +43,6 @@ include("db_manager.php");
         $uploaddir = './images/user_images/'. $i;
         $iurl = $uploaddir;
         $_SESSION['iurl'] = $iurl;
-        //echo $_SESSION['iurl'];
     }
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
