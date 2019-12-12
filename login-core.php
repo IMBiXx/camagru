@@ -17,10 +17,13 @@ if(isset($_POST['formconnexion']))
             $_SESSION['pseudo'] = $userinfo['user_pseudo'];
             $_SESSION['mail'] = $userinfo['user_email'];
             $msg = "Vous êtes maintenant connecté !";
+            $status = " is-valid";
             header("refresh:2;url=./profil.php");
         }
-        else
+        else {
             $error = "l'adresse email ou le mot de passe n'existe pas.";
+            $status = " is-invalid";
+        }
     }
     else
         $error = "les champs ne peuvent pas être vide.";
@@ -47,7 +50,7 @@ if(isset($_POST['formconnexion']))
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-envelope-open"></i></span>
                     </div>
-                <input type="email" name="mailconnect" class="form-control" aria-describedby="emailHelp" placeholder="Entrez votre adresse email">
+                <input type="email" name="mailconnect" class="form-control<?php echo $status;?>" aria-describedby="emailHelp" placeholder="Entrez votre adresse email">
                 </div>
             </div>
             <label>Mot de passe</label>
@@ -56,7 +59,7 @@ if(isset($_POST['formconnexion']))
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-lock"></i></span>
                     </div>
-                <input type="password" name="mdpconnect" class="form-control" placeholder="Entrez votre mot de passe">
+                <input type="password" name="mdpconnect" class="form-control<?php echo $status;?>" placeholder="Entrez votre mot de passe">
                 </div>
             </div>
             <button type="submit" name="formconnexion" class="btn btn-primary">Se connecter</button>
