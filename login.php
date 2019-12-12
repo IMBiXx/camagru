@@ -10,7 +10,9 @@
 <div class="main">
     <div class="container">
     <?php
-        include("login-core.php");
+    if (isset($_SESSION['id']))
+      header("Location: ./profil.php");
+    include("login-core.php");
     ?>
 </div>
 </div>

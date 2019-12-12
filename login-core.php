@@ -1,5 +1,45 @@
+<?php
+$bdd = db_connect();
+session_start();
+if(isset($_POST['formconnexion']))
+{
+    $mailconnect = htmlspecialchars($_POST['mailconnect']);
+    $mdpconnect = sha1($_POST['mdpconnect']);
+    if(!empty($mailconnect) && !empty($mdpconnect))
+    {
+        $requser = $bdd->prepare('SELECT * FROM user WHERE user_email = ?  AND user_password = ? ');
+        $requser->execute(array($mailconnect, $mdpconnect));
+        $userexist = $requser->rowCount();
+        if($userexist)
+        {
+            $userinfo = $requser->fetch();
+            $_SESSION['id'] = $userinfo['user_ID'];
+            $_SESSION['pseudo'] = $userinfo['user_pseudo'];
+            $_SESSION['mail'] = $userinfo['user_email'];
+            $msg = "Vous êtes maintenant connecté !";
+            header("refresh:2;url=./profil.php");
+        }
+        else
+            $error = "l'adresse email ou le mot de passe n'existe pas.";
+    }
+    else
+        $error = "les champs ne peuvent pas être vide.";
+}
+?>
 <div class="col-lg-6 center">
-    <form action="connexion.php" method="post">
+    <form action="login.php" method="post">
+    <?php
+    if(isset($error)) {
+        echo '<div class="alert alert-danger">
+        <strong>Mince !</strong> <a href="#" class="alert-link">Une erreur est survenue,</a> ' . $error . '
+    </div>';
+    }
+    else if (isset($msg)) {
+        echo '<div class="alert alert-success">
+        <strong>Super !</strong> ' . $msg . ' <a href="./profil.php" class="alert-link">Redirection...</a>
+    </div>';
+    }
+    ?>
         <fieldset>
             <label>Adresse email</label>
             <div class="form-group">
