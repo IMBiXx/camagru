@@ -19,8 +19,15 @@ include("db_manager.php");
 
     if (isset($_POST['webcamuploaded'])) {
         $data = $_POST['webcamuploaded'];
+        list($data, $src) = explode('http', $data);
         list($type, $data) = explode(';', $data);
         list(, $data)      = explode(',', $data);
+        $_SESSION['data'] = $data;
+        if($src != "")
+            $_SESSION['img_src'] = "http" . $src;
+        else
+        $_SESSION['img_src'] = "";
+        
         $data = base64_decode($data);
         if (!isset($_SESSION['id_img']))
         {
@@ -47,7 +54,7 @@ include("db_manager.php");
         }
         if (isset($_POST['poster_img']))
         {
-            echo 'ulr: '.$_SESSION['iurl'];
+            //echo 'ulr: '.$_SESSION['iurl'];
             $img_uploade_date = date("Y-m-d H:i:s");
             $req = $bdd->prepare('INSERT INTO `img`(`user_ID`, `img_name`, `img_upload_date`, `img_path`) VALUES(?,?,?,?)');
             $req->execute(array($id, "default", $img_uploade_date, $_SESSION['iurl']));

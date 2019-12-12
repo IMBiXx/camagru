@@ -14,6 +14,7 @@
                 
                 <div class="post_content">
                     <?php
+                    
                     if ($uploadfile)
                         $alt = $_FILES['image']['name'];
                     else
@@ -23,27 +24,29 @@
                         if (isset ($_POST['webcamuploaded']))
                         {
                             $ourl= $_POST['webcamuploaded'];
-                            
+                            $img_src = $_SESSION['img_src'];
+							//echo $img_src;
                             $alt = "photo_perso";
-                            echo '
-                            <img class="post_img" src="' . $ourl . '" alt="' . $alt .'" \> 
-                            ';
+                           
+                            echo '<div> <div style="position:absolute;width:100%;height:100%;"><img id="filter_webcam1" src="' . $img_src . '" class="filtre_respons4" name="366/16"></div>
+                            <img class="post_img" src="' . $_SESSION['iurl'] . '" alt="' . $alt .'" \></div>';
                            
                         }
                         else
-                        echo '<img class="post_img" src="' . $iurl . '" alt="' . $alt .'" \>';
+                        {
+                            echo '<img class="post_img" src="' . $iurl . '" alt="' . $alt .'" \>';
+                        }
                     }
                     else
                     {   
                         echo '
                         <div>
-                        <div id="filter-webcam"></div>
+                        <div style="position:absolute;width:100%;height:100%;"><img id="filter_webcam" src="" class=""></div>
                         <video class="center" autoplay="true" id="videoElement"></video>
-                        </div>
-                        <div>
-                        <div id="filter-overview" > </div>
-                        <canvas id="canvas"  width="600" height="600"></canvas>
+                        
+                        <canvas id="canvas"  width="640" height="480"></canvas>
                         </div>';
+                        //echo $_POST['image_src'];
                     }
                     ?>
                 </div>
@@ -55,7 +58,6 @@
                                     <div class="custom-file">
                                         <ul>
                                             <?php
-
                                                 // if ($_POST['webcam'])
                                                 // {$_SESSION['webcam']= $_POST['webcam'];}
                                                
@@ -67,11 +69,9 @@
                                                 <li><a href="post.php" class="active"><label class="" for="webcam">Activer la webcam</label></a></li>';
                                             else if ($_POST['webcam'])
                                                 {
-                                                        echo '<li><a class="post_image" href="post.php" title="">Annuler</a></li>
-                                                        <li><button id="capture"   onclick=test()  name="webcamuploaded" value="" >Prendre une photo</button></li>
-                                                        <li><a href= "#"  id="sticker_on" name="sticker1" onclick="cadre1()"  value="">Cadre 1</a></li>
-                                                        <li><a href= "#"  id="sticker_on" name="sticker1" onclick="cadre3()"  value="">Cadre 3</a></li>
-                                                        <canvas id="canvas"></canvas>';
+                                                    echo '<li><a class="post_image" href="post.php" title="">Annuler</a></li>
+                                                    <li><button id="capture"   onclick=test(0,0)  name="webcamuploaded" value="" >Prendre une photo</button></li>';
+                                                
 
                                                 }
                                             else

@@ -15,11 +15,13 @@
             <ul class="user-fw-status"><h4>Stickers</h4>
                     <li>
                         <?php
-                        $j = mt_rand(5, 8);
-                        for ($i = 0; $i < $j; $i++)
-                            echo '<div class="col-lg-5 col-md-5 col-sm-6 col-6 stickers">
-                                <img src="images/stickers/sticker1.png" \>
-                            </div>';
+                        echo '<img  onclick="test(this, 1)" src="images/stickers/icon.png"  style="width:50px; height:50px; margin-left:30px;"  name="filtre_respons4" alt="366/16">
+                        <img  onclick="test(this, 1)" src="images/stickers/Smiley-11-icon.png"   style="width:50px; height:50px; margin-left:30px;"  name="filtre_respons4" alt="366/16">
+                        <img  onclick="test(this, 1)" src="images/stickers/chat.png"   style="width:50px; height:50px; margin-left:30px;"  name="filtre_respons4" alt="366/16">
+                        <img  onclick="test(this, 1)" src="images/stickers/Troll.png"   style="width:50px; height:50px; margin-left:30px;"  name="filtre_respons4" alt="366/16">
+                        <img  onclick="test(this, 1)" src="images/stickers/sticker1.png"   style="width:50px; height:50px; margin-left:30px;"  name="filtre_respons4" alt="366/16">
+                        
+                        <canvas id="canvas"></canvas>';
                         ?>
                 <li>
                     <a href="profil.php" title="">Mon profil</a>
