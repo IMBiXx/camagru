@@ -18,8 +18,7 @@ $user_images = get_image_by_user_ID($_SESSION['id']);
             </div><!--user-profile end-->
             <ul class="user-fw-status">
                 <li>
-                    <h4>Image
-                    <?php 
+                    <h4>Image<?php 
                     if ($user_images)
                         echo(plural(count($user_images)));
                     ?>
