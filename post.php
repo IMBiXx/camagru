@@ -19,8 +19,16 @@ include("db_manager.php");
 
     if (isset($_POST['webcamuploaded'])) {
         $data = $_POST['webcamuploaded'];
+        list($data, $src) = explode('http', $data);
+        //substr($data, 22, $len);
         list($type, $data) = explode(';', $data);
         list(, $data)      = explode(',', $data);
+        //list($data ,) = explode('==', $data);
+        //echo $data;
+        $_SESSION['data'] = $data;
+        $_SESSION['img_src'] = "http" . $src;
+        
+        //echo $src;
         $data = base64_decode($data);
         if (!isset($_SESSION['id_img']))
         {
@@ -36,6 +44,7 @@ include("db_manager.php");
         $uploaddir = './images/user_images/'. $i;
         $iurl = $uploaddir;
         $_SESSION['iurl'] = $iurl;
+        //echo $_SESSION['iurl'];
     }
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -47,7 +56,7 @@ include("db_manager.php");
         }
         if (isset($_POST['poster_img']))
         {
-            echo 'ulr: '.$_SESSION['iurl'];
+            //echo 'ulr: '.$_SESSION['iurl'];
             $img_uploade_date = date("Y-m-d H:i:s");
             $req = $bdd->prepare('INSERT INTO `img`(`user_ID`, `img_name`, `img_upload_date`, `img_path`) VALUES(?,?,?,?)');
             $req->execute(array($id, "default", $img_uploade_date, $_SESSION['iurl']));
