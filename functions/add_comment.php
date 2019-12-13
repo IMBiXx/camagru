@@ -3,8 +3,10 @@ function add_comment($user_ID,$img_ID, $comment_comment) {
     $comment_comment = htmlspecialchars($comment_comment);
     $bdd = db_connect();
     $addcomment = $bdd->prepare("INSERT INTO `comment`(`user_ID`, `img_ID`,`comment_comment`) VALUES(?,?,?)");
+    if ($comment_comment != "")
+    {
     $addcomment->execute(array($user_ID, $img_ID, $comment_comment)); 
-
+    }
     $reqid = $bdd->prepare('SELECT `user_ID` FROM img WHERE `img_ID` = ?');
     $reqid->execute(array($img_ID)) && $row = $reqid->fetch();
     $user_id = $row['user_ID'];
