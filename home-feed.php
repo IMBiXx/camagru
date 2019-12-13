@@ -59,9 +59,9 @@ echo $_SESSION['img_id2'] = $images[$c]['img_ID'];
                 if (itsMe($user['user_ID']))
                     echo '<form method="post" action="delete_img.php">
                     <div class="ed-opts">
-                    <a href="#" title="" class="ed-opts-open" onclick="showOptions(' . $images[$c]['img_ID'] .')"><i class="la la-ellipsis-v"></i></a>
+                    <span class="ed-opts-open" onclick="showOptions(' . $images[$c]['img_ID'] .')"><i class="la la-ellipsis-v"></i></span>
                     <ul id="delete-'. $images[$c]['img_ID'].'" class="ed-options hidden">
-                    <button onclick="" value="'. $images[$c]['img_ID'] .'" name="delete_img">Supprimer</button>
+                    <button class="btn" value="'. $images[$c]['img_ID'] .'" name="delete_img">Supprimer</button>
                     </ul>
                     </div>
                     </form>';
