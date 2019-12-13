@@ -8,17 +8,18 @@
 <body>
 <?php include("topmenu.php"); ?>
 <div class="main">
-    <div class="container">
-<?php
-$images = get_images();
-$imguserpp = './images/user/';
-$imgusercover = './image/user_cover/';
-$imguserimg = './images/user_images/';
-    if (isset($_SESSION['id']))
-      include("home-user-profil.php");
-    include("home-feed.php");
-?>
+  <div class="container">
+  <?php
+  $images = get_images();
+  $imguserpp = './images/user/';
+  $imgusercover = './image/user_cover/';
+  $imguserimg = './images/user_images/';
+      if (isset($_SESSION['id']))
+        include("home-user-profil.php");
+      include("home-feed.php");
+  ?>
+  </div>
 </div>
-</div>
+<?php include("footer.php"); ?>
 </body>
 </html>

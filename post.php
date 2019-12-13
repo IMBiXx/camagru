@@ -92,5 +92,6 @@ include("db_manager.php");
         ?>
         </div>
     </div>
+<?php include("footer.php"); ?>
 </body>
 </html>

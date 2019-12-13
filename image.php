@@ -25,5 +25,6 @@ include("functions/add_comment.php");
       ?>
     </div>
 </div>
+<?php include("footer.php"); ?>
 </body>
 </html>
