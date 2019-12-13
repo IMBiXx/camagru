@@ -1,21 +1,21 @@
 <div id="comments" class="post-comment-box">
     <?php
     if ($_SESSION['id'])
-    echo '<div id="post-comment">
-        <h3>Poster un commentaire</h3>
-        <div class="user-poster">
-            <div class="usr-post-img">
-                <img src="' . $me['user_photo'] . '" alt="' . $me['user_pseudo'] . '">
-            </div>
-            <div class="post_comment_sec">
-                <form action="image.php" method="post">
-                    <input type="hidden" value="' . $_GET['id'] . '" name="img_ID" />
-                    <textarea placeholder="Votre message" name="comment"></textarea>
-                    <button type="submit">Envoyer</button>
-                </form>
-            </div><!--post_comment_sec end-->
-        </div><!--user-poster end-->
-    </div>';
+        echo '<div id="post-comment">
+            <h3>Poster un commentaire</h3>
+            <div class="user-poster">
+                <div class="usr-post-img">
+                    <img src="' . $me['user_photo'] . '" alt="' . $me['user_pseudo'] . '">
+                </div>
+                <div class="post_comment_sec">
+                    <form action="image.php" method="post">
+                        <input type="hidden" value="' . $_GET['id'] . '" name="img_ID" />
+                        <textarea placeholder="Votre message" name="comment"></textarea>
+                        <button type="submit">Envoyer</button>
+                    </form>
+                </div><!--post_comment_sec end-->
+            </div><!--user-poster end-->
+        </div>';
 ?>
 </div>
 <div class="comment-section">

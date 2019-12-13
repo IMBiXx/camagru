@@ -56,6 +56,6 @@ $_SESSION['img_id'] = $img_id;
                 </div>
             </div>
         </div>
-    </div>
     <?php include("image-comments.php"); ?>
+    </div>
 </div>
