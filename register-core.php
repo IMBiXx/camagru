@@ -36,9 +36,9 @@ if (isset($_POST['register'])) {
     else {
         $insertmbr = $bdd->prepare("INSERT INTO user(user_pseudo, user_email, user_password, user_preferences) VALUES(?,?,?,?)");
         $insertmbr->execute(array($pseudo, $mail, $mdp, 0));           
-        $reqid = $bdd->prepare('SELECT id FROM user WHERE user_pseudo = ? and user_email = ?');
+        $reqid = $bdd->prepare('SELECT `user_ID` FROM user WHERE user_pseudo = ? and user_email = ?');
         $reqid->execute(array($pseudo , $mail)) && $row = $reqid->fetch();
-        $cle = $row['id'];
+        $cle = $row['user_ID'];
         $destinataire = $mail;
         $sujet = "Activer votre compte" ;
         $headers .= 'MIME-Version: 1.0'."\r\n";

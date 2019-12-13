@@ -1,6 +1,6 @@
 <?php
 $servername = "mysql:host=localhost";
-$username = "wafa";
-$password = "root";
+$username = "root";
+$password = "Motivation03";
 $dbname = "camagru";
 ?>

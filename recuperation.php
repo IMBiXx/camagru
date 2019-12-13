@@ -1,4 +1,5 @@
 <?php
+include("db_manager.php");
 function debug_to_console($data) {
 	$output = $data;
 	if (is_array($output))
@@ -7,7 +8,7 @@ function debug_to_console($data) {
 	echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
   }
 try{
-   $bdd = new PDO('mysql:host=localhost; dbname=camagru', 'wafa', 'root');
+   $bdd = new PDO($servername.";dbname=".$dbname, $username, $password);
 } catch(PDOException $e){
 die('Erreur:'.$e->getMessage());
 }  

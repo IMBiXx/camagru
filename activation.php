@@ -9,9 +9,9 @@ try{
 
 $login = $_GET['log'];
 $cle = $_GET['cle'];
-$reqactive = $bdd->prepare('SELECT user_validated, id FROM user WHERE  id = ? ');  
+$reqactive = $bdd->prepare('SELECT user_validated, `user_ID` FROM user WHERE  `user_ID` = ? ');  
 $reqactive->execute(array($cle)) && $row = $reqactive->fetch();
-    $clebdd = $row['id'];
+    $clebdd = $row['user_ID'];
     $actif = $row['user_validated']; 
  
 if($actif == '1') 
@@ -22,7 +22,7 @@ else
   {
      if($cle == $clebdd)	
        {
-          $stmt = $bdd->prepare('UPDATE `user` SET user_validated = 1 WHERE id = ? ');
+          $stmt = $bdd->prepare('UPDATE `user` SET user_validated = 1 WHERE `user_ID` = ? ');
           $stmt->bindParam(array($cle));
           $stmt->execute(array($cle));
           echo "Votre compte a bien été activé !";
