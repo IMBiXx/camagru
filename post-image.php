@@ -25,11 +25,21 @@
                         {
                             $ourl= $_POST['webcamuploaded'];
                             $img_src = $_SESSION['img_src'];
-							//echo $img_src;
+                            echo $_SESSION['iurl'];
+                            $dest = imagecreatefrompng($_SESSION['iurl']);
+                            $src = imagecreatefrompng($img_src);
+                            imagealphablending($dest, false);
+                            imagesavealpha($dest, true);
                             $alt = "photo_perso";
                            
                             echo '<div> <div style="position:absolute;width:100%;height:100%;"><img id="filter_webcam1" src="' . $img_src . '" class="filtre_respons4" name="366/16"></div>
                             <img class="post_img" src="' . $_SESSION['iurl'] . '" alt="' . $alt .'" \></div>';
+                            
+                            imagecopymerge($dest, $src, 0, 0, 0, 0, 100, 100,100);                            
+                            
+                            imagepng($dest, $_SESSION['iurl']);
+                            imagedestroy($dest);
+                            imagedestroy($src);
                            
                         }
                         else
