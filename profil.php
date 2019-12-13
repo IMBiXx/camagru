@@ -8,7 +8,7 @@
     $bdd = db_connect();
   ?>
 </head>
-<body>
+<body onload="uploadProfilImage()">
 <?php
   include("topmenu.php");
   ?>
@@ -18,7 +18,7 @@
   else
     $user = get_user_by_ID($_GET['id']);
   include("functions/change_photo.php");
-  if($_SERVER["REQUEST_METHOD"] == "POST") {
+  if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['chcover'] || $_POST['chpp']) {
     if (isset($_POST['chcover'])) {
       $uploaddir = './images/user_cover/';
       $type = '_cover.';
@@ -47,6 +47,6 @@
   include("profil-user.php");
 ?>
 </div>
-<?php include("footer.php"); ?>
 </body>
+<?php include("footer.php"); ?>
 </html>

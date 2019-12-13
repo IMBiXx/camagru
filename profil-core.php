@@ -10,6 +10,49 @@
     else
         $title = 'Images de '.$user['user_pseudo'];
 ?>
+<?php
+ session_start();
+if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_param'])){
+    
+    try{
+    include("db_manager.php");
+        $bdd = new PDO($servername.";dbname=".$dbname, $username, $password);
+    } catch(PDOException $e){
+    die('Erreur:'.$e->getMessage());
+    }  
+    $id = $_SESSION['id'];
+    if(isset($_POST['submit_param'])) {
+        $mail = htmlspecialchars($_POST['newemail']);
+        echo $pseudo = htmlspecialchars($_POST['newusername']);
+         $old_pass = sha1($_POST['old-password']);
+        $new_pass = sha1($_POST['new-password']);
+        $requser1 = $bdd->prepare('SELECT * FROM user WHERE `user_ID` = ? ');
+        $requser1->execute(array($id)) && $pass = $requser1->fetch();
+        $password = $pass['user_password'];
+        $email_bas = $pass['user_email'];
+        $mailexist = $requser->rowCount();
+        if (strlen($new_pass) < 8)
+            $error = "votre mot de passe doit comporter au minimum 8 caractères.";
+        else if(empty($_POST['newemail']) || empty($_POST['newusername'] ) || empty($_POST['old-password']) || empty($_POST['new-password']))
+            $error = "tous les champs doivent être remplis.";
+        else if (strlen($pseudo) > 255)
+            $error = "votre pseudo est trop long.";
+        else if($olde_pass != $password)
+            $error = "les mots de passe ne correspondent pas.";
+        else if(!filter_var($mail, FILTER_VALIDATE_EMAIL))
+            $error = "votre adresse email n'est pas valide.";
+          else if($mailexist != 0 && $mail != $email_bas)
+              $error = "l'adresse email existe déjà.";
+        else {
+            echo $id;
+            $insert = $bdd->prepare('UPDATE `user` SET user_pseudo = ?, user_email = ? , user_password = ? WHERE `user_ID` = ?');
+            $insert->execute(array($pseudo, $mail, $new_pass, $id)); 
+            echo "pouet";
+            $msg ="Votre modification à bien été prise en compte";   
+        }
+    }
+}
+?>
     <div class="col-lg-9 paddingtop center">
         <div class="fade active show" id="images" aria-labelledby="images-tab">
             <div class="acc-setting">
@@ -33,15 +76,41 @@
         <div class="fade hidden none" id="parametres" aria-labelledby="parametres-tab">
             <div class="acc-setting">
                 <h3>Paramètres</h3>
-                <form>
+                <form method="post" action="profil.php">
+                <?php
+                    if(isset($error)) {
+                        echo '<div class="alert alert-danger">
+                        <strong>Mince !</strong> <a href="#" class="alert-link">Une erreur est survenue,</a> ' . $error . '
+                    </div>';
+                    }
+                    else if (isset($msg)) {
+                        echo '<div class="alert alert-success">
+                        <strong>Super !</strong> ' . $msg . ' <a href="./login.php" class="alert-link">Vous pouvez maintenant vous connecter</a>.
+                    </div>';
+                    }
+                ?>
                     <div class="notbar">
-                        <h4>Notifications par email</h4>
+                        <h4>Notifications par mail</h4>
                         <p>Activer les notifications par email lorsque quelqu'un commente une de vos images.</p>
                         <div class="toggle-btn">
                             <div class="custom-control custom-switch">
                                 <input type="checkbox" class="custom-control-input" id="customSwitch1" checked="">
                                 <label class="custom-control-label" for="customSwitch1"></label>
                             </div>
+                        </div>
+                    </div>
+                    <div class="cp-field">
+                        <h5>Changer le nom d'utilisateur</h5>
+                        <div class="cpp-fiel">
+                            <input type="text" name="newusername" placeholder="Nouveau nom d'utilisateur">
+                            <i class=""></i>
+                        </div>
+                    </div>
+                    <div class="cp-field">
+                        <h5>Changer l'adresse email</h5>
+                        <div class="cpp-fiel">
+                            <input type="email" name="newemail" placeholder="Nouvelle adresse email">
+                            <i class="fa fa-email"></i>
                         </div>
                     </div>
                     <div class="cp-field">
@@ -58,16 +127,10 @@
                             <i class="fa fa-lock"></i>
                         </div>
                     </div>
-                    <div class="cp-field">
-                        <h5>Répéter le mot de passe</h5>
-                        <div class="cpp-fiel">
-                            <input type="password" name="repeat-password" placeholder="Répéter le mot de passe">
-                            <i class="fa fa-lock"></i>
-                        </div>
-                    </div>
+                   
                     <div class="save-stngs">
                         <ul>
-                            <li><button type="submit">Sauvegarder</button></li>
+                            <li><button type="submit" name="submit_param">Sauvegarder</button></li>
                         </ul>
                     </div>
                 </form>
