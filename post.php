@@ -80,18 +80,18 @@ include("db_manager.php");
     include("topmenu.php");
     redirectTo($loginpage);
 ?>
-    <div class="main">
-        <div class="container">
-        <?php
-            $images = get_images();
-            include("post-image.php");
-            if (!$uploadfile)
-                include("home-user-profil.php");
-            else
-                include("post-stickers.php");
-        ?>
-        </div>
+<div class="main">
+    <div class="container">
+    <?php
+        $images = get_images();
+        include("post-image.php");
+        if (!$uploadfile || !$_POST['webcam'])
+            include("home-user-profil.php");
+        else
+            include("post-stickers.php");
+    ?>
     </div>
+</div>
 <?php include("footer.php"); ?>
 </body>
 </html>

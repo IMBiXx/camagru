@@ -265,6 +265,8 @@ ol, ul {
 .post-st ul li a:hover, .post-st ul li .active {
     background-color: #4582EC;
     color: #fff;
+    height: 40px;
+    vertical-align: inherit;
 }
 .posts-section {
     float: left;
