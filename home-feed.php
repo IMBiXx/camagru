@@ -57,6 +57,7 @@ echo $_SESSION['img_id2'] = $images[$c]['img_ID'];
                             </div>
                         </div>';
                 if (itsMe($user['user_ID']))
+<<<<<<< HEAD
                 $_SESSION['img_id'] = $images[$c]['img_ID'];
                 echo '<form method="post" action="delete_img.php">
                 <div class="ed-opts">
@@ -66,6 +67,16 @@ echo $_SESSION['img_id2'] = $images[$c]['img_ID'];
                 </ul>
                 </div>
                 </form>';
+=======
+                    echo '<form method="post" action="delete_img.php">
+                    <div class="ed-opts">
+                    <a href="#" title="" class="ed-opts-open" onclick="showOptions(' . $images[$c]['img_ID'] .')"><i class="la la-ellipsis-v"></i></a>
+                    <ul id="delete-'. $images[$c]['img_ID'].'" class="ed-options hidden">
+                    <button onclick="" value="'. $images[$c]['img_ID'] .'" name="delete_img">Supprimer</button>
+                    </ul>
+                    </div>
+                    </form>';
+>>>>>>> dabbe73971a2bf6b49d17a7ebeb808e0cb84bc9b
                 echo '</div>
                 <div class="post_content">                    
                     <a class="center" href="./image.php?id=' . $images[$c]['img_ID'] .'"><img class="post_img" src="' . $images[$c]['img_path'] . '" alt="sample image" \></a>

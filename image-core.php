@@ -38,7 +38,11 @@ echo $_SESSION['img_id'] = $img_id;
                         echo '<div class="ed-opts">
                         <a href="#" title="" class="ed-opts-open" onclick="showOptions(' . $_GET['id'] .')"><i class="la la-ellipsis-v"></i></a>
                         <ul id="delete-' . $image['img_ID'] .'" class="ed-options hidden">
+<<<<<<< HEAD
                             <button class="btn" onclick="" name="delete_img">Supprimer</button>
+=======
+                            <button value="' . $image['img_ID'] .'" name="delete_img">Supprimer</button>
+>>>>>>> dabbe73971a2bf6b49d17a7ebeb808e0cb84bc9b
                         </ul>
                     </div>
                 </div>';
