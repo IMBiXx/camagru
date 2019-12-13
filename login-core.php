@@ -13,12 +13,17 @@ if(isset($_POST['formconnexion']))
         if($userexist)
         {
             $userinfo = $requser->fetch();
+            if ($userinfo['user_validated'] == 1 )
+            {
             $_SESSION['id'] = $userinfo['user_ID'];
             $_SESSION['pseudo'] = $userinfo['user_pseudo'];
             $_SESSION['mail'] = $userinfo['user_email'];
             $msg = "Vous êtes maintenant connecté !";
             $status = " is-valid";
             header("refresh:2;url=./profil.php");
+            }
+            else 
+            $error = "l'adresse email n'a pas été validée.";
         }
         else {
             $error = "l'adresse email ou le mot de passe n'existe pas.";
