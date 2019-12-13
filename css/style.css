@@ -327,7 +327,7 @@ ol, ul {
 	position: relative;
 	top: 7px;
 }
-.ed-opts > a {
+.ed-opts > span {
 	 color: #b2b2b2;
     font-size: 24px;
     float: right;
@@ -375,11 +375,11 @@ ol, ul {
 	font-size: 14px;
 	font-weight: 600;
 }
-.ed-opts > a:hover {
+.ed-opts > span:hover {
 	color: #4582EC;
 }
 
-.ask-question, nav, .notification-box.active, nav ul li a, .user-account-settingss.active, .user-info a, .suggestion-usd > span i, .view-more > a, .tags-sec ul li a, .post-st ul li a, .ed-opts > a, .bk-links li a, .like-com li span, .user-profy > a, .slick-previous:before, .slick-nexti:before, .comment > a, .sign_link > a, .post-popup, .post-project > a, .post-project-fields form ul li button, .post-project-fields form ul li a, .sign-control li a, .cover-sec > a, .star-descp > a, .message-btn a, .pf-gallery ul li, .gallery_pt:before, .gallery_pt > a, .overview-box, .skl-name, .conv-list, .save-stngs ul li button, .forum-links.active, .react-links li a, .next-prev > a, nav ul li:hover > ul, .user-pro-img > a i {
+.ask-question, nav, .notification-box.active, nav ul li a, .user-account-settingss.active, .user-info a, .suggestion-usd > span i, .view-more > a, .tags-sec ul li a, .post-st ul li a, .ed-opts > span, .bk-links li a, .like-com li span, .user-profy > a, .slick-previous:before, .slick-nexti:before, .comment > a, .sign_link > a, .post-popup, .post-project > a, .post-project-fields form ul li button, .post-project-fields form ul li a, .sign-control li a, .cover-sec > a, .star-descp > a, .message-btn a, .pf-gallery ul li, .gallery_pt:before, .gallery_pt > a, .overview-box, .skl-name, .conv-list, .save-stngs ul li button, .forum-links.active, .react-links li a, .next-prev > a, nav ul li:hover > ul, .user-pro-img > a i {
     -webkit-transition: all 0.4s ease-in;
     -moz-transition: all 0.4s ease-in;
     -ms-transition: all 0.4s ease-in;
@@ -1023,3 +1023,22 @@ li a .fa-heart:hover, .liked {
 }
 
 /* post image end */
+
+/* footer start */
+
+#footer {
+    overflow: hidden;
+    text-align: center;
+    width:100%;
+    background: #4582EC;
+}
+#footer .wrap {
+    padding: 1em 0;
+    color:#fff;
+}
+#footer .wrap a {
+    color:#fff;
+    text-decoration: underline;
+}
+
+/* footer end */
