@@ -8,7 +8,7 @@
     $bdd = db_connect();
   ?>
 </head>
-<body onload="uploadProfilImage()">
+<body>
 <?php
   include("topmenu.php");
   ?>

@@ -9,7 +9,7 @@ else
 $nbPostsPerPage = 5;
 if ($images) {
     $nbPosts = count($images);
-    $nbPages = round($nbPosts / $nbPostsPerPage);
+    $nbPages = ceil($nbPosts / $nbPostsPerPage);
 }
 else {
     $nbPosts = 0;
