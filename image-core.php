@@ -50,11 +50,11 @@ echo $_SESSION['img_id'] = $img_id;
                 <div class="post-status-bar">
                     <ul id="like-com" class="like-com">
                         <li>
-                            <span onclick="like(<?php if ($_SESSION['id']) { echo $_GET['id']; } else { echo '-1'; }?>)" onmouseover="chcl('#e44b4b', 'heart-<?php echo $_GET['id'];?>')" onmouseout="chcl('#b2b2b2', 'heart-<?php echo $_GET['id'];?>')">
-                            <i id="heart-<?php echo $_GET['id'];?>" class="fas fa-heart <?php if (img_liked_by_user($me['user_ID'], $_GET['id']) == 1) { echo 'liked';}?>"></i> 
-                            Like <span id="likes-<?php echo $_GET['id'];?>"><?php echo(get_nb_likes($_GET['id']));?></span></span>
+                            <span onclick="like(<?php if ($_SESSION['id']) { echo $_GET['id']; } else { echo '-1'; }?>)" onmouseover="chcl('#e44b4b', 'heart-<?php echo $img_id;?>')" onmouseout="chcl('#b2b2b2', 'heart-<?php echo $img_id;?>')">
+                            <i id="heart-<?php echo $img_id;?>" class="fas fa-heart <?php if (img_liked_by_user($me['user_ID'], $_GET['id']) == 1) { echo 'liked';}?>"></i> 
+                            Like <span id="likes-<?php echo $img_id;?>"><?php echo(get_nb_likes($_GET['id']));?></span></span>
                         </li> 
-                        <li><a href="#comments" class="com" onmouseover="chcl('#4582EC', 'com')" onmouseout="chcl('#b2b2b2', 'com-<?php echo $_GET['id'];?>')"><i id="com-<?php echo $_GET['id'];?>" class="fas fa-comment"></i> Commentaire<?php echo plural($nbComments).' '.$nbComments;?></a></li>
+                        <li><a href="#comments" class="com" onmouseover="chcl('#4582EC', 'com-<?php echo $img_id;?>')" onmouseout="chcl('#b2b2b2', 'com-<?php echo $img_id;?>')"><i id="com-<?php echo $img_id;?>" class="fas fa-comment"></i> Commentaire<?php echo plural($nbComments).' '.$nbComments;?></a></li>
                     </ul>
                 </div>
             </div>
