@@ -12,21 +12,22 @@
                     <span><?php echo $me['user_description'];?></span>
                 </div>
             </div><!--user-profile end-->
+           
             <ul class="user-fw-status"><h4>Stickers</h4>
                     <li>
                         <?php
-                        echo '<img  onclick="test(this, 1)" src="images/stickers/icon.png"  style="width:50px; height:50px; margin-left:30px;"  name="filtre_respons4" alt="366/16">
-                        <img  onclick="test(this, 1)" src="images/stickers/Smiley-11-icon.png"   style="width:50px; height:50px; margin-left:30px;"  name="filtre_respons4" alt="366/16">
-                        <img  onclick="test(this, 1)" src="images/stickers/chat.png"   style="width:50px; height:50px; margin-left:30px;"  name="filtre_respons4" alt="366/16">
-                        <img  onclick="test(this, 1)" src="images/stickers/Troll.png"   style="width:50px; height:50px; margin-left:30px;"  name="filtre_respons4" alt="366/16">
-                        <img  onclick="test(this, 1)" src="images/stickers/sticker1.png"   style="width:50px; height:50px; margin-left:30px;"  name="filtre_respons4" alt="366/16">
-                        
+                        echo '<img  onclick="test(this, 1);display_capture_btn();" src="images/stickers/icon.png"  style="width:50px; height:50px; margin-left:30px;"  name="filtre_respons4" alt="366/16">
+                        <img  onclick="test(this, 1);display_capture_btn();" src="images/stickers/icon2.jpg"   style="width:50px; height:50px; margin-left:30px;"  name="filtre_respons4" alt="366/16">
+                        <img  onclick="test(this, 1);display_capture_btn();" src="images/stickers/icon3.png"   style="width:50px; height:50px; margin-left:30px;"  name="filtre_respons4" alt="366/16">
+                        <img  onclick="test(this, 1);display_capture_btn();" src="images/stickers/icon4.png"   style="width:50px; height:50px; margin-left:30px;"  name="filtre_respons4" alt="366/16">
+                        <img  onclick="test(this, 1);display_capture_btn();" src="images/stickers/icon11.png"   style="width:50px; height:50px; margin-left:30px;"  name="filtre_respons4" alt="366/16">                  
                         <canvas id="canvas"></canvas>';
                         ?>
                 <li>
                     <a href="profil.php" title="">Mon profil</a>
                 </li>
             </ul>
+           
         </div><!--user-data end-->
     </div>
 </div>

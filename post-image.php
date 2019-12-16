@@ -25,14 +25,14 @@
                                     $img_src = $_SESSION['img_src'];
                                     $dest = imagecreatefrompng($_SESSION['iurl']);
                                     $src = imagecreatefrompng($img_src);
-                                    imagealphablending($dest, false);
+                                    imagealphablending($dest, true);
                                     imagesavealpha($dest, true);
                                     $alt = "photo_perso";
                                 
                                     echo '<img class="post_img" src="' . $_SESSION['iurl'] . '" alt="' . $alt .'" \>
                         </div>';
                                     
-                                    imagecopy($dest, $src, 0, 0, 0, 0, 100, 100);                            
+                                    imagecopy($dest, $src, 0, 0, 0, 0, 95, 95);                            
                                     
                                     imagepng($dest, $_SESSION['iurl']);
                                     imagedestroy($dest);
@@ -51,7 +51,8 @@
                                 </div>';
                             }
                             ?>
-                        
+                            <!-- div a retirer condition -->
+                        </div> 
                         <div class="post-st">
                             <ul>
                                 <form enctype="multipart/form-data" id="upload" action="post.php" method="post">
@@ -71,7 +72,8 @@
                                                     else if ($_POST['webcam'])
                                                         {
                                                             echo '<li><a class="post_image" href="post.php" title="">Annuler</a></li>
-                                                            <li><button id="capture" onclick=test(0,0) name="webcamuploaded" value="">Prendre une photo</button></li>';
+                                                            <li><button disabled=true id="capture" onclick=test(0,0) name="webcamuploaded" value="">Prendre une photo</button></li>';
+                                                        
                                                         }
                                                     else
                                                         echo '<li><a class="post_image" href="post.php" title="">Annuler</a></li>
