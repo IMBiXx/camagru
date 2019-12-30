@@ -33,6 +33,12 @@ if(isset($_POST['formconnexion']))
     else
         $error = "les champs ne peuvent pas être vide.";
 }
+if(isset($_GET['activation'])) {
+    if ($_GET['activation'] == "true")
+        $activated = 'Votre compte a bien été activé !';
+    else
+        $notactivated = 'Votre compte n\'a pas pu être activer';
+}
 ?>
 <div class="col-lg-6 center">
     <form action="login.php" method="post">
@@ -47,6 +53,14 @@ if(isset($_POST['formconnexion']))
         <strong>Super !</strong> ' . $msg . ' <a href="./profil.php" class="alert-link">Redirection...</a>
     </div>';
     }
+    else if (isset($activated))
+        echo '<div class="alert alert-success">
+        <strong>Super !</strong> ' . $activated . ' <a href="#" class="alert-link">Vous pouvez vous connecter</a>
+        </div>';
+    else if (isset($notactivated))
+        echo '<div class="alert alert-danger">
+        <strong>Mince !</strong> <a href="#" class="alert-link">Une erreur est survenue,</a> ' . $notactivated . '
+    </div>';
     ?>
         <fieldset>
             <label>Adresse email</label>

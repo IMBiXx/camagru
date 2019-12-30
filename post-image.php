@@ -72,7 +72,7 @@
                                                     else if ($_POST['webcam'])
                                                         {
                                                             echo '<li><a class="post_image" href="post.php" title="">Annuler</a></li>
-                                                            <li><button disabled=true id="capture" onclick=test(0,0) name="webcamuploaded" value="">Prendre une photo</button></li>';
+                                                            <li><button id="capture" onclick=test(0,0) name="webcamuploaded" value="">Prendre une photo</button></li>';
                                                         
                                                         }
                                                     else

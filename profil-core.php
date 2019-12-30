@@ -23,7 +23,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_param'])){
     $id = $_SESSION['id'];
     if(isset($_POST['submit_param'])) {
         $mail = htmlspecialchars($_POST['newemail']);
-        echo $pseudo = htmlspecialchars($_POST['newusername']);
+        // echo $pseudo = htmlspecialchars($_POST['newusername']);
          $old_pass = sha1($_POST['old-password']);
         $new_pass = sha1($_POST['new-password']);
         $requser1 = $bdd->prepare('SELECT * FROM user WHERE `user_ID` = ? ');
@@ -44,12 +44,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_param'])){
           else if($mailexist != 0 && $mail != $email_bas)
               $error = "l'adresse email existe déjà.";
         else {
-            echo $id;
+            // echo $id;
             $insert = $bdd->prepare('UPDATE `user` SET user_pseudo = ?, user_email = ? , user_password = ? WHERE `user_ID` = ?');
             $insert->execute(array($pseudo, $mail, $new_pass, $id)); 
-            echo "pouet";
+            // echo "pouet";
             $msg ="Votre modification à bien été prise en compte";   
         }
+        header('Location:./profil.php');
     }
 }
 ?>
@@ -102,14 +103,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_param'])){
                     <div class="cp-field">
                         <h5>Changer le nom d'utilisateur</h5>
                         <div class="cpp-fiel">
-                            <input type="text" name="newusername" placeholder="Nouveau nom d'utilisateur">
+                            <input type="text" name="newusername" placeholder="Nouveau nom d'utilisateur" value=<?php echo $_SESSION['pseudo'];?>>
                             <i class=""></i>
                         </div>
                     </div>
                     <div class="cp-field">
                         <h5>Changer l'adresse email</h5>
                         <div class="cpp-fiel">
-                            <input type="email" name="newemail" placeholder="Nouvelle adresse email">
+                            <input type="email" name="newemail" placeholder="Nouvelle adresse email" value=<?php echo $_SESSION['mail'];?>>
                             <i class="fa fa-email"></i>
                         </div>
                     </div>

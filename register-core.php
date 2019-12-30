@@ -1,6 +1,6 @@
 <?php
 include("db_manager.php");
-$adminMail = 'warharra@student.42.fr';
+$adminMail = 'camagru@42.fr';
 try{
     $bdd = new PDO($servername.";dbname=".$dbname, $username, $password);
 } catch(PDOException $e){
