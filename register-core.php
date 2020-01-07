@@ -35,7 +35,7 @@ if (isset($_POST['register'])) {
         $reqid->execute(array($pseudo, $mail)) && $row = $reqid->fetch();
         $cle = $row['user_ID'];
         $destinataire = $mail;
-        $sujet = "Activer votre compte";
+        $sujet = "Activez votre compte";
         $headers .= 'MIME-Version: 1.0' . "\r\n";
         $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
         $headers .= 'From: "Camagru"<' . $adminMail . '>' . "\n";
@@ -52,9 +52,8 @@ if (isset($_POST['register'])) {
                         <td>
                             
                             <div align="center">Bonjour <b>' . $pseudo . '</b>,</div>
-                            Pour activer votre compte, veuillez cliquer sur le lien ci dessous
-                            ou copier/coller dans votre navigateur internet.
-                            A bientôt sur <a href=" http://localhost:8080/camagru/activation.php?log=' . urlencode($pseudo) . '&cle=' . urlencode($cle) . '">instapouet</a> ! 
+                            Pour activer votre compte, veuillez cliquer sur le lien ci dessous.
+                            À bientôt sur <a href=" http://localhost:8080/camagru/activation.php?log=' . urlencode($pseudo) . '&cle=' . urlencode($cle) . '">Instapouet</a> ! 
                         </td>
                         </tr>
                         <tr>

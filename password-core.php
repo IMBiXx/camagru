@@ -48,7 +48,7 @@ if (isset($_POST['recup_submit'])) {
                      
                      <div align="center">Bonjour <b>' . $pseudo . '</b>,</div>
                      Voici votre code de récupération: <b>' . $recup_code . '</b>
-                     A bientôt sur <a href="http://localhost:8080/camagru/recuperation.php">récupération_de_mot_depasse.com</a> !
+                     À utiliser sur <a href="http://localhost:8080/camagru/recuperation.php">la page de récupération</a> !
                      
                    </td>
                  </tr>
