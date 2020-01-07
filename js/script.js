@@ -56,6 +56,18 @@ function like(img) {
     xhr.withCredentials = true;
     xhr.send('image_ID='+img);
 }
+
+function update_user_preferences(user_ID) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", 'functions/update_user_preferences.php', true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+    xhr.withCredentials = true;
+    xhr.send('user_ID='+user_ID);
+}
+
+
+
+
 function chcl(color, id) {
     document.getElementById(id).style.color = color;
 }
