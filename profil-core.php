@@ -1,4 +1,5 @@
 <?php
+include("functions/update_user_preferences.php");
     if (isset($_GET['id'])) {
         $images = get_image_by_user_ID($_GET['id']);
         $user = get_user_by_ID($_GET['id']);
@@ -9,45 +10,41 @@
         $title = 'Mes images';
     else
         $title = 'Images de '.$user['user_pseudo'];
+        
 ?>
 <?php
  session_start();
 if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_param'])){
-    
-    try{
-    include("db_manager.php");
-        $bdd = new PDO($servername.";dbname=".$dbname, $username, $password);
-    } catch(PDOException $e){
-    die('Erreur:'.$e->getMessage());
-    }  
+  $bdd = db_connect();
     $id = $_SESSION['id'];
     if(isset($_POST['submit_param'])) {
+        
         $mail = htmlspecialchars($_POST['newemail']);
-        // echo $pseudo = htmlspecialchars($_POST['newusername']);
-         $old_pass = sha1($_POST['old-password']);
+        $pseudo = htmlspecialchars($_POST['newusername']);
+        $old_pass = sha1($_POST['old-password']);
         $new_pass = sha1($_POST['new-password']);
-        $requser1 = $bdd->prepare('SELECT * FROM user WHERE `user_ID` = ? ');
-        $requser1->execute(array($id)) && $pass = $requser1->fetch();
-        $password = $pass['user_password'];
+        $req_user = $bdd->prepare("SELECT * FROM `user` WHERE `user_ID` = ?");
+        $req_user->execute(array($id)) ;
+        $pass = $req_user->fetch();
+        $user_password = $pass['user_password'];
         $email_bas = $pass['user_email'];
-        $mailexist = $requser->rowCount();
+        $mailexist = $req_user->rowCount();
         if (strlen($new_pass) < 8)
             $error = "votre mot de passe doit comporter au minimum 8 caractères.";
         else if(empty($_POST['newemail']) || empty($_POST['newusername'] ) || empty($_POST['old-password']) || empty($_POST['new-password']))
             $error = "tous les champs doivent être remplis.";
         else if (strlen($pseudo) > 255)
             $error = "votre pseudo est trop long.";
-        else if($olde_pass != $password)
+        else if($old_pass != $user_password)
             $error = "les mots de passe ne correspondent pas.";
         else if(!filter_var($mail, FILTER_VALIDATE_EMAIL))
             $error = "votre adresse email n'est pas valide.";
           else if($mailexist != 0 && $mail != $email_bas)
-              $error = "l'adresse email existe déjà.";
+              $error = "l'adresse email n'est pas correcte.";
         else {
-            // echo $id;
+            echo $pseudo;
             $insert = $bdd->prepare('UPDATE `user` SET user_pseudo = ?, user_email = ? , user_password = ? WHERE `user_ID` = ?');
             $insert->execute(array($pseudo, $mail, $new_pass, $id)); 
-            // echo "pouet";
             $msg ="Votre modification à bien été prise en compte";   
         }
         header('Location:./profil.php');
@@ -57,6 +54,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_param'])){
     <div class="col-lg-9 paddingtop center">
         <div class="fade active show" id="images" aria-labelledby="images-tab">
             <div class="acc-setting">
+                
                 <h3><?php echo $title;?></h3>
                 <div class="notbar">
                     <div class="row">
@@ -95,8 +93,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_param'])){
                         <p>Activer les notifications par email lorsque quelqu'un commente une de vos images.</p>
                         <div class="toggle-btn">
                             <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" id="customSwitch1" checked="">
+                                <input onclick="update_user_preferences(<?php echo $_SESSION['id'] ?>)" type="checkbox" class="custom-control-input" id="customSwitch1" <?php
+                                if (get_user_pref($_SESSION['id'])) {
+                                    echo "checked";
+                                }
+                                echo ">"; ?>
                                 <label class="custom-control-label" for="customSwitch1"></label>
+                                   
                             </div>
                         </div>
                     </div>
@@ -139,3 +142,4 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_param'])){
         </div>
     </div>
 </div>
+
