@@ -1,5 +1,5 @@
 <?php
-include("db_manager.php");
+include("database.php");
 try{
     $pdo = new PDO($servername, $username, $password); 
 }

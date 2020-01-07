@@ -62,17 +62,6 @@ CREATE TABLE `camagru`.`user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 -- --------------------------------------------------------
 --
--- Table structure for table `stickers`
---
-CREATE TABLE `camagru`.`sticker` (
-  `sticker_ID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `user_ID` int UNSIGNED NOT NULL,
-  `sticker_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sticker_upload_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `sticker_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
--- --------------------------------------------------------
---
 -- Table structure for table `recuperation`
 --
 CREATE TABLE `camagru`.`recuperation` (
