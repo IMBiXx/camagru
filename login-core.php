@@ -1,6 +1,12 @@
 <?php
-$bdd = db_connect();
 session_start();
+try{
+   include("config/database.php");
+      $bdd = new PDO($servername.";dbname=".$dbname, $username, $password);
+      $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e){
+   die('Erreur:'.$e->getMessage());
+}  
 if(isset($_POST['formconnexion']))
 {
     $mailconnect = htmlspecialchars($_POST['mailconnect']);
@@ -83,5 +89,6 @@ if(isset($_GET['activation'])) {
             </div>
             <button type="submit" name="formconnexion" class="btn btn-primary">Se connecter</button>
         </fieldset>
+        <a href="password.php">Mot de passe oublié </a>
     </form>
 </div>
