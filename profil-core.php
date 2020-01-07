@@ -42,10 +42,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_param'])){
           else if($mailexist != 0 && $mail != $email_bas)
               $error = "l'adresse email n'est pas correcte.";
         else {
-            echo $pseudo;
             $insert = $bdd->prepare('UPDATE `user` SET user_pseudo = ?, user_email = ? , user_password = ? WHERE `user_ID` = ?');
             $insert->execute(array($pseudo, $mail, $new_pass, $id)); 
-            $msg ="Votre modification à bien été prise en compte";   
+            $msg ="Votre modification à bien été prise en compte";
+            $_SESSION['pseudo'] = $pseudo;
+            $_SESSION['mail'] = $mail;
         }
         header('Location:./profil.php');
     }
