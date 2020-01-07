@@ -1,15 +1,6 @@
 <?php
-include("config/database.php");
 $adminMail = 'camagru@42.fr';
-try{
-    include("config/database.php");
-       $bdd = new PDO($servername.";dbname=".$dbname, $username, $password);
-       $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
- } catch(PDOException $e){
-    die('Erreur:'.$e->getMessage());
- }  
-
-
+$bdd = db_connect();
 if (isset($_POST['register'])) {
     $mdp = $_POST['mdp'];
     $pseudo = htmlspecialchars($_POST['pseudo']);
@@ -23,31 +14,31 @@ if (isset($_POST['register'])) {
     $mailexist = $reqmail->rowCount();
     if (strlen($mdp) < 8)
         $error = "votre mot de passe doit comporter au minimum 8 caractères.";
-    else if(!$isvalid)
-        $error ="votre mot de passe doit comporter au moins un chiffre, une majuscule et un caractère spécial.";
-    else if(empty($_POST['pseudo']) || empty($_POST['mail'] ) || empty($_POST['mail2']) || empty($_POST['mdp']) || empty($_POST['mdp2']))
+    else if (!$isvalid)
+        $error = "votre mot de passe doit comporter au moins un chiffre, une majuscule et un caractère spécial.";
+    else if (empty($_POST['pseudo']) || empty($_POST['mail']) || empty($_POST['mail2']) || empty($_POST['mdp']) || empty($_POST['mdp2']))
         $error = "tous les champs doivent être remplis.";
     else if (strlen($pseudo) > 255)
         $error = "votre pseudo est trop long.";
-    else if($mail != $mail2)
+    else if ($mail != $mail2)
         $error = "les adresses email ne correspondent pas.";
-    else if(!filter_var($mail, FILTER_VALIDATE_EMAIL))
+    else if (!filter_var($mail, FILTER_VALIDATE_EMAIL))
         $error = "votre adresse email n'est pas valide.";
-    else if($mailexist != 0)
+    else if ($mailexist != 0)
         $error = "l'adresse email existe déjà.";
-    else if($mdp != $mdp2)
+    else if ($mdp != $mdp2)
         $error = "les mots de passe ne correspondent pas.";
     else {
         $insertmbr = $bdd->prepare("INSERT INTO user(user_pseudo, user_email, user_password, user_preferences) VALUES(?,?,?,?)");
-        $insertmbr->execute(array($pseudo, $mail, $mdp, 0));           
+        $insertmbr->execute(array($pseudo, $mail, $mdp, 0));
         $reqid = $bdd->prepare('SELECT `user_ID` FROM user WHERE user_pseudo = ? and user_email = ?');
-        $reqid->execute(array($pseudo , $mail)) && $row = $reqid->fetch();
+        $reqid->execute(array($pseudo, $mail)) && $row = $reqid->fetch();
         $cle = $row['user_ID'];
         $destinataire = $mail;
-        $sujet = "Activer votre compte" ;
-        $headers .= 'MIME-Version: 1.0'."\r\n";
-        $headers .= 'Content-type: text/html; charset=iso-8859-1'."\r\n";
-        $headers .= 'From: "Camagru"<'. $adminMail .'>'."\n";
+        $sujet = "Activer votre compte";
+        $headers .= 'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+        $headers .= 'From: "Camagru"<' . $adminMail . '>' . "\n";
         $message = '<html>
                 <head>
                 <title>Bienvenue sur VotreSite,</title>
@@ -60,10 +51,10 @@ if (isset($_POST['register'])) {
                         <tr>
                         <td>
                             
-                            <div align="center">Bonjour <b>'.$pseudo.'</b>,</div>
+                            <div align="center">Bonjour <b>' . $pseudo . '</b>,</div>
                             Pour activer votre compte, veuillez cliquer sur le lien ci dessous
                             ou copier/coller dans votre navigateur internet.
-                            A bientôt sur <a href=" http://localhost:8080/camagru/activation.php?log='.urlencode($pseudo).'&cle='.urlencode($cle).'">instapouet</a> ! 
+                            A bientôt sur <a href=" http://localhost:8080/camagru/activation.php?log=' . urlencode($pseudo) . '&cle=' . urlencode($cle) . '">instapouet</a> ! 
                         </td>
                         </tr>
                         <tr>
@@ -78,25 +69,24 @@ if (isset($_POST['register'])) {
                 </font>
                 </body>
                 </html>';
-        mail($destinataire, $sujet, $message, $headers) ; 
-        $msg = "Votre compte a bien été créé."; 
+        mail($destinataire, $sujet, $message, $headers);
+        $msg = "Votre compte a bien été créé.";
     }
 }
 ?>
 <div class="col-lg-6 center">
     <form action="register.php" method="post">
-    <?php
-    if(isset($error)) {
-        echo '<div class="alert alert-danger">
+        <?php
+        if (isset($error)) {
+            echo '<div class="alert alert-danger">
         <strong>Mince !</strong> <a href="#" class="alert-link">Une erreur est survenue,</a> ' . $error . '
     </div>';
-    }
-    else if (isset($msg)) {
-        echo '<div class="alert alert-success">
+        } else if (isset($msg)) {
+            echo '<div class="alert alert-success">
         <strong>Super !</strong> ' . $msg . ' <a href="./login.php" class="alert-link">Vous pouvez maintenant vous connecter</a>.
       </div>';
-    }
-    ?>
+        }
+        ?>
         <fieldset>
             <label>Pseudo</label>
             <div class="form-group">
@@ -104,7 +94,7 @@ if (isset($_POST['register'])) {
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-user"></i></span>
                     </div>
-                <input type="text" name="pseudo" class="form-control" aria-describedby="emailHelp" placeholder="Entrez votre adresse email">
+                    <input type="text" name="pseudo" class="form-control" aria-describedby="emailHelp" placeholder="Entrez votre adresse email">
                 </div>
             </div>
             <label>Adresse email</label>
@@ -115,7 +105,7 @@ if (isset($_POST['register'])) {
                     </div>
                     <input type="email" name="mail" class="form-control" aria-describedby="emailHelp" placeholder="Entrez votre adresse email">
                 </div>
-                
+
             </div>
             <label>Confirmer l'adresse email</label>
             <div class="form-group">
@@ -145,7 +135,7 @@ if (isset($_POST['register'])) {
                 </div>
             </div>
         </fieldset>
-            <button type="submit" name="register" class="btn btn-primary">S'inscrire</button>
+        <button type="submit" name="register" class="btn btn-primary">S'inscrire</button>
         </fieldset>
     </form>
 </div>

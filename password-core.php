@@ -1,46 +1,39 @@
 <?php
-
-session_start();
-try{
-   include("config/database.php");
-      $bdd = new PDO($servername.";dbname=".$dbname, $username, $password);
-} catch(PDOException $e){
-   die('Erreur:'.$e->getMessage());
-}  
-if(isset($_POST['recup_submit'])) {
-   if(!empty($_POST['recup_mail'])) {
+$bdd = db_connect();
+if (isset($_POST['recup_submit'])) {
+   if (!empty($_POST['recup_mail'])) {
       $recup_mail = htmlspecialchars($_POST['recup_mail']);
-      if(filter_var($recup_mail,FILTER_VALIDATE_EMAIL)) {        
+      if (filter_var($recup_mail, FILTER_VALIDATE_EMAIL)) {
          $mailexist = $bdd->prepare('SELECT user_ID, user_pseudo FROM user WHERE user_email = ?');
          $mailexist->execute(array($recup_mail));
          $mailexist_count = $mailexist->rowCount();
-        
-         if($mailexist_count == 1) {
+
+         if ($mailexist_count == 1) {
             $pseudo = $mailexist->fetch();
             $pseudo = $pseudo['pseudo'];
-            
+
             $_SESSION['recup_mail'] = $recup_mail;
             $recup_code = "";
             $i = -1;
-            while( $i++ < 8) { 
-               $recup_code .= mt_rand(0,9);
+            while ($i++ < 8) {
+               $recup_code .= mt_rand(0, 9);
             }
             $mail_recup_exist = $bdd->prepare('SELECT id FROM recuperation WHERE user_email = ?');
             $mail_recup_exist->execute(array($recup_mail));
             $mail_recup_exist = $mail_recup_exist->rowCount();
-            if($mail_recup_exist == 1) {
+            if ($mail_recup_exist == 1) {
                $recup_insert = $bdd->prepare('UPDATE recuperation SET code = ? WHERE user_email = ?');
-               $recup_insert->execute(array($recup_code,$recup_mail));
+               $recup_insert->execute(array($recup_code, $recup_mail));
             } else {
                $recup_insert = $bdd->prepare('INSERT INTO recuperation(user_email,code, confirme) VALUES (?, ?, ?)');
-               $recup_insert->execute(array($recup_mail,$recup_code, 0));
+               $recup_insert->execute(array($recup_mail, $recup_code, 0));
             }
-          $header="MIME-Version: 1.0\r\n";
-         $header.='From:"Camagru"<camagru@42.fr>'."\n";
-         $header.='Content-Type:text/html; charset="utf-8"'."\n";
-         $header.='Content-Transfer-Encoding: 8bit';
-          $sujet  =  "Récupération de mot de passe " ;
-         $message = '
+            $header = "MIME-Version: 1.0\r\n";
+            $header .= 'From:"Camagru"<camagru@42.fr>' . "\n";
+            $header .= 'Content-Type:text/html; charset="utf-8"' . "\n";
+            $header .= 'Content-Transfer-Encoding: 8bit';
+            $sujet  =  "Récupération de mot de passe ";
+            $message = '
          <html>
          <head>
            <title>Récupération de mot de passe</title>
@@ -53,8 +46,8 @@ if(isset($_POST['recup_submit'])) {
                  <tr>
                    <td>
                      
-                     <div align="center">Bonjour <b>'.$pseudo.'</b>,</div>
-                     Voici votre code de récupération: <b>'.$recup_code.'</b>
+                     <div align="center">Bonjour <b>' . $pseudo . '</b>,</div>
+                     Voici votre code de récupération: <b>' . $recup_code . '</b>
                      A bientôt sur <a href="http://localhost:8080/camagru/recuperation.php">récupération_de_mot_depasse.com</a> !
                      
                    </td>
@@ -72,7 +65,7 @@ if(isset($_POST['recup_submit'])) {
          </body>
          </html>
          ';
-         mail($recup_mail, $sujet, $message, $header);
+            mail($recup_mail, $sujet, $message, $header);
             header("localhost:8080/camagru/recuperation.php?section=code");
             $success = "Un mail vient de vous être envoyé.";
          } else {
@@ -87,26 +80,25 @@ if(isset($_POST['recup_submit'])) {
 }
 ?>
 <div class="col-lg-6 center">
-    <form method="POST" action="password.php">
-    <?php
-    if(isset($error)) {
-        echo '<div class="alert alert-danger">
+   <form method="POST" action="password.php">
+      <?php
+      if (isset($error)) {
+         echo '<div class="alert alert-danger">
         <strong>Mince !</strong> <a href="#" class="alert-link">Une erreur est survenue,</a> ' . $error . '
     </div>';
-    }
-    else if (isset($success)) {
-        echo '<div class="alert alert-success">
-        <strong>Super !</strong> <a href="#" class="alert-link">'. $success .'</a>
+      } else if (isset($success)) {
+         echo '<div class="alert alert-success">
+        <strong>Super !</strong> <a href="#" class="alert-link">' . $success . '</a>
         </div>';
-    }
-    ?>
-        <label>Recuperation de mot de passe</label>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-envelope-open"></i></span>
-            </div>
-            <input type="email" name="recup_mail" class="form-control" placeholder="Entrez votre adresse email">
-        </div>
-        <input class="btn btn-primary" type="submit" value="Valider" name="recup_submit" />
-        </form>
-    </div>
+      }
+      ?>
+      <label>Recuperation de mot de passe</label>
+      <div class="input-group mb-3">
+         <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-envelope-open"></i></span>
+         </div>
+         <input type="email" name="recup_mail" class="form-control" placeholder="Entrez votre adresse email">
+      </div>
+      <input class="btn btn-primary" type="submit" value="Valider" name="recup_submit" />
+   </form>
+</div>
