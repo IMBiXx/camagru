@@ -1,11 +1,15 @@
 <?php
-include("db_manager.php");
+include("config/database.php");
 $adminMail = 'camagru@42.fr';
 try{
-    $bdd = new PDO($servername.";dbname=".$dbname, $username, $password);
-} catch(PDOException $e){
- die('Erreur:'.$e->getMessage());
-}
+    include("config/database.php");
+       $bdd = new PDO($servername.";dbname=".$dbname, $username, $password);
+       $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+ } catch(PDOException $e){
+    die('Erreur:'.$e->getMessage());
+ }  
+
+
 if (isset($_POST['register'])) {
     $mdp = $_POST['mdp'];
     $pseudo = htmlspecialchars($_POST['pseudo']);
