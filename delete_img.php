@@ -4,7 +4,7 @@
 <?php
 session_start();
 
-include("db_manager.php");
+include("config/database.php");
     try{
             $bdd = new PDO($servername.";dbname=".$dbname, $username, $password);
         } catch(PDOException $e){

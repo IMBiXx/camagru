@@ -1,8 +1,9 @@
 <?php
 session_start();
-include("db_manager.php");
+include("config/database.php");
 try{
   $bdd = new PDO($servername.";dbname=".$dbname, $username, $password);
+  $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch(PDOException $e){
  die('Erreur:'.$e->getMessage());
 }  

@@ -14,7 +14,7 @@ function add_comment($user_ID,$img_ID, $comment_comment) {
     $reqemail->execute(array($user_id)) && $row = $reqemail->fetch();
     $email = $row['user_email'];
     $destinataire = $email;
-    $sujet = "Vous aver recu un commantaire" ;
+    $sujet = "Vous aver recu un commentaire" ;
     $headers .= 'MIME-Version: 1.0'."\r\n";
     $headers .= 'Content-type: text/html; charset=iso-8859-1'."\r\n";
     $headers .= 'From: "Camagru"<camagru@42.fr>'."\n";

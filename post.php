@@ -1,7 +1,7 @@
 <?php
 session_start();
 date_default_timezone_set('europe/paris');
-include("db_manager.php");
+include("config/database.php");
     try{
             $bdd = new PDO($servername.";dbname=".$dbname, $username, $password);
         } catch(PDOException $e){
