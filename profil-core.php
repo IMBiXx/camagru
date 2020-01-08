@@ -104,14 +104,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_param'])) {
                     <h5>Changer le nom d'utilisateur</h5>
                     <div class="cpp-fiel">
                         <input type="text" name="newusername" placeholder="Nouveau nom d'utilisateur" value=<?php echo $_SESSION['pseudo']; ?>>
-                        <i class=""></i>
+                        <i class="fa fa-user"></i>
                     </div>
                 </div>
                 <div class="cp-field">
                     <h5>Changer l'adresse email</h5>
                     <div class="cpp-fiel">
                         <input type="email" name="newemail" placeholder="Nouvelle adresse email" value=<?php echo $_SESSION['mail']; ?>>
-                        <i class="fa fa-email"></i>
+                        <i class="fa fa-envelope"></i>
                     </div>
                 </div>
                 <div class="cp-field">
