@@ -24,6 +24,8 @@ if (isset($_POST['recup_submit'])) {
             if ($mail_recup_exist == 1) {
                $recup_insert = $bdd->prepare('UPDATE recuperation SET code = ? WHERE user_email = ?');
                $recup_insert->execute(array($recup_code, $recup_mail));
+               $recup_insert = $bdd->prepare('UPDATE recuperation SET confirme = ? WHERE user_email = ?');
+               $recup_insert->execute(array(0, $recup_mail));
             } else {
                $recup_insert = $bdd->prepare('INSERT INTO recuperation(user_email,code, confirme) VALUES (?, ?, ?)');
                $recup_insert->execute(array($recup_mail, $recup_code, 0));
