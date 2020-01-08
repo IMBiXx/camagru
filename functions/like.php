@@ -2,7 +2,6 @@
 header('Access-Control-Allow-Origin: http://localhost:8080/');
 header('Access-Control-Allow-Credentials: true');
 session_start();
-include("../config/db_connect.php");
 if (isset($_SESSION['id']) && $_SERVER["REQUEST_METHOD"] == "POST"){
     $user_ID = $_SESSION['id'];
     $img_ID = $_POST['image_ID'];
