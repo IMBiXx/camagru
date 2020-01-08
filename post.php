@@ -3,6 +3,12 @@ session_start();
 date_default_timezone_set('europe/paris');
 // Connexion bdd en dur car il faut pouvoir l'atteindre avant d'afficher la page
 include("config/database.php");
+
+
+
+
+
+
 try {
     $bdd = new PDO($servername . ";dbname=" . $dbname, $username, $password);
 } catch (PDOException $e) {
@@ -16,7 +22,24 @@ if (isset($_POST['webcam']))
 else
     $onload = "uploadImage()";
 
-
+    function last_img_ID() {
+        include("config/database.php"); 
+        try {
+            $bdd = new PDO($servername . ";dbname=" . $dbname, $username, $password);
+        } catch (PDOException $e) {
+            die('Erreur:' . $e->getMessage());
+        }
+        if (isset($bdd))
+            echo "pouet";
+        $req = $bdd->prepare("SELECT * FROM `img`");
+        $req->execute(array($img_ID));
+        
+        while ($donnees = $req->fetch()){
+            $rep = $donnees;
+        }
+        $req->closeCursor();
+        return ($rep['img_ID']);
+    }
 
 if (isset($_POST['webcamuploaded'])) {
     $data = $_POST['webcamuploaded'];
@@ -30,12 +53,8 @@ if (isset($_POST['webcamuploaded'])) {
         $_SESSION['img_src'] = "";
 
     $data = base64_decode($data);
-    if (!isset($_SESSION['id_img'])) {
-        $i = 0;
-    } else {
 
-        $i = $_SESSION['id_img'] + 1;
-    }
+    $i = last_img_ID()+1;
 
     $uploadfile = file_put_contents('./images/user_images/' . $i, $data);
     $uploaddir = './images/user_images/' . $i;
@@ -59,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $req->execute(array($iurl)) && $img_id = $req->fetch();
         $id = $img_id['img_ID'];
         $_SESSION['id_img'] = $id;
-        $_SESSION['iurl'] = 0;
+        $_SESSION['iurl'] += 1;
         header("Location: ./image.php?id=" . $id);
     }
 }
