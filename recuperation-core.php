@@ -10,15 +10,14 @@ function debug_to_console($data)
 }
 if (isset($_POST['verif_submit'])) {
    if (!empty($_POST['verif_code']) && !empty($_POST['recup_mail'])) {
-      echo "top";
       $verif_code = htmlspecialchars($_POST['verif_code']);
-      echo $verif_code;
+
       $verif_email = htmlspecialchars($_POST['recup_mail']);
       $verif_req = $bdd->prepare('SELECT * FROM `recuperation` WHERE user_email = ? AND code = ?');
       $verif_req->execute(array($verif_email, $verif_code)) && $row = $verif_req->fetch();
       $confirme = $row['confirme'];
       $verif_req = $verif_req->rowCount();
-      echo $verif_req;
+
 
       if ($verif_req == 1 && $confirme == 0) {
          $up_req = $bdd->prepare('UPDATE `recuperation` SET confirme = 1 WHERE user_email = ?');
@@ -69,38 +68,69 @@ if (isset($_POST['nvmdp_submit'])) {
 ?>
 
 
-<!DOCTYPE html>
-<html>
 
-<head>
-   <title>recuperation de mot de passe</title>
-</head>
 
 <body>
-   <div>
-      <h2> Recuperation de mot de passe </h2>
-      <?php if (isset($_GET['section'])) {
+   <div class="col-lg-6 center">
+   <label>Recuperation de mot de passe</label>
+      <?php 
+            if (isset($erreur)) {
+               echo '<div class="alert alert-danger">
+              <strong>Mince !</strong> <a href="#" class="alert-link">Une erreur est survenue,</a> ' . $erreur . '
+          </div>';
+            } 
+      
+      if (isset($_GET['section'])) {
          $section = $_GET['section'];
          if ($section == "changemdp") { ?>
             <form method="POST">
-               <input type="email" placeholder="Votre adresse mail" name="recup1_mail" /><br />
-               <input type="password" placeholder="Nouveau mot de passe" name="nv_mdp" /><br />
-               <input type="password" placeholder="Confirmation du mot de passe" name="cnv_mdp" /><br />
-               <input type="submit" value="Valider" name="nvmdp_submit" />
-            </form>
+            <div class="input-group mb-3">
+            <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-envelope-open"></i></span>
+            </div>
+            <input type="email" name="recup1_mail" class="form-control" placeholder="Votre adresse mail">
+        </div>
+        <div class="input-group-prepend">
+         <div>
+            <span class="input-group-text"><i class="fa fa-lock"></i></span>
+         </div>
+         <input type="password" name="nv_mdp" class="form-control" placeholder="Nouveau mot de passe">
+      </div>
+      <div class="input-group-prepend">
+         <div>
+            <span class="input-group-text"><i class="fa fa-lock"></i></span>
+         </div>
+         <input type="password" name="cnv_mdp" class="form-control" placeholder="Confirmation du mot de passe">
+      </div>
+      <div>
+      <input class="btn btn-primary" type="submit" value="Valider" name="nvmdp_submit" />
+      </div>
+   </form>
+
+
+
+
          <?php }
       } else { ?>
-         <form method="POST">
-            <input type="email" placeholder="Votre adresse mail" name="recup_mail" /><br />
-            <input type="texte" placeholder="Votre Code" name="verif_code" /><br />
-            <input type="submit" value="Valider" name="verif_submit" />
-         </form>
-
+          <form method="POST">
+         <div class="input-group mb-3">
+         <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-envelope-open"></i></span>
+         </div>
+         <input type="email" name="recup_mail" class="form-control" placeholder="Votre adresse mail">
+        </div>
+        <div class="input-group-prepend">
+         <div>
+            <span class="input-group-text"><i class="fa fa-lock"></i></span>
+         </div>
+         <input type="texte" name="verif_code" class="form-control" placeholder="Votre Code">
+      </div>
+      <div>
+      <input class="btn btn-primary" type="submit" value="Valider" name="verif_submit" />
+   </div>
+   </form>
+      
       <?php  }
-      if (isset($erreur)) {
-         echo '<font color="red">' . $erreur . "</font>";
-      } ?>
+      ?>
    </div>
 </body>
-
-</html>
