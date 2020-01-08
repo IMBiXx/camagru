@@ -71,14 +71,18 @@ if (isset($_POST['nvmdp_submit'])) {
 
 
 <body>
+
+
    <div class="col-lg-6 center">
+   <?php
+      if (isset($erreur)) {
+         echo '<div class="alert alert-danger">
+        <strong>Mince !</strong> <a href="#" class="alert-link">Une erreur est survenue,</a> ' . $erreur . '
+    </div>';
+      } ?>
    <label>Recuperation de mot de passe</label>
       <?php 
-            if (isset($erreur)) {
-               echo '<div class="alert alert-danger">
-              <strong>Mince !</strong> <a href="#" class="alert-link">Une erreur est survenue,</a> ' . $erreur . '
-          </div>';
-            } 
+      
       
       if (isset($_GET['section'])) {
          $section = $_GET['section'];
