@@ -1,5 +1,4 @@
 <?php
-// session_start();
 include("functions/img_liked_by_user.php");
 include("functions/like.php");
 if (isset($_GET['page']))

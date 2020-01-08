@@ -9,8 +9,6 @@ exit();
 }
 $user_ID = $_SESSION['id'];
 $img_ID = $_POST['img_ID'];
-// $user_ID = 1;
-// $img_ID = 1;
 $req = $bdd->prepare('SELECT `user_ID` FROM `img` WHERE `img_ID`= ?');
 $req->execute(array($img_ID)) && $user_Id = $req->fetch();
 $user_id = $user_Id['user_ID']; //celui qui a poster img

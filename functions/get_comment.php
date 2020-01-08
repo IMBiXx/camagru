@@ -1,7 +1,4 @@
 <?php
-
-
-
 function get_content_by_ID($img_ID) {
     $bdd = db_connect();
     $req = $bdd->prepare('SELECT * FROM `comment`WHERE `img_ID`= ?');

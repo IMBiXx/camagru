@@ -18,9 +18,6 @@ function add_comment($user_ID, $img_ID, $comment_comment)
     $headers .= 'MIME-Version: 1.0' . "\r\n";
     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
     $headers .= 'From: "Camagru"<camagru@42.fr>' . "\n";
-    $message =
-        'Un utilisateur vient de commenter l\'une de vos photo';
-
-
+    $message = 'Un utilisateur vient de commenter l\'une de vos photo';
     mail($destinataire, $sujet, $message, $headers);
 }

@@ -3,12 +3,6 @@ session_start();
 date_default_timezone_set('europe/paris');
 // Connexion bdd en dur car il faut pouvoir l'atteindre avant d'afficher la page
 include("config/database.php");
-
-
-
-
-
-
 try {
     $bdd = new PDO($servername . ";dbname=" . $dbname, $username, $password);
 } catch (PDOException $e) {

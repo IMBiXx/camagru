@@ -23,7 +23,6 @@ if ($actif == '1') {
     $stmt = $bdd->prepare('UPDATE `user` SET user_validated = 1 WHERE `user_ID` = ? ');
     $stmt->bindParam(array($cle));
     $stmt->execute(array($cle));
-    // echo "Votre compte a bien été activé !";
     header('Location: ./login.php?activation=true');
   } else {
     echo "Erreur ! Votre compte ne peut être activé...";

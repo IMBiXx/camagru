@@ -15,8 +15,6 @@ if (isset($_POST['verif_submit'])) {
       $verif_req->execute(array($verif_email, $verif_code)) && $row = $verif_req->fetch();
       $confirme = $row['confirme'];
       $verif_req = $verif_req->rowCount();
-
-
       if ($verif_req == 1 && $confirme == 0) {
          $up_req = $bdd->prepare('UPDATE `recuperation` SET confirme = 1 WHERE user_email = ?');
          $up_req->bindParam(array($verif_email));
@@ -64,13 +62,7 @@ if (isset($_POST['nvmdp_submit'])) {
 }
 
 ?>
-
-
-
-
 <body>
-
-
    <div class="col-lg-6 center">
    <?php
       if (isset($erreur)) {
@@ -79,9 +71,7 @@ if (isset($_POST['nvmdp_submit'])) {
     </div>';
       } ?>
    <label>Recuperation de mot de passe</label>
-      <?php 
-      
-      
+      <?php
       if (isset($_GET['section'])) {
          $section = $_GET['section'];
          if ($section == "changemdp") { ?>
@@ -108,9 +98,6 @@ if (isset($_POST['nvmdp_submit'])) {
                   <input class="btn btn-primary" type="submit" value="Valider" name="nvmdp_submit" />
                </div>
             </form>
-
-
-
 
          <?php }
       } else { ?>

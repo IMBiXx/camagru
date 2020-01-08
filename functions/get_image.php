@@ -1,9 +1,4 @@
 <?php
-
-// $img_ID = $_POST['img_ID'];
-// $user_ID = $_POST['user_ID'];
-//   $user_ID = 1;
-//     $img_ID = 1;
 $rep = array();
 function get_image_by_ID($img_ID) {
     $bdd = db_connect();
