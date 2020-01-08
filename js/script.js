@@ -93,43 +93,38 @@ function openWebcam() {
  var context = canvas.getContext('2d');
  
   
- if (navigator.mediaDevices.getUserMedia) {       
-     navigator.mediaDevices.getUserMedia({video: true})
-   .then(function(stream) {
-     video.srcObject = stream;
-   })
-   .catch(function(error) {
-     console.log("Something went wrong!");
-   });
-}
+    if (navigator.mediaDevices.getUserMedia) {       
+        navigator.mediaDevices.getUserMedia({video: true})
+    .then(function(stream) {
+        video.srcObject = stream;
+    })
+    .catch(function(error) {
+    });
+    }
 }
 var src_img = "";
 function test(image, a) {
-var video = document.querySelector("#videoElement");
-var canvas = document.getElementById('canvas');
-var context = canvas.getContext('2d');
-if(a != 0)
-{
-   src_img = document.getElementById("filter_webcam").src = image.src;
-//var imgg = document.getElementById("filter_webcam1");
-   document.getElementById("filter_webcam").className = image.name;
-   document.getElementById("filter_webcam").name = image.alt;
-}
-if(a == 0)
-{
-if (navigator.mediaDevices.getUserMedia) {       
-    navigator.mediaDevices.getUserMedia({video: true})
-  .then(function(stream) {
-    video.srcObject = stream;
-  })
-  .catch(function(error) {
-    console.log("Something went wrong!");
-  });
-context.drawImage(video,0,0);
-}
-var dataURL = canvas.toDataURL(video);
-console.log(dataURL);
-document.getElementById("capture").value = dataURL+src_img;
+    var video = document.querySelector("#videoElement");
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    if(a != 0)
+    {
+        src_img = document.getElementById("filter_webcam").src = image.src;
+        document.getElementById("filter_webcam").className = image.name;
+        document.getElementById("filter_webcam").name = image.alt;
     }
-    
+    if(a == 0)
+    {
+        if (navigator.mediaDevices.getUserMedia) {       
+            navigator.mediaDevices.getUserMedia({video: true})
+        .then(function(stream) {
+            video.srcObject = stream;
+        })
+        .catch(function(error) {
+        });
+        context.drawImage(video,0,0);
+        }
+        var dataURL = canvas.toDataURL(video);
+        document.getElementById("capture").value = dataURL+src_img;
+    }
 }

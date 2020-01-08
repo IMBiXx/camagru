@@ -5,8 +5,6 @@ function debug_to_console($data)
    $output = $data;
    if (is_array($output))
       $output = implode(',', $output);
-
-   echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
 }
 if (isset($_POST['verif_submit'])) {
    if (!empty($_POST['verif_code']) && !empty($_POST['recup_mail'])) {
@@ -88,28 +86,28 @@ if (isset($_POST['nvmdp_submit'])) {
          $section = $_GET['section'];
          if ($section == "changemdp") { ?>
             <form method="POST">
-            <div class="input-group mb-3">
-            <div class="input-group-prepend">
-            <span class="input-group-text"><i class="fas fa-envelope-open"></i></span>
-            </div>
-            <input type="email" name="recup1_mail" class="form-control" placeholder="Votre adresse mail">
-        </div>
-        <div class="input-group-prepend">
-         <div>
-            <span class="input-group-text"><i class="fa fa-lock"></i></span>
-         </div>
-         <input type="password" name="nv_mdp" class="form-control" placeholder="Nouveau mot de passe">
-      </div>
-      <div class="input-group-prepend">
-         <div>
-            <span class="input-group-text"><i class="fa fa-lock"></i></span>
-         </div>
-         <input type="password" name="cnv_mdp" class="form-control" placeholder="Confirmation du mot de passe">
-      </div>
-      <div>
-      <input class="btn btn-primary" type="submit" value="Valider" name="nvmdp_submit" />
-      </div>
-   </form>
+               <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                     <span class="input-group-text"><i class="fas fa-envelope-open"></i></span>
+                  </div>
+               <input type="email" name="recup1_mail" class="form-control" placeholder="Votre adresse mail">
+               </div>
+               <div class="input-group-prepend">
+                  <div>
+                     <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                  </div>
+                  <input type="password" name="nv_mdp" class="form-control" placeholder="Nouveau mot de passe">
+               </div>
+               <div class="input-group-prepend">
+                  <div>
+                     <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                  </div>
+                  <input type="password" name="cnv_mdp" class="form-control" placeholder="Confirmation du mot de passe">
+               </div>
+               <div>
+                  <input class="btn btn-primary" type="submit" value="Valider" name="nvmdp_submit" />
+               </div>
+            </form>
 
 
 
